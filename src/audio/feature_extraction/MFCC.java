@@ -3,6 +3,8 @@ package audio.feature_extraction;
 import audio.ComplexVector;
 import data.Complex;
 import data.FFT;
+import data.vectorquantization.LBG.VectorQuantization;
+import data.vectorquantization.mkonrad.cluster.GenLloyd;
 
 /**
  * Created by Fathurrohman on 5/20/2015.
@@ -273,6 +275,24 @@ public class MFCC {
         }
         System.out.println("DCT Done");
         System.out.println("MFCC Done");
+        System.out.println("Try Clustering");
+
+        VectorQuantization vq = new VectorQuantization(ceptra,4);
+        vq.print();
+
+//        GenLloyd gl = new GenLloyd(ceptra);
+//
+//        gl.calcClusters(4);
+
+//        double[][] results = gl.getClusterPoints();
+//        for (double[] point : results) {
+//            System.out.print("Cluster : ");
+//            for (double po : point) {
+//                System.out.print(po + " ");
+//            }
+//            System.out.println();
+//        }
+
     }
 
     private double hzToMel(double hz) {
