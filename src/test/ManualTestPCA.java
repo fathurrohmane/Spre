@@ -24,17 +24,22 @@ public class ManualTestPCA {
                 {1.5, 1.6},
                 {1.1, 0.9}
         };
+        System.out.println("Data :");
+        Matrix originalData = new Matrix(matrix);
+        originalData.print(8,2);
+
 
         PCA pca = new PCA(matrix);
-        int numberofdimension = 2;
-        List<PCA.PrincipleComponent> mainComponents = pca.getDominantComponents(numberofdimension);
 
-        Matrix features = PCA.getDominantComponentsMatrix(mainComponents);
+        System.out.println("Result 2-D");
+        Matrix result = new Matrix(pca.getPCAResult(2));
+            result.print(8,8);
 
-        features.print(8,4);
-
-
+        System.out.println("Result 1-D");
+        Matrix result2 = new Matrix(pca.getPCAResult(1));
+            result2.print(8,8);
 
     }
+
 
 }

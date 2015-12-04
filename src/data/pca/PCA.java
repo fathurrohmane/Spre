@@ -2,6 +2,7 @@ package data.pca;
 
 import Jama.EigenvalueDecomposition;
 import Jama.Matrix;
+import org.omg.PortableInterceptor.INACTIVE;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.TreeSet;
 
 /**
  * Created by Fathurrohman on 25-Nov-15.
+ * Basedon http://www.cs.otago.ac.nz/cosc453/student_tutorials/principal_components.pdf
  */
 public class PCA {
 
@@ -21,22 +23,34 @@ public class PCA {
     private double[] eigenValues;
     private SortedSet<PrincipleComponent> principleComponents;
 
-    public PCA(double[][] data) {
-        //initiation
-            data = new double[data.length][data[0].length];
-            means = new double[data[0].length];
-        //calculate mean for each dimension
-            calculateMean(data);
-        //calculate covariance
+    public PCA(double[][] dataSample) {
+//initiation
+            data = new double[dataSample.length][dataSample[0].length];
+            means = new double[dataSample[0].length];
+            data = dataSample.clone();
+//calculate mean for each dimension
+            means = calculateMean(data);
+//Adjust data by subtract by its mean
+            data = adjustedData(data,means);
+//calculate covariance
             double[][] covariance = getCovariances(data, means);
             Matrix covarianceInMatrix = new Matrix(covariance);
+                System.out.println("Matrix Covariance :");
+                covarianceInMatrix.print(data[0].length,data[0].length);
             eigenData = covarianceInMatrix.eig();
-        //calculate eigen vector and value
+//calculate eigen vector and value
             eigenValues = eigenData.getRealEigenvalues();
             eigenVectors = eigenData.getV();
+                System.out.println("Eigen Vector :");
+                eigenVectors.print(data[0].length,data[0].length);
+                System.out.println("Eigen Value :");
+                for (int i = 0; i < eigenValues.length; i++) {
+                    System.out.println(eigenValues[i]);
+                }
             double[][] vecs = eigenVectors.getArray();
             int numOfComponents = eigenVectors.getColumnDimension(); // same as num rows.
             principleComponents = new TreeSet<PrincipleComponent>();
+//Sort by eigen value -> higher eigenvalue higer priority
         for (int i = 0; i < numOfComponents; i++) {
             double[] eigenVector = new double[numOfComponents];
             for (int j = 0; j < numOfComponents; j++) {
@@ -44,20 +58,57 @@ public class PCA {
             }
             principleComponents.add(new PrincipleComponent(eigenValues[i], eigenVector));
         }
+//
+        //Set result dimension -> dimentional reduction
+
     }
 
-    private void calculateMean(double[][] data) {
-        //Sum all data
+    public double[][] getPCAResult(int numberofdimension) {
+//List of eigen vector sorted by eigenvalue
+        List<PCA.PrincipleComponent> mainComponents = getDominantComponents(numberofdimension);
+        Matrix features = PCA.getDominantComponentsMatrix(mainComponents);
+
+//convert original data to Matrix
+        Matrix originalDataSubtractedbyMean = new Matrix(data);
+
+//fetureVectorTranspose * originalDataSubtractedbyMeanTranspose
+        Matrix featureTranspose = features.transpose();
+        Matrix originalDataAdjusted = originalDataSubtractedbyMean.transpose();
+        Matrix result = featureTranspose.times(originalDataAdjusted);
+//Result in array
+        return result.transpose().getArray();
+    }
+
+    public double[][] adjustedData(double[][] data, double[] means) {
+        double[][] output = new double[data.length][data[0].length];
         for (int i = 0; i < data.length; i++) {
             for (int j = 0; j < data[0].length; j++) {
-                means[j] += data[i][j];
+                output[i][j] = data[i][j] - means[j];
+            }
+        }
+        return output;
+    }
+
+    private double[] calculateMean(double[][] data) {
+        int numData = data.length;
+        int n = data[0].length;
+
+        double[] sum = new double[n];
+        double[] mean = new double[n];
+
+        //Sum all data
+        for (int i = 0; i < numData; i++) {
+            double[] vec = data[i];
+            for (int j = 0; j < data[0].length; j++) {
+                sum[j] += vec[j];
             }
         }
 
         //divide by its total
-        for (int i = 0; i < data[0].length; i++) {
-            means[i] /= data.length;
+        for (int i = 0; i < sum.length; i++) {
+            mean[i] = sum[i] / data.length;
         }
+        return mean;
     }
 
     public static Matrix getDominantComponentsMatrix(List<PrincipleComponent> dom) {
@@ -72,19 +123,23 @@ public class PCA {
         return matrix;
     }
 
-    private double[][] getCovariances(double[][] data, double[] means) {
-        int numData = data.length;
-        int numDimension = data[0].length;
+    private double[][] getCovariances(double[][] dataInput, double[] meansInput) {
+        int numData = dataInput.length;
+        int numDimension = dataInput[0].length;
+
+        double[] mean = calculateMean(dataInput);
 
         double[][] cov = new double[numDimension][numDimension];
 
         for (int i = 0; i < numData; i++) {
             for (int j = i; j < numDimension; j++) {
-                double result = calculateCovariance(data, i, j, means);
+                double result = calculateCovariance(dataInput, i, j, mean);
                 cov[i][j] = result;
                 cov[j][i] = result;
             }
         }
+
+        //System.arraycopy(mean, 0 , meansInput, 0 , mean.length);
 
         return cov;
     }
@@ -97,7 +152,7 @@ public class PCA {
             double a = data[i][colA] - means[colA];
             double b = data[i][colB] - means[colB];
 
-            covariance += a * b;
+            covariance += (a * b);
         }
 
         covariance = (covariance / (data.length - 1));
@@ -115,6 +170,10 @@ public class PCA {
             }
         }
         return ret;
+    }
+
+    public double[] getMeans() {
+        return means;
     }
 
     public static class PrincipleComponent implements Comparable<PrincipleComponent> {
