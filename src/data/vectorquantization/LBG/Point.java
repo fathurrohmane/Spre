@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 /**
  * Created by Fathurrohman on 22-Oct-15.
+ *
  */
 public class Point {
 

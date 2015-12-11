@@ -1,6 +1,7 @@
 package menu;
 
 import audio.AudioProcessing;
+import classification.Training;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,13 +10,12 @@ import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import tools.ArrayWriter;
-import tools.WaveData;
 
 import java.io.File;
 
 /**
  * Created by Fathurrohman on 5/20/2015.
+ *
  */
 public class MainMenuController extends Application {
     //UI Variable
@@ -34,8 +34,6 @@ public class MainMenuController extends Application {
         primaryStage.setScene(new Scene(root, 800, 480));
         primaryStage.show();
 
-
-
     }
 
     public void topmenuFileOpenClicked() {
@@ -53,8 +51,9 @@ public class MainMenuController extends Application {
         // Get file
         previousFileAddress = fileChooser.showOpenDialog(primaryStage);
 
-        //Process data
-        AudioProcessing audioProcessing = new AudioProcessing(previousFileAddress);
+
+        // Begin Training data
+        Training training = new Training("LOL", previousFileAddress);
 
         //Load audio data to chart
         //ChartCreator.loadData(audioWaveChart,AudioExtractor.getAudioData(previousFileAddress));

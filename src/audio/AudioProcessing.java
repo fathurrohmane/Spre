@@ -1,9 +1,8 @@
 package audio;
 
-import audio.feature_extraction.MFCC;
-import tools.ArrayWriter;
 import tools.WaveData;
 
+import javax.sound.sampled.AudioFormat;
 import java.io.File;
 
 /**
@@ -11,48 +10,44 @@ import java.io.File;
  */
 public class AudioProcessing {
 
-    //Audio properties
-    int audioSampleLength;
-    int audioSampleRate = 96000;
-    double audioDuration;
+    // Audio properties
+    private int audioSampleRate;
+    private double audioDuration;
 
-    //Audio file data
-    File audioFile;
+    // Audio file data
+    private File audioFile;
 
-    //Audio extractor
-    WaveData waveData;
+    // Audio extractor
+    private WaveData waveData;
 
-    //Audio data original
-    float[] audioDataOriginal;
+    // Audio data original
+    private float[] audioDataOriginal;
 
-    //Audio data
-    double[] audioData;
+    // Audio data
+    private double[] audioData;
 
     public AudioProcessing(File file) {
         this.audioFile = file;
         getAudioData(file);
 
-        //Preprosessing data
+        // Pre-processing data
         audioData = PreProcessing.normalizeAudioData(audioDataOriginal);
-
-        //set audio length
-        audioSampleLength = audioData.length;
-
-        //MFCC
-        MFCC mfcc = new MFCC(audioData,audioSampleLength,audioSampleRate);
 
     }
 
     private void getAudioData(File file) {
         waveData = new WaveData();
         audioDataOriginal = waveData.extractAmplitudeFromFile(file);
+        audioDuration = waveData.getDurationSec();
+        AudioFormat audioFormat = waveData.getFormat();
+        audioSampleRate = (int) audioFormat.getSampleRate();
     }
 
-    private void calculateMFCCperFrame() {
-
+    public int getAudioSampleRate() {
+        return audioSampleRate;
     }
 
-
-
-
+    public double[] getAudioData() {
+        return audioData;
+    }
 }

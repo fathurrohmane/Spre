@@ -1,12 +1,12 @@
 package test;
 
 import data.vectorquantization.LBG.VectorQuantization;
-import data.vectorquantization.mkonrad.cluster.GenLloyd;
-
-import java.util.Vector;
+import tools.Array;
 
 /**
  * Created by Fathurrohman on 19-Nov-15.
+ * This class for testing VectorQuantization class
+ * Result tested using Markus Konrad VQ class
  */
 public class ManualTestVectorQuantization {
 
@@ -26,19 +26,13 @@ public class ManualTestVectorQuantization {
         VectorQuantization vq = new VectorQuantization(sample,4);
         vq.print();
 
+        int[] observation = new int[9];
 
-        GenLloyd gl = new GenLloyd(sample);
-        gl.calcClusters(4);
-
-        double[][] results = gl.getClusterPoints();
-        for (double[] point : results) {
-            System.out.print("Cluster : ");
-            for (double po : point) {
-                System.out.print(po + " ");
-            }
-            System.out.println();
+        System.out.println("Observation= ");
+        for (int i = 0; i < 9; i++) {
+            observation[i] = vq.getClosestCentroidIndex(sample[i]);
+            System.out.print(observation[i] +" ");
         }
     }
-
 
 }

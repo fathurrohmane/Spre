@@ -9,7 +9,7 @@ public class VectorQuantization {
 
     private static final double threshold = 0.001;
 
-    //Split factor (0.01 <= SPLIT <= 0.05)
+    // Split factor (0.01 <= SPLIT <= 0.05)
     private final double SPLIT = 0.005;
 
 
@@ -18,9 +18,9 @@ public class VectorQuantization {
     private int numberOfDimension;
     private int sampleSize;
 
-    //all sample data
+    // all sample data
     private Vector<Point> dataPoint = new Vector<Point>();
-    //all cluster data
+    // all cluster data
     private Vector<Cluster> clusters = new Vector<Cluster>();
 
     private double distortionAverage;
@@ -37,7 +37,7 @@ public class VectorQuantization {
         iteration();
     }
 
-    //Set sample data to variable
+    // Set sample data to variable
     private void setDataPoint(double[][] data) {
         for (int i = 0; i < data.length; i++) {
             Point point = new Point(data[i]);
@@ -47,7 +47,7 @@ public class VectorQuantization {
         System.out.println("Dimension size = "+ numberOfDimension);
     }
 
-    //Create initial cluster
+    // Create initial cluster
     private void start() {
         //Create initial cluster and set its position
         Cluster cluster_1 = new Cluster(numberOfDimension);
@@ -57,13 +57,13 @@ public class VectorQuantization {
         }
         cluster_1.divSelf(sampleSize);
 
-        //Calculate average distortion
+        // Calculate average distortion
         for (int i = 0; i < dataPoint.size(); i++) {
             distortionAverage += dataPoint.get(i).calculateEuclidenDistance(cluster_1);
         }
         distortionAverage /= (dataPoint.size() * numberOfDimension);
 
-        //add initial cluster to Array
+        // add initial cluster to Array
         clusters.add(0,cluster_1);
     }
 
@@ -76,7 +76,7 @@ public class VectorQuantization {
             do {
                 dave_j_1 = distortionAverage;
 
-                //STEP1
+                // STEP1
                 // find closest distance to centroid per sample data
                 for (int i = 0; i < sampleSize; i++) {
                     double euclidenDistanceMin = Double.MAX_VALUE;
@@ -91,8 +91,8 @@ public class VectorQuantization {
                     }
                 }
 
-                //STEP2
-                //update codebook
+                // STEP2
+                // update codebook
                 for (int i = 0; i < currentTotalCluster; i++) {
                     //Cluster cluster = new Cluster(clusters.get(i).getCoordinates());
                     Cluster cluster = new Cluster(numberOfDimension);
@@ -107,9 +107,9 @@ public class VectorQuantization {
                     clusters.set(i, cluster);
                 }
 
-                //STEP3
+                // STEP3
                 j++;
-                //STEP4
+                // STEP4
                 distortionAverage = 0.0;
 
                 for (int i = 0; i < sampleSize; i++) {
@@ -120,11 +120,11 @@ public class VectorQuantization {
             } while ((dave_j_1 - distortionAverage) / dave_j_1 > SPLIT);
         }
     }
-    //Split data into
+    // Split data into
     private void split() {
         Vector<Cluster> oldCluster = (Vector<Cluster>) clusters.clone();
         clusters.clear();
-        //Initialize new Clusters
+        // Initialize new Clusters
         clusters = new Vector<Cluster>();
         for (int i = 0; i < (currentTotalCluster + 2); i++) {
             clusters.add(new Cluster(numberOfDimension));
@@ -149,5 +149,49 @@ public class VectorQuantization {
             }
             System.out.println();
         }
+        System.out.println();
+    }
+
+    public int getClosestCentroidIndex(double[] inputVector) {
+        Point p = new Point(inputVector);
+
+        int result = 0;
+        double minDistance = Double.MAX_VALUE;
+
+        for (int i = 0; i < maxCluster; i++) {
+            double currentDistance = clusters.get(i).calculateEuclidenDistance(p);
+            if(minDistance > currentDistance) {
+                result = i;
+                minDistance = currentDistance;
+            }
+        }
+
+        return result;
+    }
+
+    //TODO: Make Save and Load VG from file
+    private void loadFromDataBase() {
+
+    }
+
+    private void saveToDatabase() {
+
+    }
+
+    public int[] getObservation() {
+        int[] result = new int[sampleSize];
+        int counter = 0;
+        for (Point p: dataPoint
+             ) {
+            result[counter] = this.getClosestCentroidIndex(p.getCoordinates());
+            counter++;
+        }
+
+        return result;
+    }
+
+    public int getSampleSize() {
+        return sampleSize;
     }
 }
+

@@ -1,13 +1,12 @@
 package audio.feature_extraction;
 
-import audio.ComplexVector;
 import data.Complex;
 import data.FFT;
 import data.vectorquantization.LBG.VectorQuantization;
-import data.vectorquantization.mkonrad.cluster.GenLloyd;
 
 /**
  * Created by Fathurrohman on 5/20/2015.
+ *
  */
 public class MFCC {
 
@@ -22,7 +21,7 @@ public class MFCC {
     double windowsSize = 0.025; // in ms
     double stepSize = 0.01; // in ms
     double lowerFilterFrequency = 80; //in hz
-    double higerFilterFrequency; //in hz
+    double higherFilterFrequency; //in hz
     int numMelFilter = 30;
 
     //Audio data
@@ -47,12 +46,18 @@ public class MFCC {
     // preEmphasis coefficient
     float preEmphasisCoefficient = 0.95f;
 
+/**
+ * @param audioData data in double format
+ * @param sampleRate sample rate of audio
+ */
 
-    public MFCC(double[] audioData, int sampleLength, int sampleRate) {
-        this.audioData = audioData;
-        this.sampleLength = sampleLength;
+    public MFCC(double[] audioData, int sampleRate) {
+        this.audioData = new double[audioData.length];
+        System.arraycopy(audioData, 0, this.audioData, 0, audioData.length);
+        //this.audioData = audioData;
+        this.sampleLength = audioData.length;
         this.sampleRate = sampleRate;
-        higerFilterFrequency = sampleRate / 2;
+        higherFilterFrequency = sampleRate / 2;
 
         //Based on time
         //samplePerFrame = (int) Math.round(sampleRate * windowsSize);
@@ -164,7 +169,7 @@ public class MFCC {
 
         //create range frequency based on mel-scale
         double lowMel = hzToMel(lowerFilterFrequency);
-        double highMel = hzToMel(higerFilterFrequency);
+        double highMel = hzToMel(higherFilterFrequency);
 
         //initiate 1st and last filter bank
         cbinTemp[0] = lowMel;
@@ -277,9 +282,6 @@ public class MFCC {
         System.out.println("MFCC Done");
         System.out.println("Try Clustering");
 
-        VectorQuantization vq = new VectorQuantization(ceptra,4);
-        vq.print();
-
 //        GenLloyd gl = new GenLloyd(ceptra);
 //
 //        gl.calcClusters(4);
@@ -293,6 +295,10 @@ public class MFCC {
 //            System.out.println();
 //        }
 
+    }
+
+    public double[][] getCeptra() {
+        return ceptra.clone();
     }
 
     private double hzToMel(double hz) {
