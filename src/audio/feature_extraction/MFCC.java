@@ -186,20 +186,6 @@ public class MFCC {
             //cbinTemp[i] = melToHz(cbinTemp[i]);
         }
 
-//        double[][] filterBank = new double[numMelFilter][100];
-//        //make filterbank
-//        for (int i = 0; i <= numMelFilter + 1; i++) {
-//            for (int j = cbin[i]; j < cbin[i + 1]; j++) {
-//                if((cbin[i + 1] - cbin[j]) != 0) {
-//                    filterBank[i][j] = (j - cbin[i]) / (cbin[i + 1] - cbin[j]);
-//                }
-//            }
-//            for (int j = cbin[i + 1]; j < cbin[i + 2]; j++) {
-//                if((cbin[i + 2] - cbin[i + 1]) != 0) {
-//                    filterBank[i][j] = (cbin[i + 2] - j) / (cbin[i + 2] - cbin[i + 1]);
-//                }
-//            }
-//        }
         System.out.println("LOL");
 
     }
@@ -224,38 +210,6 @@ public class MFCC {
                     int magnitudeScale = centerFreqId - endFreqId;
                     tempMelFilter[i][j] += magSpectrum[i][freq]*(freq - endFreqId) / magnitudeScale;
                 }
-
-  /*              double num1 = 0;
-                double num2 = 0;
-
-                double den = (cbin[j] - cbin[j - 1] + 1);
-
-                for (int k = cbin[j - 1]; k <= cbin[j] ; k++) {
-                    num1 += magSpectrum[i][k] * (k - cbin[j - 1] + 1);
-                }
-                num1 /= den;
-
-                den = (cbin[j + 1] - cbin[j] + 1);
-
-                for (int k = cbin[j] + 1; k <= cbin[j + 1]; k++) {
-                    num2 += magSpectrum[i][k] * (1 - ((k - cbin[j]) / den));
-                }
-  */
-
-//                for (int k = cbin[j - 1]; k <= cbin[j]; k++) {
-//                    num1 += ((k - cbin[j - 1] + 1)/
-//                            (cbin[j] - cbin[j - 1] + 1))
-//                            * magSpectrum[i][k];
-//                }
-//
-//                for (int k = cbin[j - 1]; k <= cbin[j]; k++) {
-//                    num2 += (1 - ((k - cbin[j] ) /
-//                            (cbin[j + 1] - cbin[j] + 1)))
-//                            * magSpectrum[i][k];
-//                }
-
-               //temp[j] = num1 + num2;
-
 
             }
 

@@ -17,6 +17,7 @@ public class ManualTestHMM {
             observation[4] = 3;
 
         HiddenMarkov hmm = new HiddenMarkov(observation,3,"test");
+        hmm.training();
     }
 
 }

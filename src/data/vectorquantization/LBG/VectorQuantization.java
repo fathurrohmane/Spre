@@ -1,5 +1,9 @@
 package data.vectorquantization.LBG;
 
+import data.database.Codebook;
+import data.database.DatabaseHandler;
+import data.database.WordModel;
+
 import java.util.Vector;
 
 /**
@@ -7,11 +11,12 @@ import java.util.Vector;
  */
 public class VectorQuantization {
 
+    private String name;
+
     private static final double threshold = 0.001;
 
     // Split factor (0.01 <= SPLIT <= 0.05)
     private final double SPLIT = 0.005;
-
 
     private int maxCluster;
     private int currentTotalCluster;
@@ -26,7 +31,8 @@ public class VectorQuantization {
     private double distortionAverage;
     private int idClusterPerSample[];
 
-    public VectorQuantization(double[][] data, int maxCluster) {
+    public VectorQuantization(String name,double[][] data, int maxCluster) {
+        this.name = name;
         this.maxCluster = maxCluster;
         this.numberOfDimension = data[0].length;
         this.sampleSize = data.length;
@@ -169,13 +175,19 @@ public class VectorQuantization {
         return result;
     }
 
-    //TODO: Make Save and Load VG from file
+    //TODO: Error handler
     private void loadFromDataBase() {
-
+        Codebook codebook = DatabaseHandler.loadCodeBook(name);
+        clusters = codebook.getClusters();
     }
 
     private void saveToDatabase() {
+        Codebook codebook = new Codebook();
 
+        codebook.setDimension(numberOfDimension);
+        codebook.setClusters(clusters);
+
+        DatabaseHandler.saveCodebook(name, codebook);
     }
 
     public int[] getObservation() {

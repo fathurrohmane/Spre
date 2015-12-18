@@ -1,4 +1,4 @@
-package data.vectorquantization.mkonrad.cluster;
+package test.validator.mkonrad;
 
 /**
  * Class with static methods for differnt implementations of distance metrics

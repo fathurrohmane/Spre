@@ -23,7 +23,7 @@ public class ManualTestVectorQuantization {
         sample[7][0] = 1;        sample[7][1] = -3;
         sample[8][0] = 1;        sample[8][1] = -2.5;
 
-        VectorQuantization vq = new VectorQuantization(sample,4);
+        VectorQuantization vq = new VectorQuantization("test",sample,4);// FIXME: 18-Dec-15
         vq.print();
 
         int[] observation = new int[9];

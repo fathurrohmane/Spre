@@ -14,10 +14,9 @@ import java.io.File;
  * 1. Get audio data -> AudioProcessing.java -> get audiodata in double format
  * 2. Get MFCC feature -> MFCC.java -> get feature vector of audiodata in double format
  */
-public class Training {
+public class Training implements Runnable{
 
-
-    public Training(String word, File soundFile) {
+    public Training(String word,int cluster, File soundFile) {
         // Audio Processing
         AudioProcessing audioProcessing = new AudioProcessing(soundFile);
 
@@ -25,18 +24,23 @@ public class Training {
         MFCC mfcc = new MFCC(audioProcessing.getAudioData()
                 ,audioProcessing.getAudioSampleRate()
         );
-
         double[][] ceptra = mfcc.getCeptra();
         Array.print("Ceptra from MFCC", ceptra);
-        // Vector quantization
-        VectorQuantization vq = new VectorQuantization(ceptra,4);
-        vq.print();
-        int[] obseration = new int[vq.getSampleSize()];
-        Array.copy(vq.getObservation(), obseration);
-        Array.print("Observation :", obseration);
-        // HMM
-        HiddenMarkov hmm = new HiddenMarkov(obseration,4, word);
 
+        // Vector quantization
+        VectorQuantization vq = new VectorQuantization(word,ceptra,cluster);
+        vq.print();
+        int[] observation = new int[vq.getSampleSize()];
+        Array.copy(vq.getObservation(), observation);
+        Array.print("Observation :", observation);
+
+        // HMM
+        HiddenMarkov hmm = new HiddenMarkov(observation,cluster, word);
+
+    }
+
+    @Override
+    public void run() {
 
     }
 }

@@ -1,4 +1,4 @@
-package data.vectorquantization.mkonrad.cluster;
+package test.validator.mkonrad;
 
 /**
  * GenLloyd Library - Implementation of Generalized Lloyd (also known as

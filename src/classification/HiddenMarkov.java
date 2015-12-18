@@ -69,7 +69,7 @@ public class HiddenMarkov {
     private double[][] aTransition;
 
     /**
-     * Observation State Distribution
+     * Observation State Distribution / Emission
      * matrix size is [Number of State * Number of Observation Symbol]
      */
     private double[][] bOutput;
@@ -106,10 +106,10 @@ public class HiddenMarkov {
             double currentProbability = 0;
             // 2.Compute alpha,beta
             computeAlpha();
+            computeBeta();
+            reestimate();
 
         } while (true);
-
-
 
         // Compute alpha(i)
 
@@ -228,6 +228,19 @@ public class HiddenMarkov {
 
     private void computeBeta() {
 
+        for (int i = 0; i < mNumberofState; i++) {
+            beta[mLengthofObservation - 1][i] = scaleFactor[mNumberofState - 1];
+        }
+
+        for (int i = mNumberofObservationSymbol - 2; i > 0; i--) {
+            for (int j = 0; j < mNumberofState - 1; j++) {
+                beta[i][j] = 0;
+                for (int k = 0; k < mNumberofState; k++) {
+                    beta[i][j] += aTransition[j][k]*bOutput[k][mObservation[i + 1]] * beta[i + 1][k];
+                }
+                beta[i][j] *= scaleFactor[i];
+            }
+        }
     }
 
     private void rescaleAlpha(int t) {
@@ -236,6 +249,26 @@ public class HiddenMarkov {
 
         for (int i = 0; i < mNumberofState; i++) {
             alpha[t][i] = scaleFactor[t]*alpha[t][i];
+        }
+    }
+
+    private void reestimate() {
+        double[][] y = new double[mNumberofState][mNumberofState];
+        for (int i = 0; i < mLengthofObservation - 1; i++) {
+            double denominator = 0;
+            for (int j = 0; j < mNumberofState; j++) {
+                for (int k = 0; k < mNumberofState; k++) {
+                    denominator += alpha[i][j]*aTransition[j][k]
+                            *bOutput[k][i + 1]*beta[i + 1][k];
+                }
+            }
+
+            for (int j = 0; j < mNumberofState; j++) {
+                y[i][j] = 0;
+                for (int k = 0; k < mNumberofState; k++) {
+                    // FIXME: 18-Dec-15
+                }
+            }
         }
     }
 

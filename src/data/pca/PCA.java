@@ -2,7 +2,6 @@ package data.pca;
 
 import Jama.EigenvalueDecomposition;
 import Jama.Matrix;
-import org.omg.PortableInterceptor.INACTIVE;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +58,7 @@ public class PCA {
             principleComponents.add(new PrincipleComponent(eigenValues[i], eigenVector));
         }
 //
-        //Set result dimension -> dimentional reduction
+        //Set result dimension -> dimensional reduction
 
     }
 
@@ -71,7 +70,7 @@ public class PCA {
 //convert original data to Matrix
         Matrix originalDataSubtractedbyMean = new Matrix(data);
 
-//fetureVectorTranspose * originalDataSubtractedbyMeanTranspose
+//featureVectorTranspose * originalDataSubtractedbyMeanTranspose
         Matrix featureTranspose = features.transpose();
         Matrix originalDataAdjusted = originalDataSubtractedbyMean.transpose();
         Matrix result = featureTranspose.times(originalDataAdjusted);

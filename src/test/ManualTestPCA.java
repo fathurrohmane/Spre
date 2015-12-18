@@ -1,6 +1,7 @@
 package test;
 
 import Jama.Matrix;
+import data.database.DatabaseHandler;
 import data.pca.PCA;
 
 import java.util.List;
@@ -24,10 +25,10 @@ public class ManualTestPCA {
                 {1.5, 1.6},
                 {1.1, 0.9}
         };
+
         System.out.println("Data :");
         Matrix originalData = new Matrix(matrix);
         originalData.print(8,2);
-
 
         PCA pca = new PCA(matrix);
 
