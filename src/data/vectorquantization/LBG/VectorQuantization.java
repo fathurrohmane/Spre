@@ -4,10 +4,13 @@ import data.database.Codebook;
 import data.database.DatabaseHandler;
 import data.database.WordModel;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 /**
  * Created by Fathurrohman on 18-Nov-15.
+ *
  */
 public class VectorQuantization {
 
@@ -24,14 +27,14 @@ public class VectorQuantization {
     private int sampleSize;
 
     // all sample data
-    private Vector<Point> dataPoint = new Vector<Point>();
+    private List<Point> dataPoint = new ArrayList<Point>();
     // all cluster data
-    private Vector<Cluster> clusters = new Vector<Cluster>();
+    private List<Cluster> clusters = new ArrayList<Cluster>();
 
     private double distortionAverage;
     private int idClusterPerSample[];
 
-    public VectorQuantization(String name,double[][] data, int maxCluster) {
+    public VectorQuantization(String name, double[][] data, int maxCluster) {
         this.name = name;
         this.maxCluster = maxCluster;
         this.numberOfDimension = data[0].length;
@@ -43,14 +46,26 @@ public class VectorQuantization {
         iteration();
     }
 
+    public VectorQuantization(String name, List<Point> data, int maxCluster) {
+        this.name = name;
+        this.maxCluster = maxCluster;
+        this.numberOfDimension = data.get(0).getDimension();
+        this.sampleSize = data.size();
+        this.idClusterPerSample = new int[sampleSize];
+        dataPoint = data;
+
+        start();
+        iteration();
+    }
+
     // Set sample data to variable
     private void setDataPoint(double[][] data) {
         for (int i = 0; i < data.length; i++) {
             Point point = new Point(data[i]);
             dataPoint.add(point);
         }
-        System.out.println("Sample data imported = "+ data.length);
-        System.out.println("Dimension size = "+ numberOfDimension);
+        System.out.println("Sample data imported = " + data.length);
+        System.out.println("Dimension size = " + numberOfDimension);
     }
 
     // Create initial cluster
@@ -70,7 +85,7 @@ public class VectorQuantization {
         distortionAverage /= (dataPoint.size() * numberOfDimension);
 
         // add initial cluster to Array
-        clusters.add(0,cluster_1);
+        clusters.add(0, cluster_1);
     }
 
     private void iteration() {
@@ -126,9 +141,10 @@ public class VectorQuantization {
             } while ((dave_j_1 - distortionAverage) / dave_j_1 > SPLIT);
         }
     }
+
     // Split data into
     private void split() {
-        Vector<Cluster> oldCluster = (Vector<Cluster>) clusters.clone();
+        List<Cluster> oldCluster = new ArrayList<Cluster>(clusters);
         clusters.clear();
         // Initialize new Clusters
         clusters = new Vector<Cluster>();
@@ -166,7 +182,7 @@ public class VectorQuantization {
 
         for (int i = 0; i < maxCluster; i++) {
             double currentDistance = clusters.get(i).calculateEuclidenDistance(p);
-            if(minDistance > currentDistance) {
+            if (minDistance > currentDistance) {
                 result = i;
                 minDistance = currentDistance;
             }
@@ -176,12 +192,12 @@ public class VectorQuantization {
     }
 
     //TODO: Error handler
-    private void loadFromDataBase() {
+    public void loadFromDataBase() {
         Codebook codebook = DatabaseHandler.loadCodeBook(name);
         clusters = codebook.getClusters();
     }
 
-    private void saveToDatabase() {
+    public void saveToDatabase() {
         Codebook codebook = new Codebook();
 
         codebook.setDimension(numberOfDimension);
@@ -193,8 +209,8 @@ public class VectorQuantization {
     public int[] getObservation() {
         int[] result = new int[sampleSize];
         int counter = 0;
-        for (Point p: dataPoint
-             ) {
+        for (Point p : dataPoint
+                ) {
             result[counter] = this.getClosestCentroidIndex(p.getCoordinates());
             counter++;
         }
@@ -204,6 +220,10 @@ public class VectorQuantization {
 
     public int getSampleSize() {
         return sampleSize;
+    }
+
+    public List<Cluster> getClusters() {
+        return clusters;
     }
 }
 

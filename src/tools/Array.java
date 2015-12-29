@@ -11,6 +11,12 @@ public class Array {
         }
     }
 
+    public static void copy2D(int[][] src, int[][] target) {
+        for (int i = 0; i < src.length; i++) {
+            System.arraycopy(src[i], 0, target[i], 0, src[0].length);
+        }
+    }
+
     public static void copy(double[] src, double[] target) {
         System.arraycopy(src, 0, target, 0, src.length);
     }

@@ -1,6 +1,5 @@
 package menu;
 
-import audio.AudioProcessing;
 import classification.Training;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -8,12 +7,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.controlsfx.dialog.Dialogs;
-import tools.DialogCreator;
+import tools.Executor;
+import tools.ui.DialogCreator;
 import tools.Time;
 
 import java.io.File;
@@ -27,11 +26,36 @@ public class MainMenuController extends Application {
     Stage primaryStage;
     @FXML
     LineChart<Number, Number> audioWaveChart;
+    /**
+     * Testing UI Variable
+     */
     @FXML
-    TextArea textAreaTesting;
+    TextArea text_area_testing;
+
+    /**
+     * Training UI Variable
+     */
+    @FXML
+    TextArea text_area_training;
+    @FXML
+    Label label_trained_word;
+    @FXML
+    Label label_number_ceptra;
+    @FXML
+    Label label_number_filter;
+    @FXML
+    Label label_number_pca;
+    @FXML
+    Label label_number_clusters;
+    @FXML
+    Label label_number_states;
+    @FXML
+    TextField text_field_word;
+
 
     // Class Variable
     File previousFileAddress = null;
+    File soundFile = null;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -59,12 +83,12 @@ public class MainMenuController extends Application {
     public void openFileTestingClicked() {
         // Choose from dialog
 
-        String respone = DialogCreator.showChoicesTestingDialog(primaryStage);
+        String respond = DialogCreator.showChoicesTestingDialog(primaryStage);
         File soundFile = null;
 
-        if (respone.equals(DialogCreator.SINGLE_RESPONE)) {
+        if (respond.equals(DialogCreator.SINGLE_RESPONE)) {
             soundFile = DialogCreator.showFileChooser(primaryStage, previousFileAddress);
-        } else if (respone.equals(DialogCreator.FOLDER_RESPONE)) {
+        } else if (respond.equals(DialogCreator.FOLDER_RESPONE)) {
             soundFile = DialogCreator.showDirectoryChooser(primaryStage, previousFileAddress);
         }
 
@@ -79,8 +103,43 @@ public class MainMenuController extends Application {
         }
     }
 
+    public void openFileTrainClicked() {
+        // Choose from dialog
+        String respond = DialogCreator.showChoicesTestingDialog(primaryStage);
+        soundFile = null;
+
+        if (respond.equals(DialogCreator.SINGLE_RESPONE)) {
+            soundFile = DialogCreator.showFileChooser(primaryStage, previousFileAddress);
+        } else if (respond.equals(DialogCreator.FOLDER_RESPONE)) {
+            soundFile = DialogCreator.showDirectoryChooser(primaryStage, previousFileAddress);
+        }
+
+        if (soundFile == null) {
+            DialogCreator.showNormalDialog(primaryStage, "No File/Folder Selected");
+        } else {
+            // TODO: 23-Dec-15 write list training file to text area
+        }
+    }
+
+    public void topmenuAboutClicked() {
+        DialogCreator.showNormalDialog(primaryStage, "Created by Fathurrohman Elkusnandi - 2015");
+    }
+
+    /**
+     * Function training button clicked
+     */
+
+    public void trainingButtonClicked() {
+        if (soundFile == null) {
+            DialogCreator.showNormalDialog(primaryStage, "No File/Folder Selected");
+        } else {
+            Executor executor = new Executor(text_field_word.getText(), 64, soundFile); // TODO: 29-Dec-15 variable for cluster
+            executor.start();
+        }
+    }
+
     private void addText(String text) {
-        textAreaTesting.appendText(Time.getTime() + text + "\n");
+        text_area_testing.appendText(Time.getTime() + text + "\n");
     }
 
     public static void main(String[] args) {

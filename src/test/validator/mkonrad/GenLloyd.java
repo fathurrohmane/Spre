@@ -1,5 +1,9 @@
 package test.validator.mkonrad;
 
+import data.vectorquantization.LBG.Point;
+
+import java.util.List;
+
 /**
  * GenLloyd Library - Implementation of Generalized Lloyd (also known as
  * Linde-Buzo-Gray or LBG) algorithm
@@ -29,6 +33,20 @@ public class GenLloyd {
      */
     public GenLloyd(double[][] samplePoints) {
         this.setSamplePoints(samplePoints);
+    }
+
+    public GenLloyd(List<Point> data)
+    {
+        double[][] dataArray = new double[data.size()][data.get(0).getDimension()];
+
+        for (int i = 0; i < data.size(); i++) {
+            Point point = data.get(i);
+            for (int j = 0; j < data.get(0).getDimension(); j++) {
+                dataArray[i][j] = point.getCoordinate(j);
+            }
+        }
+
+        this.setSamplePoints(dataArray);
     }
 
     /**

@@ -29,6 +29,11 @@ public class WordModel implements Serializable {
      */
     private double[] phi;
 
+    //
+    private int numOfState;
+
+    private int numofSymbol;
+
     public WordModel() {
 
     }
@@ -61,5 +66,21 @@ public class WordModel implements Serializable {
 
     public void setPhi(double[] phi) {
         this.phi = phi;
+    }
+
+    public int getNumOfState() {
+        return numOfState;
+    }
+
+    public void setNumOfState(int numOfState) {
+        this.numOfState = numOfState;
+    }
+
+    public int getNumofSymbol() {
+        return numofSymbol;
+    }
+
+    public void setNumofSymbol(int numofSymbol) {
+        this.numofSymbol = numofSymbol;
     }
 }

@@ -81,18 +81,37 @@ public class HiddenMarkov {
     private double[] phi;
 
     /**
-     * Observation Sequence
+     * Current Observation Sequence
      */
-    private int[] mObservation;
+    private int[] mCurrentObservation;
 
-    public HiddenMarkov(int[] observation, int numberofObservationSymbol, String word) {
-        this.mObservation = new int[observation.length];
-        Array.copy(observation, mObservation);
-        this.mLengthofObservation = mObservation.length;
-        this.mNumberofObservationSymbol = numberofObservationSymbol;
-        this.mNumberofState = 5;// FIXME: 11-Dec-15
-        scaleFactor = new double[mLengthofObservation];
+    /**
+     * Length of current observation sequence
+     */
+    private int mLenghtofCurrentObservationSequence;
+    /**
+     * All Observation Sequence
+     */
+    private int[][] mObservations;
 
+    public HiddenMarkov(String word, int mNumberofState) {
+        // Set database
+
+        this.mNumberofState = mNumberofState;
+
+    }
+
+    /**
+     * Set training sequence
+     *
+     * @param observationSymbol
+     * @param numberOfObservationSymbol
+     */
+    public void setTrainingObservation(int[][] observationSymbol, int numberOfObservationSymbol) {
+        this.mNumberofObservationSymbol = numberOfObservationSymbol;
+        // TODO: 21-Dec-15 fix different size of 2nd dimension array
+        mObservations = new int[observationSymbol.length][observationSymbol[0].length];
+        Array.copy2D(observationSymbol, mObservations);
     }
 
     public void training() {
@@ -130,6 +149,7 @@ public class HiddenMarkov {
         System.out.println("Initialize Value:");
         System.out.println(" phi / initial probability :");
         phi = new double[mNumberofState];
+        scaleFactor = new double[mLengthofObservation];
 
         for (int i = 0; i < mNumberofState; i++) {
 
@@ -147,19 +167,33 @@ public class HiddenMarkov {
         System.out.println("Alpha :");
         aTransition = new double[mNumberofState][mNumberofState];
         for (int i = 0; i < mNumberofState; i++) {
-            double prob = 0.0;
-            for (int j = 0; j < mNumberofState; j++) {
-                aTransition[i][j] = 0;
-                if (i == j) {
-                    prob = Math.random();
-                    aTransition[i][j] = prob;
-                } else if (j == (i + 1)) {
-                    aTransition[i][j] = 1 - prob;
+            double sum = 0.0;
+            int[] temp = new int[3]; // only 1 or 2 state can be jumped at once
+
+            if (((mNumberofState - 1) - i) == 1) {
+                for (int j = 0; j < 2; j++) {
+                    temp[j] = randomBetween(100, 0);
+                    sum += temp[j];
                 }
-                if ((i == (mNumberofState - 1)) && (j == (mNumberofState - 1))) {
-                    aTransition[i][j] = 1;
+                aTransition[i][mNumberofState - 2] = temp[0] / sum;
+                aTransition[i][mNumberofState - 1] = temp[1] / sum;
+
+            } else if (((mNumberofState - 1) - i) == 0) {
+                aTransition[i][mNumberofState - 1] = 1;
+            } else {
+                for (int j = 0; j < 3; j++) {
+                    temp[j] = randomBetween(100, 0);
+                    sum += temp[j];
                 }
-                System.out.print(aTransition[i][j] + " ");
+                aTransition[i][i] = temp[0] / sum;
+                aTransition[i][i + 1] = temp[1] / sum;
+                aTransition[i][i + 2] = temp[2] / sum;
+            }
+        }
+        for (int j = 0; j < mNumberofState; j++) {
+            // Left-Right model with 1/2 jump per-state
+            for (int k = 0; k < mNumberofState; k++) {
+                System.out.print(aTransition[j][k] + " ");
             }
             System.out.println();
         }
@@ -167,31 +201,32 @@ public class HiddenMarkov {
 
         /**
          * Observation State Distribution
+         *
          */
         System.out.println("Beta :");
         bOutput = new double[mNumberofState][mNumberofObservationSymbol];
         for (int i = 0; i < mNumberofState; i++) {
-            double remainValue = 0.0;
+            int[] temp = new int[mNumberofObservationSymbol];
+            double sum = 0.0;
             for (int j = 0; j < mNumberofObservationSymbol; j++) {
-                if (j == 0) {
-                    double prob = Math.random();
-                    bOutput[i][j] = prob;
-                    remainValue = 1 - prob;
-                } else if (j == (mNumberofObservationSymbol - 1)) {
-                    bOutput[i][j] = remainValue;
-                } else {
-                    double prob = randomBetween(remainValue, 0.0);
-                    bOutput[i][j] = prob;
-                    remainValue -= prob;
-                }
+                temp[j] = randomBetween(100, 0);
+                sum += temp[j];
+            }
+            for (int j = 0; j < mNumberofObservationSymbol; j++) {
+                bOutput[i][j] = temp[j] / sum;
                 System.out.print(bOutput[i][j] + " ");
             }
+
             System.out.println();
         }
         System.out.println("is beta stocastic :" + matrixStochasicChecker(bOutput));
+        System.out.println();
     }
 
-    private void computeAlpha() {
+    /**
+     * Forward Algorithm
+     */
+    private double computeAlpha() {
         /**
          * reset scale
          */
@@ -200,16 +235,16 @@ public class HiddenMarkov {
         }
 
         /**
-         * compute alpha(0) / initialize alpha
+         * compute alpha(0) / Initialization:
          */
         for (int i = 0; i < mNumberofState; i++) {
-            alpha[0][i] = phi[i]*beta[i][mObservation[0]];
+            alpha[0][i] = phi[i] * bOutput[i][mCurrentObservation[0]];
             scaleFactor[0] += alpha[0][i];
         }
         rescaleAlpha(0);
 
         /**
-         * compute alpha(t)
+         * compute alpha(t) / Recursion:
          */
 
         for (int i = 1; i < mLengthofObservation; i++) {
@@ -217,30 +252,22 @@ public class HiddenMarkov {
             for (int j = 0; j < mNumberofState; j++) {
                 alpha[i][j] = 0;
                 for (int k = 0; k < mNumberofState; k++) {
-                    alpha[i][j] += alpha[i - 1][k]*aTransition[k][j];
+                    alpha[i][j] += alpha[i - 1][k] * aTransition[k][j];
                 }
-                alpha[i][j] = alpha[i][j]*bOutput[j][mObservation[i]];
+                alpha[i][j] = alpha[i][j] * bOutput[j][mCurrentObservation[i]];
                 scaleFactor[i] += alpha[i][j];
             }
             rescaleAlpha(i);
         }
-    }
+        //TODO Count probability using log-scale
+        double probability = 0;
 
-    private void computeBeta() {
-
+        // calculate probability P(O|Model) =
         for (int i = 0; i < mNumberofState; i++) {
-            beta[mLengthofObservation - 1][i] = scaleFactor[mNumberofState - 1];
+            probability += alpha[mLengthofObservation - 1][i];
         }
 
-        for (int i = mNumberofObservationSymbol - 2; i > 0; i--) {
-            for (int j = 0; j < mNumberofState - 1; j++) {
-                beta[i][j] = 0;
-                for (int k = 0; k < mNumberofState; k++) {
-                    beta[i][j] += aTransition[j][k]*bOutput[k][mObservation[i + 1]] * beta[i + 1][k];
-                }
-                beta[i][j] *= scaleFactor[i];
-            }
-        }
+        return probability;
     }
 
     private void rescaleAlpha(int t) {
@@ -248,28 +275,114 @@ public class HiddenMarkov {
         scaleFactor[t] = 1 / scaleFactor[t];
 
         for (int i = 0; i < mNumberofState; i++) {
-            alpha[t][i] = scaleFactor[t]*alpha[t][i];
+            alpha[t][i] = scaleFactor[t] * alpha[t][i];
+        }
+        System.out.println();
+    }
+
+    /**
+     * Backward algorithm
+     */
+
+    private void computeBeta() {
+
+        /**
+         * Initialization :
+         */
+        for (int i = 0; i < mNumberofState; i++) {
+            // TODO: 21-Dec-15 decide these two line
+            //beta[mLengthofObservation - 1][i] = scaleFactor[mNumberofState - 1];
+            beta[mLengthofObservation - 1][i] = 1;
+        }
+
+        /**
+         * Recursion :
+         */
+
+        for (int t = mNumberofObservationSymbol - 2; t >= 0; t--) {
+            for (int i = 0; i < mNumberofState - 1; i++) {
+                beta[t][i] = 0;
+                for (int j = 0; j < mNumberofState; j++) {
+                    beta[t][i] += aTransition[i][j] * bOutput[j][mCurrentObservation[t + 1]] * beta[t + 1][j];
+                }
+                // Rescale beta
+                beta[t][i] *= scaleFactor[t];
+            }
         }
     }
 
-    private void reestimate() {
-        double[][] y = new double[mNumberofState][mNumberofState];
-        for (int i = 0; i < mLengthofObservation - 1; i++) {
-            double denominator = 0;
-            for (int j = 0; j < mNumberofState; j++) {
-                for (int k = 0; k < mNumberofState; k++) {
-                    denominator += alpha[i][j]*aTransition[j][k]
-                            *bOutput[k][i + 1]*beta[i + 1][k];
-                }
-            }
+    public void setCurrentObservationSequence(int[] sequence) {
 
+        this.mCurrentObservation = sequence;
+        this.mLenghtofCurrentObservationSequence = sequence.length;
+
+        alpha = new double[mNumberofState][mNumberofState];
+        beta = new double[mNumberofState][mNumberofState];
+        scaleFactor = new double[mNumberofObservationSymbol];
+
+    }
+
+    private void reestimate() {
+        // Version 1
+//        double[][] y = new double[mNumberofState][mNumberofState];
+//        for (int i = 0; i < mLengthofObservation - 1; i++) {
+//            double denominator = 0;
+//            for (int j = 0; j < mNumberofState; j++) {
+//                for (int k = 0; k < mNumberofState; k++) {
+//                    denominator += alpha[i][j] * aTransition[j][k]
+//                            * bOutput[k][i + 1] * beta[i + 1][k];
+//                }
+//            }
+//
+//            for (int j = 0; j < mNumberofState; j++) {
+//                y[i][j] = 0;
+//                for (int k = 0; k < mNumberofState; k++) {
+//                    // FIXME: 18-Dec-15
+//                }
+//            }
+//        }
+
+        // Version 2
+
+        double[][] newTransition = new double[mNumberofState][mNumberofState];
+        double[][] newOutput = new double[mNumberofState][mNumberofObservationSymbol];
+        double[] numerator = new double[mLenghtofCurrentObservationSequence];
+        double[] denominator = new double[mLenghtofCurrentObservationSequence];
+
+        // Calculate new Transition Probability
+
+        double probability = 0;
+
+        for (int i = 0; i < mNumberofState; i++) {
             for (int j = 0; j < mNumberofState; j++) {
-                y[i][j] = 0;
-                for (int k = 0; k < mNumberofState; k++) {
-                    // FIXME: 18-Dec-15
+                if (j < i || j > i + 2) {
+                    newTransition[i][j] = 0;
+                } else {
+                    for (int k = 0; k < mObservations.length; k++) { // TODO: 22-Dec-15 change to variable
+                        numerator[k] = 0;
+                        denominator[k] = 0;
+
+                        probability += computeAlpha();
+                        computeBeta();
+                        for (int l = 0; l < mLenghtofCurrentObservationSequence - 1; l++) {
+                            numerator[k] += alpha[l][i] * aTransition[i][j] * bOutput[j][l + 1] * beta[l + 1][j];
+                            denominator[k] += alpha[l][i] * beta[l][i];
+                        }
+                    }
+
+                    double denom = 0;
+                    for (int k = 0; k < mObservations.length; k++) {
+                        newTransition[i][j] += (1 / probability) * numerator[k];
+                        denom += (1 / probability) * denominator[k];
+                    }
+                    newTransition[i][j] /= denom;
+                    newTransition[i][j] += 0.0001; // TODO: 22-Dec-15 find out why need to add 0.0001 / min_probability
                 }
             }
         }
+
+        // Calculate new Output
+
     }
 
     public boolean matrixStochasicChecker(double[][] input) {
@@ -281,6 +394,7 @@ public class HiddenMarkov {
                 prob += input[i][j];
             }
             if (prob != 1.0) {
+                System.out.println(prob);
                 result = false;
             }
         }
@@ -288,7 +402,12 @@ public class HiddenMarkov {
         return result;
     }
 
-    public double randomBetween(double max, double min) {
+    private int randomBetween(int max, int min) {
+        Random r = new Random();
+        return (int) Math.round(min + (max - min) * r.nextDouble());
+    }
+
+    private double randomBetween(double max, double min) {
         Random r = new Random();
         return min + (max - min) * r.nextDouble();
     }

@@ -3,6 +3,8 @@ package data.database;
 import data.vectorquantization.LBG.Cluster;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 /**
@@ -12,7 +14,7 @@ public class Codebook implements Serializable {
 
     private int dimension;
 
-    private Vector<Cluster> clusters = new Vector<Cluster>();
+    private List<Cluster> clusters = new ArrayList<Cluster>();
 
     public Codebook() {
     }
@@ -25,11 +27,11 @@ public class Codebook implements Serializable {
         this.dimension = dimension;
     }
 
-    public Vector<Cluster> getClusters() {
+    public List<Cluster> getClusters() {
         return clusters;
     }
 
-    public void setClusters(Vector<Cluster> clusters) {
+    public void setClusters(List<Cluster> clusters) {
         this.clusters = clusters;
     }
 }

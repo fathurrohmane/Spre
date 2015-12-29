@@ -10,7 +10,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menu.MainMenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menu.MainMenuController">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -27,7 +27,7 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem mnemonicParsing="false" onAction="#topmenuAboutClicked" text="About" />
             </items>
           </Menu>
         </menus>
@@ -36,9 +36,15 @@
    <bottom>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <Label text="Speech Recognition - Idle" />
+            <Label text="Speech Recognition - Idle">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin></Label>
             <Region HBox.hgrow="ALWAYS" />
-            <ProgressBar prefWidth="200.0" progress="0.0" />
+            <ProgressBar prefWidth="200.0" progress="0.0">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin></ProgressBar>
          </children>
       </HBox>
    </bottom>
@@ -56,7 +62,7 @@
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </HBox.margin>
                               </Label>
-                              <TextField prefHeight="25.0" prefWidth="220.0">
+                              <TextField editable="false" prefHeight="25.0" prefWidth="220.0">
                                  <HBox.margin>
                                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                  </HBox.margin>
@@ -68,7 +74,7 @@
                               </Button>
                               <Label text="Trained Words :" textAlignment="CENTER" />
                            </children></HBox>
-                        <TextArea fx:id="textAreaTesting" editable="false" focusTraversable="false" prefHeight="150.0" prefWidth="551.0" VBox.vgrow="ALWAYS">
+                        <TextArea fx:id="text_area_testing" editable="false" focusTraversable="false" prefHeight="150.0" prefWidth="551.0" VBox.vgrow="ALWAYS">
                            <VBox.margin>
                               <Insets left="10.0" right="10.0" top="10.0" />
                            </VBox.margin>
@@ -82,7 +88,123 @@
                   </VBox>
                </content>
             </Tab>
-          <Tab text="Training" />
+          <Tab text="Training">
+               <content>
+                  <SplitPane dividerPositions="0.55" prefHeight="160.0" prefWidth="200.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="339.0">
+                           <children>
+                              <VBox prefHeight="357.0" prefWidth="341.0" />
+                              <GridPane hgap="5.0" prefHeight="342.0" prefWidth="305.0" vgap="5.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="229.0" minWidth="10.0" prefWidth="141.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="208.0" minWidth="10.0" prefWidth="149.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <TextField editable="false" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1">
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <GridPane.margin>
+                                          <Insets />
+                                       </GridPane.margin>
+                                    </TextField>
+                                    <Label minWidth="20.0" text="File Location :" />
+                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#openFileTrainClicked" text="Open File" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label text="Word :" GridPane.rowIndex="2" />
+                                    <TextField fx:id="text_field_word" prefHeight="25.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </TextField>
+                                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#trainingButtonClicked" text="Training" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <Label text="Settings :" GridPane.rowIndex="4" />
+                                    <Label text="Trained Word :" GridPane.rowIndex="5" />
+                                    <Label text="MFCC :" GridPane.rowIndex="6" />
+                                    <Label text="Number of Ceptra :" GridPane.rowIndex="7">
+                                       <GridPane.margin>
+                                          <Insets />
+                                       </GridPane.margin>
+                                    </Label>
+                                    <Label fx:id="label_trained_word" text="NUMBER" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                    <Label fx:id="label_number_ceptra" text="NUMBER" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                    <Label text="Number of Filter :" GridPane.rowIndex="8" />
+                                    <Label fx:id="label_number_filter" text="NUMBER" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                    <Label text="(PCA) Dimensional Reduction to :" GridPane.rowIndex="9" />
+                                    <Label fx:id="label_number_pca" text="NUMBER" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                                    <Label text="(VQ) Number of Clusters :" GridPane.rowIndex="10" />
+                                    <Label text="(HMM) Number of State :" GridPane.rowIndex="11" />
+                                    <Label fx:id="label_number_clusters" text="NUMBER" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                                    <Label fx:id="label_number_states" text="NUMBER" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <TextArea fx:id="text_area_training" layoutX="8.0" layoutY="3.0" prefHeight="341.0" prefWidth="238.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0">
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </TextArea>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+               </content></Tab>
+            <Tab text="Settings">
+               <content>
+                  <VBox prefHeight="480.0" prefWidth="100.0">
+                     <children>
+                        <TitledPane animated="false" collapsible="false" text="General">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                          </content>
+                        </TitledPane>
+                        <TitledPane animated="false" collapsible="false" text="MFCC">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                          </content>
+                        </TitledPane>
+                        <TitledPane animated="false" collapsible="false" text="PCA">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                          </content>
+                        </TitledPane>
+                        <TitledPane animated="false" collapsible="false" text="Vector Quantization">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                          </content>
+                        </TitledPane>
+                        <TitledPane animated="false" collapsible="false" text="HMM">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                          </content>
+                        </TitledPane>
+                     </children>
+                  </VBox>
+               </content>
+            </Tab>
         </tabs>
       </TabPane>
    </center>
