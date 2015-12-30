@@ -1,6 +1,7 @@
 package audio;
 
-import tools.WaveData;
+import tools.audio.EndPointDetection;
+import tools.audio.WaveData;
 
 import javax.sound.sampled.AudioFormat;
 import java.io.File;
@@ -29,6 +30,10 @@ public class AudioProcessing {
     public AudioProcessing(File file) {
         this.audioFile = file;
         getAudioData(file);
+
+        // Silence removal
+        EndPointDetection silenceRemoval = new EndPointDetection(audioDataOriginal, audioSampleRate);
+        audioDataOriginal = silenceRemoval.doEndPointDetection();
 
         // Pre-processing data
         audioData = PreProcessing.normalizeAudioData(audioDataOriginal);

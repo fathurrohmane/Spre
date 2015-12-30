@@ -35,19 +35,6 @@ public class GenLloyd {
         this.setSamplePoints(samplePoints);
     }
 
-    public GenLloyd(List<Point> data)
-    {
-        double[][] dataArray = new double[data.size()][data.get(0).getDimension()];
-
-        for (int i = 0; i < data.size(); i++) {
-            Point point = data.get(i);
-            for (int j = 0; j < data.get(0).getDimension(); j++) {
-                dataArray[i][j] = point.getCoordinate(j);
-            }
-        }
-
-        this.setSamplePoints(dataArray);
-    }
 
     /**
      * Return epsilon parameter (accuracy)

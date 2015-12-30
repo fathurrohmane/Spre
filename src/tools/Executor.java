@@ -6,7 +6,7 @@ import java.io.File;
 
 /**
  * Created by Fathurrohman on 28-Dec-15.
- * Class to execute sound process multi thread
+ * Class to execute sound process multithread
  */
 public class Executor extends Thread {
 
@@ -22,7 +22,7 @@ public class Executor extends Thread {
 
     @Override
     public void run() {
-        Training.CodeBookGenerator(word, cluster, soundFile);
+        Training.start(word, cluster, soundFile);
 
     }
 }

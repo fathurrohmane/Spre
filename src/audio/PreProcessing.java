@@ -13,8 +13,8 @@ public class PreProcessing {
         double[] audioData = new double[audioDataOriginal.length / 2];
 
         //Max and Min Data
-        float maxData = -10000;
-        float minData = 10000;
+        float maxData = Float.MIN_VALUE;
+        float minData = Float.MAX_VALUE;
 
         //Max and Min data after normalize
         double max = 1;

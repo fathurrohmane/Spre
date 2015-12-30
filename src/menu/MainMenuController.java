@@ -133,7 +133,7 @@ public class MainMenuController extends Application {
         if (soundFile == null) {
             DialogCreator.showNormalDialog(primaryStage, "No File/Folder Selected");
         } else {
-            Executor executor = new Executor(text_field_word.getText(), 64, soundFile); // TODO: 29-Dec-15 variable for cluster
+            Executor executor = new Executor(text_field_word.getText(), 128, soundFile); // TODO: 29-Dec-15 variable for cluster
             executor.start();
         }
     }

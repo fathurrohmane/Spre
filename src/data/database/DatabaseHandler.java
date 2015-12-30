@@ -18,17 +18,21 @@ public class DatabaseHandler {
     /**
      * Save codebook object to files
      *
-     * @param name name of codebook or word
+     * @param name   name of codebook or word
      * @param object codebook object
      */
     public static void saveCodebook(String name, Codebook object) {
         try {
             String path = new File("").getAbsolutePath().concat("\\" + DATABASE_FOLDER + "\\" + CODEBOOK_FOLDER);
             File folder = new File(path);
-            if (folder == null) {
-                folder.mkdir();
+            if (!folder.exists()) {
+                folder.mkdirs();
             }
-            FileOutputStream fileOutputStream = new FileOutputStream(path + "\\" + name + EXTENSION_CODEBOOK);
+            String pathFile = new File("").getAbsolutePath().concat("\\" + DATABASE_FOLDER + "\\" + CODEBOOK_FOLDER + "\\" + name + EXTENSION_CODEBOOK);
+            File codebookFile = new File(pathFile);
+
+            //FileOutputStream fileOutputStream = new FileOutputStream(path + "\\" + name + EXTENSION_CODEBOOK);
+            FileOutputStream fileOutputStream = new FileOutputStream(codebookFile);
             ObjectOutputStream out = new ObjectOutputStream(fileOutputStream);
             out.writeObject(object);
             out.close();
@@ -44,15 +48,15 @@ public class DatabaseHandler {
     /**
      * Save Word Model object to files
      *
-     * @param name name of word model
+     * @param name   name of word model
      * @param object word model object
      */
     public static void saveWordModel(String name, WordModel object) {
         try {
             String path = new File("").getAbsolutePath().concat("\\" + DATABASE_FOLDER + "\\" + WORD_MODEL_FOLDER);
             File folder = new File(path);
-            if (folder == null) {
-                folder.mkdir();
+            if (!folder.exists()) {
+                folder.mkdirs();
             }
             FileOutputStream fileOutputStream = new FileOutputStream(path + "\\" + name + EXTENSION_WORD_MODEL);
             ObjectOutputStream out = new ObjectOutputStream(fileOutputStream);
@@ -68,7 +72,6 @@ public class DatabaseHandler {
     }
 
     /**
-     *
      * Load single codebook from database/files
      *
      * @param name name of codebook or word
@@ -91,7 +94,6 @@ public class DatabaseHandler {
     }
 
     /**
-     *
      * Load single word model from database/files
      *
      * @param name name of word model or word

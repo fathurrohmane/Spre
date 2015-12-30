@@ -192,19 +192,19 @@ public class VectorQuantization {
     }
 
     //TODO: Error handler
-    public void loadFromDataBase() {
-        Codebook codebook = DatabaseHandler.loadCodeBook(name);
-        clusters = codebook.getClusters();
-    }
-
-    public void saveToDatabase() {
-        Codebook codebook = new Codebook();
-
-        codebook.setDimension(numberOfDimension);
-        codebook.setClusters(clusters);
-
-        DatabaseHandler.saveCodebook(name, codebook);
-    }
+//    public void loadFromDataBase() {
+//        Codebook codebook = DatabaseHandler.loadCodeBook(name);
+//        clusters = codebook.getClusters();
+//    }
+//
+//    public void saveToDatabase() {
+//        Codebook codebook = new Codebook();
+//
+//        codebook.setDimension(numberOfDimension);
+//        codebook.setClusters(clusters);
+//
+//        DatabaseHandler.saveCodebook(name, codebook);
+//    }
 
     public int[] getObservation() {
         int[] result = new int[sampleSize];

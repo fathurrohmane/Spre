@@ -33,7 +33,7 @@ public class ManualTestVectorQuantization {
 
 
         VectorQuantization vq = new VectorQuantization("test",sample,4);// FIXME: 18-Dec-15
-        //vq.print();
+        vq.print();
 
         GenLloyd g = new GenLloyd(sample2);
         g.calcClusters(4);
@@ -41,25 +41,19 @@ public class ManualTestVectorQuantization {
         LBG lbg = new LBG(sample1);
         lbg.calculateCluster(4);
 
-        int[] observation = new int[9];
-        int[] observation_1 = new int[9];
+        printCluster(lbg.getCluster());
 
-        System.out.println("Cluster= ");
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 2; j++) {
-                Cluster c = vq.getClusters().get(j);
-                System.out.print(g.getClusterPoints()[i][j] +" X "+lbg.getCluster()[i][j]+" X"+c.getCoordinate(j));
-                System.out.println();
+        printCluster(g.getClusterPoints());
+    }
+
+    public static void printCluster(double[][] data) {
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < data[0].length; j++) {
+                System.out.print(data[i][j] + " ");
             }
-            System.out.println("Next");
+            System.out.println();
         }
-
-        System.out.println("Observation= ");
-        for (int i = 0; i < 9; i++) {
-            observation[i] = vq.getClosestCentroidIndex(sample[i]);
-            observation_1[i] = lbg.getClosestClusterIndex(sample[i]);
-            System.out.println(observation[i] +" X "+ observation_1[i]);
-        }
+        System.out.println();
     }
 
 }
