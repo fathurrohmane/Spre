@@ -39,7 +39,7 @@ public class PreProcessing {
         }
 
         //Print data
-//        ArrayWriter.printFloatArrayToFile(audioDataOriginal, "test.txt");// FIXME: 28-Dec-15 
+//        ArrayWriter.printFloatArrayToFile(audioDataOriginal, "test.txt");
 //        ArrayWriter.printDoubleArrayToFile(audioData, "test_normalize.txt");
         //ArrayWriter.printDoubleArrayToFile(AudioExtractor.getAudioData(audioFile), "test_audioExtractor.txt");
 

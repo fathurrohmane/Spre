@@ -11,47 +11,49 @@ import data.vectorquantization.LBG.VectorQuantization;
 public class MFCC {
 
     //Audio property
-    int sampleLength;
-    int sampleRate;
+    private int sampleLength;
+    private int sampleRate;
+    private String word;
 
     //windowing property
-    int samplePerFrame;
-    int noOfFrames;
-    int samplePerFrameStep;
-    double windowsSize = 0.025; // in ms
-    double stepSize = 0.01; // in ms
-    double lowerFilterFrequency = 80; //in hz
-    double higherFilterFrequency; //in hz
-    int numMelFilter = 30;
+    private int samplePerFrame;
+    private int noOfFrames;
+    private int samplePerFrameStep;
+    private double windowsSize = 0.025; // in ms
+    private double stepSize = 0.01; // in ms
+    private double lowerFilterFrequency = 80; //in hz
+    private double higherFilterFrequency; //in hz
+    private int numMelFilter = 30;
 
     //Audio data
-    double[] audioData;
-    double[][] framedAudioData;
+    private double[] audioData;
+    private double[][] framedAudioData;
     //Audio data in complex format for FFT
 //    ComplexVector[] complexVectors;
-    Complex[][] complexes;
+    private Complex[][] complexes;
 
     //mag spectrume
-    double[][] magSpectrum;
+    private double[][] magSpectrum;
 
     //filterBank
-    int[] cbin;
+    private int[] cbin;
 
     //
-    double[][] tempMelFilter;
+    private double[][] tempMelFilter;
 
     //Ceptra (MFCC Coeeficient)
-    double[][] ceptra;
+    private double[][] ceptra;
 
     // preEmphasis coefficient
-    float preEmphasisCoefficient = 0.95f;
+    private float preEmphasisCoefficient = 0.95f;
 
 /**
  * @param audioData data in double format
  * @param sampleRate sample rate of audio
  */
 
-    public MFCC(double[] audioData, int sampleRate) {
+    public MFCC(double[] audioData, int sampleRate, String word) {
+        this.word = word;
         this.audioData = new double[audioData.length];
         System.arraycopy(audioData, 0, this.audioData, 0, audioData.length);
         //this.audioData = audioData;
@@ -234,7 +236,6 @@ public class MFCC {
         }
         System.out.println("DCT Done");
         System.out.println("MFCC Done");
-        System.out.println("Try Clustering");
 
 //        GenLloyd gl = new GenLloyd(ceptra);
 //
@@ -263,4 +264,7 @@ public class MFCC {
         return 700 * (Math.pow(10, x / 2595) - 1);
     }
 
+    public String getWord() {
+        return word;
+    }
 }

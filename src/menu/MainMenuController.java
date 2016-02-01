@@ -1,6 +1,7 @@
 package menu;
 
-import classification.Training;
+import classification.Processor;
+import data.database.DatabaseHandler;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -52,6 +53,8 @@ public class MainMenuController extends Application {
     @FXML
     TextField text_field_word;
 
+    @FXML
+    TextField text_field_training_file_location;
 
     // Class Variable
     File previousFileAddress = null;
@@ -72,7 +75,7 @@ public class MainMenuController extends Application {
         previousFileAddress = DialogCreator.showFileChooser(primaryStage, previousFileAddress);
 
         // Begin Training data
-        Training training = new Training("LOL", 4, previousFileAddress);// FIXME: 18-Dec-15
+        //Training training = new Training("LOL", 4, previousFileAddress);// FIXME: 18-Dec-15
 
         //Load audio data to chart
         //ChartCreator.loadData(audioWaveChart,AudioExtractor.getAudioData(previousFileAddress));
@@ -84,21 +87,22 @@ public class MainMenuController extends Application {
         // Choose from dialog
 
         String respond = DialogCreator.showChoicesTestingDialog(primaryStage);
-        File soundFile = null;
+        File soundFiles = null;
 
         if (respond.equals(DialogCreator.SINGLE_RESPONE)) {
-            soundFile = DialogCreator.showFileChooser(primaryStage, previousFileAddress);
+            soundFiles = DialogCreator.showFileChooser(primaryStage, previousFileAddress);
         } else if (respond.equals(DialogCreator.FOLDER_RESPONE)) {
-            soundFile = DialogCreator.showDirectoryChooser(primaryStage, previousFileAddress);
+            soundFiles = DialogCreator.showDirectoryChooser(primaryStage, previousFileAddress);
         }
 
-        if (soundFile == null) {
+        if (soundFiles == null) {
             DialogCreator.showNormalDialog(primaryStage, "No File/Folder Selected");
         } else {
-            if (soundFile.isFile()) {
-                addText(soundFile.getName());// FIXME: 18-Dec-15
-            } else if (soundFile.isDirectory()) {
-                addText(soundFile.getName());
+            if (soundFiles.isFile()) {
+                addTextTesting(soundFiles.getName());// FIXME: 18-Dec-15
+            } else if (soundFiles.isDirectory()) {
+                addTextTesting(soundFiles.getName());
+                Processor.startTestingMultiple(soundFiles);
             }
         }
     }
@@ -116,8 +120,10 @@ public class MainMenuController extends Application {
 
         if (soundFile == null) {
             DialogCreator.showNormalDialog(primaryStage, "No File/Folder Selected");
+            text_field_training_file_location.setText("");
         } else {
             // TODO: 23-Dec-15 write list training file to text area
+            text_field_training_file_location.setText(soundFile.getPath());
         }
     }
 
@@ -135,10 +141,11 @@ public class MainMenuController extends Application {
         } else {
             Executor executor = new Executor(text_field_word.getText(), 128, soundFile); // TODO: 29-Dec-15 variable for cluster
             executor.start();
+
         }
     }
 
-    private void addText(String text) {
+    private void addTextTesting(String text) {
         text_area_testing.appendText(Time.getTime() + text + "\n");
     }
 

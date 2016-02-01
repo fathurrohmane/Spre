@@ -1,5 +1,7 @@
 package data.database;
 
+import test.validator.hmm.HiddenMarkov;
+
 import java.io.*;
 import java.util.ArrayList;
 
@@ -80,7 +82,7 @@ public class DatabaseHandler {
     public static Codebook loadCodeBook(String name) {
         Codebook output = null;
         try {
-            String path = new File("").getAbsolutePath().concat("\\" + DATABASE_FOLDER + "\\" + CODEBOOK_FOLDER);
+            String path = new File("").getAbsolutePath().concat("\\" + DATABASE_FOLDER + "\\" + CODEBOOK_FOLDER +"\\");
             FileInputStream fileInputStream = new FileInputStream(path + name + EXTENSION_CODEBOOK);
             ObjectInputStream in = new ObjectInputStream(fileInputStream);
             output = (Codebook) in.readObject();
@@ -144,5 +146,33 @@ public class DatabaseHandler {
             e.printStackTrace();
         }
         return (WordModel[]) output.toArray();
+    }
+
+    public static ArrayList<HiddenMarkov> loadAllWordModelToHMMs() {
+        System.out.println("Load All Word Model");
+        ArrayList<HiddenMarkov> output = new ArrayList<HiddenMarkov>();
+        int counter = 0;
+        try {
+            String path = new File("").getAbsolutePath().concat("\\" + DATABASE_FOLDER + "\\" + WORD_MODEL_FOLDER);
+            File folder = new File(path);
+            File[] listOfFiles = folder.listFiles();
+            for (File file : listOfFiles
+                    ) {
+                if (file.isFile()) {
+                    System.out.println(counter++ + "." + file.getName());
+                    FileInputStream fileInputStream = new FileInputStream(file);
+                    ObjectInputStream in = new ObjectInputStream(fileInputStream);
+                    WordModel wordModel = (WordModel) in.readObject();
+                    wordModel.setWord(file.getName());
+                    output.add(new HiddenMarkov(wordModel));
+                }
+            }
+            System.out.println("Load Completed with " + counter + "data");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return output;
     }
 }

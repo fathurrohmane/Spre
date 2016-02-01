@@ -191,7 +191,6 @@ public class VectorQuantization {
         return result;
     }
 
-    //TODO: Error handler
 //    public void loadFromDataBase() {
 //        Codebook codebook = DatabaseHandler.loadCodeBook(name);
 //        clusters = codebook.getClusters();

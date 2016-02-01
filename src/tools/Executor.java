@@ -1,6 +1,6 @@
 package tools;
 
-import classification.Training;
+import classification.Processor;
 
 import java.io.File;
 
@@ -22,7 +22,6 @@ public class Executor extends Thread {
 
     @Override
     public void run() {
-        Training.start(word, cluster, soundFile);
-
+        Processor.startTraining(word, cluster, soundFile);
     }
 }

@@ -42,6 +42,10 @@ public class LBG {
         mDimensionSize = dataSample[0].length;
     }
 
+    public LBG(String name) {
+        loadFromDataBase(name);
+    }
+
     public LBG(List<Point> dataSample) {
         double[][] dataArray = new double[dataSample.size()][dataSample.get(0).getDimension()];
         mDimensionSize = dataSample.get(0).getDimension();
@@ -60,6 +64,7 @@ public class LBG {
      * @param maxCluster for number of observation symbol usually 256
      */
     public void calculateCluster(int maxCluster) {
+        System.out.println("Clustering .....");
         // Initialize cluster
         mCluster = new double[1][mDimensionSize];
         mCluster[0] = initializeCluster();
@@ -228,10 +233,10 @@ public class LBG {
         return result;
     }
 
-//    public void loadFromDataBase(String name) {
-//        Codebook codebook = DatabaseHandler.loadCodeBook(name);
-//        clusters = codebook.getClusters();
-//    }
+    public void loadFromDataBase(String name) {
+        Codebook codebook = DatabaseHandler.loadCodeBook(name);
+        mCluster = codebook.getCluster();
+    }
 
     public void saveToDatabase(String name) {
         Codebook codebook = new Codebook();

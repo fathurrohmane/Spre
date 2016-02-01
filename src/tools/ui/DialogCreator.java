@@ -18,8 +18,8 @@ import java.util.List;
  */
 public class DialogCreator {
 
-    public static final String SINGLE_RESPONE = "Open Single File?";
-    public static final String FOLDER_RESPONE = "Open Folder for multiple files?";
+    public static final String SINGLE_RESPONE = "Train Single Word?";
+    public static final String FOLDER_RESPONE = "Train Multiple Words?";
     public static final String CANCEL_RESPONE = "Dialog.Actions.CANCEL";
 
     public static void showNormalDialog(Stage stage, String information) {
@@ -42,7 +42,7 @@ public class DialogCreator {
                 .owner(stage)
                 .title("Command Link Dialog")
                 .masthead(null)
-                .message("Choose Single File or Multiple File?")
+                .message("Choose Single Word or Multiple Word?")
                 .showCommandLinks(links);
 
         return response.getText();

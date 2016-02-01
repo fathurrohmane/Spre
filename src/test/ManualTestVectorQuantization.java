@@ -32,7 +32,7 @@ public class ManualTestVectorQuantization {
         Array.copy2D(sample,sample2);
 
 
-        VectorQuantization vq = new VectorQuantization("test",sample,4);// FIXME: 18-Dec-15
+        VectorQuantization vq = new VectorQuantization("test",sample,4);
         vq.print();
 
         GenLloyd g = new GenLloyd(sample2);

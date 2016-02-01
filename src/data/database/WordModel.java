@@ -34,14 +34,20 @@ public class WordModel implements Serializable {
 
     private int numofSymbol;
 
+    /**
+     * Name of the word
+     */
+    private String word;
+
     public WordModel() {
 
     }
 
-    public WordModel(double[][] aTransition, double[][] bOutput, double[] phi) {
+    public WordModel(double[][] aTransition, double[][] bOutput, double[] phi, String word) {
         this.aTransition = aTransition;
         this.bOutput = bOutput;
         this.phi = phi;
+        this.word = word;
     }
 
     public double[][] getaTransition() {
@@ -82,5 +88,13 @@ public class WordModel implements Serializable {
 
     public void setNumofSymbol(int numofSymbol) {
         this.numofSymbol = numofSymbol;
+    }
+
+    public String getWord() {
+        return word;
+    }
+
+    public void setWord(String word) {
+        this.word = word;
     }
 }
