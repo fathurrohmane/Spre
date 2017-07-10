@@ -2,7 +2,8 @@ package audio.feature_extraction;
 
 import data.Complex;
 import data.FFT;
-import data.vectorquantization.LBG.VectorQuantization;
+import data.pca.PCA;
+import tools.array.Array;
 
 /**
  * Created by Fathurrohman on 5/20/2015.
@@ -10,12 +11,12 @@ import data.vectorquantization.LBG.VectorQuantization;
  */
 public class MFCC {
 
-    //Audio property
+    // Audio property
     private int sampleLength;
     private int sampleRate;
     private String word;
 
-    //windowing property
+    // windowing property
     private int samplePerFrame;
     private int noOfFrames;
     private int samplePerFrameStep;
@@ -25,17 +26,18 @@ public class MFCC {
     private double higherFilterFrequency; //in hz
     private int numMelFilter = 30;
 
-    //Audio data
+    // Audio data
     private double[] audioData;
     private double[][] framedAudioData;
-    //Audio data in complex format for FFT
+
+    // Audio data in complex format for FFT
 //    ComplexVector[] complexVectors;
     private Complex[][] complexes;
 
-    //mag spectrume
+    // mag spectrume
     private double[][] magSpectrum;
 
-    //filterBank
+    // filterBank
     private int[] cbin;
 
     //
@@ -43,6 +45,9 @@ public class MFCC {
 
     //Ceptra (MFCC Coeeficient)
     private double[][] ceptra;
+    private double[] energy;
+    private double[][] deltaEnergy;
+    private double[][] deltaDeltaEnergy;
 
     // preEmphasis coefficient
     private float preEmphasisCoefficient = 0.95f;
@@ -56,22 +61,23 @@ public class MFCC {
         this.word = word;
         this.audioData = new double[audioData.length];
         System.arraycopy(audioData, 0, this.audioData, 0, audioData.length);
-        //this.audioData = audioData;
         this.sampleLength = audioData.length;
         this.sampleRate = sampleRate;
         higherFilterFrequency = sampleRate / 2;
 
-        //Based on time
+        // Based on time
         //samplePerFrame = (int) Math.round(sampleRate * windowsSize);
         //samplePerFrameStep = (int) Math.round(sampleRate * stepSize );
 
-        //Based on nearest power of 2 sample size
+        // Based on nearest power of 2 sample size
         samplePerFrame = 2048; // 2048 / 96000 = 0.021 s | 21ms (frame size)
         samplePerFrameStep = 1024; // 1024 / 96000 = 0.010 | 10ms (overlap frame size)
 
-
         noOfFrames = (int) (Math.ceil(sampleLength / samplePerFrame)) + 1; // overlap 50% (X2)
 
+    }
+
+    public void doMFCC() {
         preEmphasis();
         framing();
         windowing();
@@ -79,11 +85,25 @@ public class MFCC {
         makeFilterBank();
         melFilter();
         dct();
+        energy();
 
+        System.out.println("MFCC Done");
+    }
+
+    public void doMFCCPCA() {
+        preEmphasis();
+        framing();
+        windowing();
+        fft();
+        makeFilterBank();
+        melFilter();
+        //dct();
+        pca();
+        System.out.println("MFCC-PCA Done");
     }
 
     private void preEmphasis() {
-        //Calculate preemphasis per sample
+        // Calculate preemphasis per sample
         for (int i = 1; i < audioData.length; i++) {
             audioData[i] = (audioData[i] - preEmphasisCoefficient * audioData[i - 1]);
         }
@@ -152,7 +172,7 @@ public class MFCC {
 
         System.out.println("Done FFT");
 
-        //calculate mag spectrume
+        // calculate mag spectrum
         magSpectrum = new double[noOfFrames][framedAudioData[0].length];
         for (int i = 0; i < noOfFrames; i++) {
             for (int j = 0; j < framedAudioData[0].length; j++) {
@@ -165,37 +185,34 @@ public class MFCC {
     }
 
     private void makeFilterBank() {
-        //initiate array
+        // initiate array
         cbin = new int[numMelFilter + 2];
         double[] cbinTemp = new double[numMelFilter + 2];
 
-        //create range frequency based on mel-scale
+        // create range frequency based on mel-scale
         double lowMel = hzToMel(lowerFilterFrequency);
         double highMel = hzToMel(higherFilterFrequency);
 
-        //initiate 1st and last filter bank
+        // initiate 1st and last filter bank
         cbinTemp[0] = lowMel;
         cbinTemp[cbin.length - 1] = highMel;
 
-        //create filter bank in mel-scale
+        // create filter bank in mel-scale
         for (int i = 1; i <numMelFilter + 1; i++) {
             cbinTemp[i] = lowMel + ((highMel - lowMel) / (numMelFilter + 2)) * i;
         }
 
-        //convert back to frequency
+        // convert back to frequency
         for (int i = 0; i <= numMelFilter + 1; i++) {
             cbin[i] = (int) Math.floor(samplePerFrame*melToHz(cbinTemp[i]) / sampleRate);
             //cbinTemp[i] = melToHz(cbinTemp[i]);
         }
-
-        System.out.println("LOL");
-
     }
 
     private void melFilter() {
         tempMelFilter = new double[noOfFrames][numMelFilter];
         //double[] temp = new double[numMelFilter + 2];
-        //Loop through frames
+        // Loop through frames
         for (int i = 0; i < noOfFrames; i++) {
             for (int j = 1; j <= numMelFilter - 2; j++) {
 // VERSION CODE 3
@@ -212,18 +229,15 @@ public class MFCC {
                     int magnitudeScale = centerFreqId - endFreqId;
                     tempMelFilter[i][j] += magSpectrum[i][freq]*(freq - endFreqId) / magnitudeScale;
                 }
-
             }
 
 //            for (int j = 0; j < numMelFilter; j++) {
 //                tempMelFilter[i][j] = temp[j + 1];
 //            }
-//            System.out.println("LOL");
         }
     }
 
-    private void dct()
-    {
+    private void dct() {
         int numCeptra = 12;
         ceptra = new double[noOfFrames][numCeptra];
 
@@ -235,21 +249,32 @@ public class MFCC {
             }
         }
         System.out.println("DCT Done");
-        System.out.println("MFCC Done");
+    }
 
-//        GenLloyd gl = new GenLloyd(ceptra);
-//
-//        gl.calcClusters(4);
+    private void energy() {
+        energy = new double[framedAudioData.length];
 
-//        double[][] results = gl.getClusterPoints();
-//        for (double[] point : results) {
-//            System.out.print("Cluster : ");
-//            for (double po : point) {
-//                System.out.print(po + " ");
-//            }
-//            System.out.println();
-//        }
+        for (int i = 0; i < framedAudioData.length; i++) {
+            double sum = 0;
+            for (int j = 0; j < framedAudioData[0].length; j++) {
+                sum += Math.pow(framedAudioData[i][j], 2);
+            }
+            energy[i] = Math.log(sum);
+        }
+    }
 
+    private void deltaEnergy() {
+
+    }
+
+    private void pca() {
+        int dimension = numMelFilter / 2;
+        double[][] ceptraReduction;
+
+        PCA pca = new PCA(ceptra);
+        ceptraReduction = pca.getPCAResult(dimension);
+        Array.copy2D(ceptraReduction, ceptra);
+        System.out.println("PCA Done");
     }
 
     public double[][] getCeptra() {

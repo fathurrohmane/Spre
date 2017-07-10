@@ -1,8 +1,5 @@
 package audio;
 
-import audio.feature_extraction.MFCC;
-import tools.ArrayWriter;
-
 /**
  * Created by Fathurrohman on 5/29/2015.
  */

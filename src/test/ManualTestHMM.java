@@ -1,7 +1,6 @@
 package test;
 
 import classification.HiddenMarkov;
-import tools.Array;
 
 /**
  * Created by Fathurrohman on 11-Dec-15.

@@ -5,7 +5,7 @@
   Email : gtiwari333@gmail.com,
   Blog : http://ganeshtiwaridotcomdotnp.blogspot.com/ 
  */
-package tools;
+package tools.array;
 
 import java.io.FileNotFoundException;
 import java.util.Formatter;

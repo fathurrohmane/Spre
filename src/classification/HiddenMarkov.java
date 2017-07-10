@@ -1,6 +1,6 @@
 package classification;
 
-import tools.Array;
+import tools.array.Array;
 
 import java.util.Random;
 

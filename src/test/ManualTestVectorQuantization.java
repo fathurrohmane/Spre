@@ -1,10 +1,9 @@
 package test;
 
-import data.vectorquantization.LBG.Cluster;
 import data.vectorquantization.LBG.LBG;
 import data.vectorquantization.LBG.VectorQuantization;
 import test.validator.mkonrad.GenLloyd;
-import tools.Array;
+import tools.array.Array;
 
 /**
  * Created by Fathurrohman on 19-Nov-15.

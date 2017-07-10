@@ -120,7 +120,7 @@ public class LBG {
                 }
             }
 
-            // Update Code book
+            // Update Codebook
 
             for (int i = 0; i < mCluster.length; i++) {
                 double[] newSingleCluster = new double[mDimensionSize];

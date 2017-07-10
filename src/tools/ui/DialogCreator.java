@@ -1,16 +1,14 @@
 package tools.ui;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import org.controlsfx.control.action.Action;
-import org.controlsfx.dialog.CommandLinksDialog;
-import org.controlsfx.dialog.DialogAction;
-import org.controlsfx.dialog.Dialogs;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by Fathurrohman on 18-Dec-15.
@@ -23,29 +21,38 @@ public class DialogCreator {
     public static final String CANCEL_RESPONE = "Dialog.Actions.CANCEL";
 
     public static void showNormalDialog(Stage stage, String information) {
-        Dialogs.create()
-                .owner(stage)
-                .title("Information")
-                .masthead(null)
-                .message(information)
-                .showInformation();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information ");
+        alert.setHeaderText(null);
+        alert.setContentText(information);
+
+        alert.showAndWait();
     }
 
     public static String showChoicesTestingDialog(Stage stage) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation Dialog with Custom Actions");
+        alert.setContentText("Choose your option.");
 
-        List<DialogAction> links = new ArrayList<DialogAction>();
-        links.add(new DialogAction(SINGLE_RESPONE));
-        links.add(new DialogAction(FOLDER_RESPONE));
+        ButtonType buttonTypeOne = new ButtonType(SINGLE_RESPONE);
+        ButtonType buttonTypeTwo = new ButtonType(FOLDER_RESPONE);
+        ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
 
+        alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo, buttonTypeCancel);
 
-        Action response = Dialogs.create()
-                .owner(stage)
-                .title("Command Link Dialog")
-                .masthead(null)
-                .message("Choose Single Word or Multiple Word?")
-                .showCommandLinks(links);
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent()) {
+            if (result.get() == buttonTypeOne){
+                return SINGLE_RESPONE;
+            } else if (result.get() == buttonTypeTwo) {
+                return FOLDER_RESPONE;
+            } else {
+                return "error";
+            }
+        } else {
+            return "error";
+        }
 
-        return response.getText();
 }
 
     public static File showFileChooser(Stage primaryStage, File previousFileAddress) {

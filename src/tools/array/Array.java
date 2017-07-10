@@ -1,4 +1,4 @@
-package tools;
+package tools.array;
 
 /**
  * Created by Fathurrohman on 08-Dec-15.

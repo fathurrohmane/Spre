@@ -141,7 +141,6 @@ public class MainMenuController extends Application {
         } else {
             Executor executor = new Executor(text_field_word.getText(), 128, soundFile); // TODO: 29-Dec-15 variable for cluster
             executor.start();
-
         }
     }
 

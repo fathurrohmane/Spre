@@ -5,7 +5,6 @@ import audio.feature_extraction.MFCC;
 import data.database.DatabaseHandler;
 import data.vectorquantization.LBG.LBG;
 import data.vectorquantization.LBG.Point;
-import test.validator.hmm.*;
 import test.validator.hmm.HiddenMarkov;
 
 import java.io.File;
@@ -57,6 +56,8 @@ public class Processor {
                     , audioProcessing.getAudioSampleRate()
                     , "" // empty string because label not required here (all words inserted to codebook)
             );
+            // Type of MFCC
+            mfcc.doMFCC();
 
             for (int i = 0; i < mfcc.getCeptra().length; i++) {
                 ceptra.add(new Point(mfcc.getCeptra()[i]));
@@ -67,7 +68,6 @@ public class Processor {
         LBG lbg = new LBG(ceptra);
         lbg.calculateCluster(cluster);
         lbg.saveToDatabase(word);
-
 
         // Create word model
         int counter = 0;
@@ -117,13 +117,16 @@ public class Processor {
                     , file.getName() // TODO: 01-Feb-16 is file.getName() is enough?
             );
 
+            // Type of MFCC
+            mfcc.doMFCC();
+
             for (int i = 0; i < mfcc.getCeptra().length; i++) {
                 ceptra.add(new Point(mfcc.getCeptra()[i]));
             }
             mfccs.add(mfcc);
         }
 
-        LBG lbg = new LBG("lol");
+        LBG lbg = new LBG("tes");
 
         ArrayList<HiddenMarkov> wordModels = DatabaseHandler.loadAllWordModelToHMMs();
 

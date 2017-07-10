@@ -10,7 +10,7 @@ import java.util.TreeSet;
 
 /**
  * Created by Fathurrohman on 25-Nov-15.
- * Basedon http://www.cs.otago.ac.nz/cosc453/student_tutorials/principal_components.pdf
+ * Based on http://www.cs.otago.ac.nz/cosc453/student_tutorials/principal_components.pdf
  */
 public class PCA {
 
@@ -24,32 +24,32 @@ public class PCA {
 
     public PCA(double[][] dataSample) {
 //initiation
-            data = new double[dataSample.length][dataSample[0].length];
-            means = new double[dataSample[0].length];
-            data = dataSample.clone();
+        data = new double[dataSample.length][dataSample[0].length];
+        means = new double[dataSample[0].length];
+        data = dataSample.clone();
 //calculate mean for each dimension
-            means = calculateMean(data);
+        means = calculateMean(data);
 //Adjust data by subtract by its mean
-            data = adjustedData(data,means);
+        data = adjustedData(data, means);
 //calculate covariance
-            double[][] covariance = getCovariances(data, means);
-            Matrix covarianceInMatrix = new Matrix(covariance);
-                System.out.println("Matrix Covariance :");
-                covarianceInMatrix.print(data[0].length,data[0].length);
-            eigenData = covarianceInMatrix.eig();
+        double[][] covariance = getCovariances(data, means);
+        Matrix covarianceInMatrix = new Matrix(covariance);
+        System.out.println("Matrix Covariance :");
+        covarianceInMatrix.print(data[0].length, data[0].length);
+        eigenData = covarianceInMatrix.eig();
 //calculate eigen vector and value
-            eigenValues = eigenData.getRealEigenvalues();
-            eigenVectors = eigenData.getV();
-                System.out.println("Eigen Vector :");
-                eigenVectors.print(data[0].length,data[0].length);
-                System.out.println("Eigen Value :");
-                for (int i = 0; i < eigenValues.length; i++) {
-                    System.out.println(eigenValues[i]);
-                }
-            double[][] vecs = eigenVectors.getArray();
-            int numOfComponents = eigenVectors.getColumnDimension(); // same as num rows.
-            principleComponents = new TreeSet<PrincipleComponent>();
-//Sort by eigen value -> higher eigenvalue higer priority
+        eigenValues = eigenData.getRealEigenvalues();
+        eigenVectors = eigenData.getV();
+        System.out.println("Eigen Vector :");
+        eigenVectors.print(data[0].length, data[0].length);
+        System.out.println("Eigen Value :");
+        for (int i = 0; i < eigenValues.length; i++) {
+            System.out.println(eigenValues[i]);
+        }
+        double[][] vecs = eigenVectors.getArray();
+        int numOfComponents = eigenVectors.getColumnDimension(); // same as num rows.
+        principleComponents = new TreeSet<PrincipleComponent>();
+//Sort by eigen value -> higher eigenvalue higher priority
         for (int i = 0; i < numOfComponents; i++) {
             double[] eigenVector = new double[numOfComponents];
             for (int j = 0; j < numOfComponents; j++) {
@@ -126,7 +126,8 @@ public class PCA {
         int numData = dataInput.length;
         int numDimension = dataInput[0].length;
 
-        double[] mean = calculateMean(dataInput);
+        //double[] mean = calculateMean(dataInput);
+        double[] mean = meansInput;
 
         double[][] cov = new double[numDimension][numDimension];
 
