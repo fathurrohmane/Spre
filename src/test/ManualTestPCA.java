@@ -4,6 +4,7 @@ import Jama.Matrix;
 import data.database.DatabaseHandler;
 import data.pca.PCA;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ import java.util.List;
  */
 public class ManualTestPCA {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
         double[][] matrix = new double[][]{
                 {2.5, 2.4},
@@ -26,19 +27,30 @@ public class ManualTestPCA {
                 {1.1, 0.9}
         };
 
+        double[][] matrix3 = new double[][]{
+                {3, 0, 1},
+                {-4, 1, 2},
+                {-6, 0, -2},
+        };
+
         System.out.println("Data :");
         Matrix originalData = new Matrix(matrix);
-        originalData.print(8,2);
+        originalData.print(8, 2);
 
         PCA pca = new PCA(matrix);
 
         System.out.println("Result 2-D");
         Matrix result = new Matrix(pca.getPCAResult(2));
-            result.print(8,8);
+        result.print(8, 8);
 
-        System.out.println("Result 1-D");
-        Matrix result2 = new Matrix(pca.getPCAResult(1));
-            result2.print(8,8);
+//        System.out.println("Result 1-D");
+//        Matrix result2 = new Matrix(pca.getPCAResult(1));
+//        result2.print(8, 8);
+        System.out.println("Reverted Result");
+
+        Matrix result3 = new Matrix(pca.getDataBack(result.getArray(), 2));
+        result3.print(8, 2);
+
 
     }
 

@@ -17,20 +17,28 @@ public class DatabaseHandler {
     private static final String EXTENSION_CODEBOOK = ".cdb";
     private static final String EXTENSION_WORD_MODEL = ".mdl";
 
+    private static File databasePath = null;
+
     /**
      * Save codebook object to files
      *
-     * @param name   name of codebook or word
-     * @param object codebook object
+     * @param path   name of codebook or word
      */
-    public static void saveCodebook(String name, Codebook object) {
+
+    public static void setDatabasePath(File path) {
+        databasePath = path;
+    }
+
+    public static void saveCodebook(Codebook object) {
         try {
-            String path = new File("").getAbsolutePath().concat("\\" + DATABASE_FOLDER + "\\" + CODEBOOK_FOLDER);
+            //String path = new File("").getAbsolutePath().concat("\\" + DATABASE_FOLDER + "\\" + CODEBOOK_FOLDER);
+            String path = databasePath.getAbsolutePath().concat("\\" + CODEBOOK_FOLDER);
             File folder = new File(path);
             if (!folder.exists()) {
                 folder.mkdirs();
             }
-            String pathFile = new File("").getAbsolutePath().concat("\\" + DATABASE_FOLDER + "\\" + CODEBOOK_FOLDER + "\\" + name + EXTENSION_CODEBOOK);
+
+            String pathFile = folder.getAbsolutePath().concat("\\" + "codebook" + EXTENSION_CODEBOOK);
             File codebookFile = new File(pathFile);
 
             //FileOutputStream fileOutputStream = new FileOutputStream(path + "\\" + name + EXTENSION_CODEBOOK);
@@ -39,7 +47,7 @@ public class DatabaseHandler {
             out.writeObject(object);
             out.close();
             fileOutputStream.close();
-            System.out.println(name + " has been saved in " + path);
+            System.out.println("codebook" + " has been saved in " + path);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -55,7 +63,7 @@ public class DatabaseHandler {
      */
     public static void saveWordModel(String name, WordModel object) {
         try {
-            String path = new File("").getAbsolutePath().concat("\\" + DATABASE_FOLDER + "\\" + WORD_MODEL_FOLDER);
+            String path = databasePath.getAbsolutePath().concat("\\" + WORD_MODEL_FOLDER);
             File folder = new File(path);
             if (!folder.exists()) {
                 folder.mkdirs();
@@ -76,17 +84,17 @@ public class DatabaseHandler {
     /**
      * Load single codebook from database/files
      *
-     * @param name name of codebook or word
+     * @param databaseDirectory name of codebook or word
      * @return Single codebook object
      */
-    public static Codebook loadCodeBook(String name) {
+    public static Codebook loadCodeBook(File databaseDirectory) {
         Codebook output = null;
         try {
-            String path = new File("").getAbsolutePath().concat("\\" + DATABASE_FOLDER + "\\" + CODEBOOK_FOLDER +"\\");
-            FileInputStream fileInputStream = new FileInputStream(path + name + EXTENSION_CODEBOOK);
+//            String path = new File("").getAbsolutePath().concat("\\" + DATABASE_FOLDER + "\\" + CODEBOOK_FOLDER +"\\");
+            FileInputStream fileInputStream = new FileInputStream(databaseDirectory + "\\" + CODEBOOK_FOLDER + "\\" + "codebook" + EXTENSION_CODEBOOK);
             ObjectInputStream in = new ObjectInputStream(fileInputStream);
             output = (Codebook) in.readObject();
-            System.out.println(name + " has been loaded " + path);
+            System.out.println("Codebook" + " has been loaded " + databaseDirectory.getAbsolutePath());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -148,14 +156,13 @@ public class DatabaseHandler {
         return (WordModel[]) output.toArray();
     }
 
-    public static ArrayList<HiddenMarkov> loadAllWordModelToHMMs() {
+    public static ArrayList<HiddenMarkov> loadAllWordModelToHMMs(File databaseDirectory) {
         System.out.println("Load All Word Model");
         ArrayList<HiddenMarkov> output = new ArrayList<HiddenMarkov>();
         int counter = 0;
         try {
-            String path = new File("").getAbsolutePath().concat("\\" + DATABASE_FOLDER + "\\" + WORD_MODEL_FOLDER);
-            File folder = new File(path);
-            File[] listOfFiles = folder.listFiles();
+            File dirWordModel = new File(databaseDirectory.getAbsolutePath().concat("\\" + WORD_MODEL_FOLDER));
+            File[] listOfFiles = dirWordModel.listFiles();
             for (File file : listOfFiles
                     ) {
                 if (file.isFile()) {
@@ -163,7 +170,6 @@ public class DatabaseHandler {
                     FileInputStream fileInputStream = new FileInputStream(file);
                     ObjectInputStream in = new ObjectInputStream(fileInputStream);
                     WordModel wordModel = (WordModel) in.readObject();
-                    wordModel.setWord(file.getName());
                     output.add(new HiddenMarkov(wordModel));
                 }
             }

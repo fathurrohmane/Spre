@@ -54,8 +54,7 @@ public class Point {
             System.out.println("Not same type of Point (different dimension)");
         }
 
-//        output = Math.sqrt(output);
-
+        output = Math.sqrt(output);
         return output;
     }
 

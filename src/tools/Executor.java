@@ -10,9 +10,9 @@ import java.io.File;
  */
 public class Executor extends Thread {
 
-    File soundFile;
-    int cluster;
-    String word;
+    private File soundFile;
+    private int cluster;
+    private String word;
 
     public Executor(String word, int cluster, File soundFile) {
         this.soundFile = soundFile;
@@ -22,6 +22,6 @@ public class Executor extends Thread {
 
     @Override
     public void run() {
-        Processor.startTraining(word, cluster, soundFile);
+        //Processor.startTraining(word, cluster, soundFile);
     }
 }

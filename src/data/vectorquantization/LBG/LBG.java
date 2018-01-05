@@ -3,7 +3,10 @@ package data.vectorquantization.LBG;
 import audio.feature_extraction.MFCC;
 import data.database.Codebook;
 import data.database.DatabaseHandler;
+import tools.IProcessListener;
 
+import java.io.File;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,6 +35,8 @@ public class LBG {
     private double mThreshold = 0.005;
     private int mNumCurrentCluster;
 
+    private IProcessListener listener;
+
     /**
      * Constructor to set data training to class
      *
@@ -42,18 +47,28 @@ public class LBG {
         mDimensionSize = dataSample[0].length;
     }
 
-    public LBG(String name) {
-        loadFromDataBase(name);
+    public LBG(File directoryDatabase) {
+        loadFromDataBase(directoryDatabase);
     }
+
+//    public LBG(List<MFCC> dataSample) {
+//        mDimensionSize = dataSample.get(0).getCeptra().length;
+//        double[][] dataArray = new double[dataSample.size()][mDimensionSize];
+//        for (int i = 0; i < dataSample.size(); i++) {
+//            for (int j = 0; j < dataSample.get(0).getCeptra()[0].length; j++) {
+//                dataArray[i][j] = dataSample.get(i)[j];
+//            }
+//        }
+//        this.setDataSample(dataArray);
+//    }
 
     public LBG(List<Point> dataSample) {
         double[][] dataArray = new double[dataSample.size()][dataSample.get(0).getDimension()];
         mDimensionSize = dataSample.get(0).getDimension();
         for (int i = 0; i < dataSample.size(); i++) {
             Point point = dataSample.get(i);
-            for (int j = 0; j < dataSample.get(0).getDimension(); j++) {
-                dataArray[i][j] = point.getCoordinate(j);
-            }
+            dataArray[i] = point.getCoordinates();
+
         }
         this.setDataSample(dataArray);
     }
@@ -64,7 +79,7 @@ public class LBG {
      * @param maxCluster for number of observation symbol usually 256
      */
     public void calculateCluster(int maxCluster) {
-        System.out.println("Clustering .....");
+        writeMessage("Clustering .....");
         // Initialize cluster
         mCluster = new double[1][mDimensionSize];
         mCluster[0] = initializeCluster();
@@ -83,6 +98,7 @@ public class LBG {
 
             do {
                 mNumCurrentCluster = splitClusters();
+                writeMessage("Number of Cluster = " + mNumCurrentCluster);
             } while (mNumCurrentCluster < maxCluster);
         }
     }
@@ -107,8 +123,8 @@ public class LBG {
 
         do {
             currentAverageDistortion = mAverageDistortion;
-            // Find closest cluster
 
+            // Find closest cluster
             for (int i = 0; i < mDataSample.length; i++) {
                 double minimumDistortion = Double.MAX_VALUE;
                 for (int j = 0; j < mCluster.length; j++) {
@@ -121,7 +137,6 @@ public class LBG {
             }
 
             // Update Codebook
-
             for (int i = 0; i < mCluster.length; i++) {
                 double[] newSingleCluster = new double[mDimensionSize];
                 int counter = 0;
@@ -190,8 +205,7 @@ public class LBG {
             sum += (Math.pow(d, 2.0));
         }
 
-        //return Math.sqrt(sum);
-        return sum;
+        return Math.sqrt(sum);
     }
 
     private void setDataSample(double[][] mDataSample) {
@@ -217,7 +231,6 @@ public class LBG {
     }
 
     /**
-     *
      * @param mfcc
      * @return observation sequence
      */
@@ -233,17 +246,52 @@ public class LBG {
         return result;
     }
 
-    public void loadFromDataBase(String name) {
-        Codebook codebook = DatabaseHandler.loadCodeBook(name);
+//    /**
+//     *
+//     * @param mfcc
+//     * @return observation sequence
+//     */
+//    public int[] getObservationSequence(double[] mfcc) {
+//        int[] result = new int[mfcc.length];
+//        int counter = 0;
+//        for (double[] point :
+//                mfcc.getCeptra()) {
+//
+//            result[counter] = getClosestClusterIndex(point);
+//            counter++;
+//        }
+//        return result;
+//    }
+
+    public void loadFromDataBase(File directoryDatabase) {
+        Codebook codebook = DatabaseHandler.loadCodeBook(directoryDatabase);
         mCluster = codebook.getCluster();
     }
 
-    public void saveToDatabase(String name) {
+    public void saveToDatabase() {
         Codebook codebook = new Codebook();
 
         codebook.setDimensionSize(mDimensionSize);
         codebook.setCluster(mCluster);
 
-        DatabaseHandler.saveCodebook(name, codebook);
+        DatabaseHandler.saveCodebook(codebook);
+        writeMessage("Codebook saved.");
     }
+
+    public void setListener(IProcessListener listener) {
+        this.listener = listener;
+    }
+
+    public void removeListener() {
+        if (listener != null) {
+            this.listener = null;
+        }
+    }
+
+    public void writeMessage(String context) {
+        if (listener != null) {
+            listener.getMessage(new Date().toString(), context);
+        }
+    }
+
 }

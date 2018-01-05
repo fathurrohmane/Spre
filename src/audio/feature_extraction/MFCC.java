@@ -3,13 +3,18 @@ package audio.feature_extraction;
 import data.Complex;
 import data.FFT;
 import data.pca.PCA;
+import tools.IProcessListener;
 import tools.array.Array;
+
+import java.util.Date;
+import java.util.logging.Logger;
 
 /**
  * Created by Fathurrohman on 5/20/2015.
- *
  */
 public class MFCC {
+
+    private IProcessListener listener;
 
     // Audio property
     private int sampleLength;
@@ -31,7 +36,6 @@ public class MFCC {
     private double[][] framedAudioData;
 
     // Audio data in complex format for FFT
-//    ComplexVector[] complexVectors;
     private Complex[][] complexes;
 
     // mag spectrume
@@ -44,18 +48,23 @@ public class MFCC {
     private double[][] tempMelFilter;
 
     //Ceptra (MFCC Coeeficient)
+    private int ceptralCoef = 12;
+    private int totalMfccFeature = (ceptralCoef + 1) * 3; // 1 = energy
     private double[][] ceptra;
+    private double[][] deltaCeptra;
+    private double[][] deltaDeltaCeptra;
     private double[] energy;
-    private double[][] deltaEnergy;
-    private double[][] deltaDeltaEnergy;
+    private double[] deltaEnergy;
+    private double[] deltaDeltaEnergy;
+    private double[][] mfcc;
 
     // preEmphasis coefficient
     private float preEmphasisCoefficient = 0.95f;
 
-/**
- * @param audioData data in double format
- * @param sampleRate sample rate of audio
- */
+    /**
+     * @param audioData  data in double format
+     * @param sampleRate sample rate of audio
+     */
 
     public MFCC(double[] audioData, int sampleRate, String word) {
         this.word = word;
@@ -81,25 +90,18 @@ public class MFCC {
         preEmphasis();
         framing();
         windowing();
+        energy();
         fft();
         makeFilterBank();
         melFilter();
         dct();
-        energy();
 
-        System.out.println("MFCC Done");
-    }
+        deltaCeptra = delta(ceptra);
+        deltaDeltaCeptra = delta(deltaCeptra);
+        deltaEnergy = delta(energy);
+        deltaDeltaEnergy = delta(deltaEnergy);
 
-    public void doMFCCPCA() {
-        preEmphasis();
-        framing();
-        windowing();
-        fft();
-        makeFilterBank();
-        melFilter();
-        //dct();
-        pca();
-        System.out.println("MFCC-PCA Done");
+        writeMessage("MFCC Done");
     }
 
     private void preEmphasis() {
@@ -111,10 +113,10 @@ public class MFCC {
 
     // Divide audio sample into overlapping frame
     private void framing() {
-        System.out.println("Sample Length : " + sampleLength);
-        System.out.println("Time : " + sampleLength / (float) sampleRate);
-        System.out.println("No of Frames : " + noOfFrames);
-        System.out.println("Sample per Frame : " + samplePerFrame);
+        writeMessage("Sample Length : " + sampleLength);
+        writeMessage("Time : " + sampleLength / (float) sampleRate);
+        writeMessage("No of Frames : " + noOfFrames);
+        writeMessage("Sample per Frame : " + samplePerFrame);
 
         framedAudioData = new double[noOfFrames][samplePerFrame];
 
@@ -130,7 +132,7 @@ public class MFCC {
                 }
             }
         }
-        System.out.println("Done Framing");
+        writeMessage("Done Framing");
     }
 
     private void windowing() {
@@ -147,41 +149,37 @@ public class MFCC {
             }
         }
 
-        System.out.println("Done Windowing");
+        writeMessage("Done Windowing");
     }
 
     private void fft() {
 
-        //complexVectors = new ComplexVector[framedAudioData.length];
         complexes = new Complex[framedAudioData.length][samplePerFrame];
-
-        //Compute fft per frames
-        //loop per frame
-        //for (int i = 0; i < framedAudioData.length; i++) {
-        //complexVectors[i] = new ComplexVector(framedAudioData[i]);
-        //}
 
         Complex[][] complexAfterFFT = new Complex[framedAudioData.length][samplePerFrame];
 
+        //Compute fft per frames
+        //loop per frame
         for (int i = 0; i < noOfFrames; i++) {
             for (int j = 0; j < samplePerFrame; j++) {
-            complexes[i][j] = new Complex(framedAudioData[i][j],0.0);
+                complexes[i][j] = new Complex(framedAudioData[i][j], 0.0);
             }
             complexAfterFFT[i] = FFT.fft(complexes[i]);
         }
 
-        System.out.println("Done FFT");
+        writeMessage("Done FFT");
 
         // calculate mag spectrum
-        magSpectrum = new double[noOfFrames][framedAudioData[0].length];
+        magSpectrum = new double[noOfFrames][];
         for (int i = 0; i < noOfFrames; i++) {
-            for (int j = 0; j < framedAudioData[0].length; j++) {
-          //      magSpectrum[i][j] = Math.sqrt(complexVectors[i].real[j] * complexVectors[i].real[j] + complexVectors[i].imaginary[j] * complexVectors[i].imaginary[j]);
-                magSpectrum[i][j] = Math.sqrt(Math.pow(complexAfterFFT[i][j].re(),2) + Math.pow(complexAfterFFT[i][j].im(),2));
+            magSpectrum[i] = new double[framedAudioData[i].length];
+            for (int j = 0; j < framedAudioData[i].length; j++) {
+
+                magSpectrum[i][j] = Math.sqrt(Math.pow(complexAfterFFT[i][j].re(), 2) + Math.pow(complexAfterFFT[i][j].im(), 2));
             }
         }
 
-        System.out.println("Done Mag");
+        writeMessage("Done Mag");
     }
 
     private void makeFilterBank() {
@@ -198,13 +196,13 @@ public class MFCC {
         cbinTemp[cbin.length - 1] = highMel;
 
         // create filter bank in mel-scale
-        for (int i = 1; i <numMelFilter + 1; i++) {
+        for (int i = 1; i < numMelFilter + 1; i++) {
             cbinTemp[i] = lowMel + ((highMel - lowMel) / (numMelFilter + 2)) * i;
         }
 
         // convert back to frequency
         for (int i = 0; i <= numMelFilter + 1; i++) {
-            cbin[i] = (int) Math.floor(samplePerFrame*melToHz(cbinTemp[i]) / sampleRate);
+            cbin[i] = (int) Math.floor(samplePerFrame * melToHz(cbinTemp[i]) / sampleRate);
             //cbinTemp[i] = melToHz(cbinTemp[i]);
         }
     }
@@ -222,12 +220,12 @@ public class MFCC {
 
                 for (int freq = startFreqId; freq < centerFreqId; freq++) {
                     int magnitudeScale = centerFreqId - startFreqId;
-                    tempMelFilter[i][j] += magSpectrum[i][freq]*(freq - startFreqId) / magnitudeScale;
+                    tempMelFilter[i][j] += magSpectrum[i][freq] * (freq - startFreqId) / magnitudeScale;
                 }
 
                 for (int freq = centerFreqId; freq < endFreqId; freq++) {
                     int magnitudeScale = centerFreqId - endFreqId;
-                    tempMelFilter[i][j] += magSpectrum[i][freq]*(freq - endFreqId) / magnitudeScale;
+                    tempMelFilter[i][j] += magSpectrum[i][freq] * (freq - endFreqId) / magnitudeScale;
                 }
             }
 
@@ -238,17 +236,16 @@ public class MFCC {
     }
 
     private void dct() {
-        int numCeptra = 12;
-        ceptra = new double[noOfFrames][numCeptra];
+        ceptra = new double[noOfFrames][ceptralCoef];
 
         for (int i = 0; i < noOfFrames; i++) {
-            for (int j = 1; j <= numCeptra; j++) {
-                for (int k = 1; k <= numMelFilter ; k++) {
+            for (int j = 1; j <= ceptralCoef; j++) {
+                for (int k = 1; k <= numMelFilter; k++) {
                     ceptra[i][j - 1] += tempMelFilter[i][k - 1] * Math.cos(Math.PI * (j - 1) / numMelFilter * (k - 0.5));
                 }
             }
         }
-        System.out.println("DCT Done");
+        writeMessage("DCT Done");
     }
 
     private void energy() {
@@ -256,29 +253,105 @@ public class MFCC {
 
         for (int i = 0; i < framedAudioData.length; i++) {
             double sum = 0;
-            for (int j = 0; j < framedAudioData[0].length; j++) {
+            for (int j = 0; j < framedAudioData[i].length; j++) {
                 sum += Math.pow(framedAudioData[i][j], 2);
             }
+
+            if (Double.isNaN(Math.log(sum)) || Double.isInfinite(Math.log(sum))) {
+                //throw new IllegalArgumentException();
+                System.out.println("warning");
+            }
+
             energy[i] = Math.log(sum);
         }
     }
 
-    private void deltaEnergy() {
+    private double[][] delta(double[][] ceptra) {
+        double[][] delta = new double[framedAudioData.length][ceptralCoef];
 
+        for (int i = 0; i < framedAudioData.length; i++) {
+            for (int j = 0; j < ceptralCoef; j++) {
+                int indexi_x = i + 1;
+                int indexi_y = i - 1;
+
+                if (indexi_y < 0) {
+                    indexi_y = 0;
+                }
+                if (indexi_x > framedAudioData.length - 1) {
+                    indexi_x = framedAudioData.length - 1;
+                }
+
+                double num = ceptra[indexi_x][j] - ceptra[indexi_y][j];
+                double result = num / 2;
+                if (Double.isNaN(result) || Double.isInfinite(result)) {
+                    //throw new IllegalArgumentException();
+                }
+
+                delta[i][j] = result;
+            }
+        }
+
+        return delta;
     }
 
-    private void pca() {
-        int dimension = numMelFilter / 2;
-        double[][] ceptraReduction;
+    private double[] delta(double[] ceptra) {
+        double[] delta = new double[framedAudioData.length];
 
-        PCA pca = new PCA(ceptra);
-        ceptraReduction = pca.getPCAResult(dimension);
-        Array.copy2D(ceptraReduction, ceptra);
-        System.out.println("PCA Done");
+        for (int i = 0; i < framedAudioData.length; i++) {
+            int indexi_x = i + 1;
+            int indexi_y = i - 1;
+
+            if (indexi_y < 0) {
+                indexi_y = 0;
+            }
+            if (indexi_x > framedAudioData.length - 1) {
+                indexi_x = framedAudioData.length - 1;
+            }
+
+            double num = ceptra[indexi_x] - ceptra[indexi_y];
+            double result = num / 2;
+            if (Double.isNaN(result) || Double.isInfinite(result)) {
+                throw new IllegalArgumentException();
+            }
+            delta[i] = result;
+
+        }
+        return delta;
+    }
+
+//    public double[][] getCeptra() {
+//        return ceptra.clone();
+//    }
+
+    public void setCeptra(double[][] ceptra) {
+        this.mfcc = ceptra;
     }
 
     public double[][] getCeptra() {
-        return ceptra.clone();
+        if (mfcc == null) {
+            mfcc = new double[framedAudioData.length][totalMfccFeature];
+
+            for (int i = 0; i < framedAudioData.length; i++) {
+                for (int j = 0; j < totalMfccFeature; j++) {
+                    double data = 0;
+                    if (j < 12) {
+                        data = ceptra[i][j];
+                    } else if (j >= ceptralCoef && j < (ceptralCoef * 2)) {
+                        data = deltaCeptra[i][j - ceptralCoef];
+                    } else if (j >= (ceptralCoef * 2) && j < (ceptralCoef * 3)) {
+                        data = deltaDeltaCeptra[i][j - (ceptralCoef * 2)];
+                    } else if (j == (ceptralCoef * 3)) {
+                        data = energy[i];
+                    } else if (j == (ceptralCoef * 3) + 1) {
+                        data = deltaEnergy[i];
+                    } else if (j == (ceptralCoef * 3) + 2) {
+                        data = deltaDeltaEnergy[i];
+                    }
+                    mfcc[i][j] = data;
+                }
+            }
+        }
+        return mfcc;
     }
 
     private double hzToMel(double hz) {
@@ -291,5 +364,21 @@ public class MFCC {
 
     public String getWord() {
         return word;
+    }
+
+    public void setListener(IProcessListener listener) {
+        this.listener = listener;
+    }
+
+    public void removeListener() {
+        if (listener != null) {
+            this.listener = null;
+        }
+    }
+
+    public void writeMessage(String context) {
+        if (listener != null) {
+            listener.getMessage(new Date().toString(), context);
+        }
     }
 }

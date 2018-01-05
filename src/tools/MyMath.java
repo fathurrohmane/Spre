@@ -1,0 +1,50 @@
+package tools;
+
+/**
+ * Created by Taruna 98 on 06/08/2017.
+ */
+public class MyMath {
+
+    public static double[][] normalizeZeroToOne(double[][] input) {
+//
+//        //Initialize audio data variable
+//        double[] audioData = new double[audioDataOriginal.length / 2];
+//
+//        //Max and Min Data
+//        float maxData = Float.MIN_VALUE;
+//        float minData = Float.MAX_VALUE;
+//
+//        //Max and Min data after normalize
+//        double max = 1;
+//        double min = -1;
+//
+//        //Find max and min audio data
+//        for (int i = 0; i <audioDataOriginal.length ; i++) {
+//            if(audioDataOriginal[i] <= minData) {
+//                minData = audioDataOriginal[i];
+//            }
+//            if(audioDataOriginal[i] >= maxData) {
+//                maxData = audioDataOriginal[i];
+//            }
+//        }
+//
+//        //Normalization
+//        int counter = 0;
+//
+//        for (int i = 0; i <audioDataOriginal.length ; i+=2) {
+//            audioData[counter] = ((audioDataOriginal[i] - minData) / (maxData - minData) - 0.5) * 2;
+//            counter++;
+//        }
+//
+//        //Print data
+////        ArrayWriter.printFloatArrayToFile(audioDataOriginal, "test.txt");
+////        ArrayWriter.printDoubleArrayToFile(audioData, "test_normalize.txt");
+//        //ArrayWriter.printDoubleArrayToFile(AudioExtractor.getAudioData(audioFile), "test_audioExtractor.txt");
+//
+//        // Return audio data after normalization
+//        return audioData;
+
+
+        return null;
+    }
+}

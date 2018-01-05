@@ -3,6 +3,7 @@ package menu;
 import classification.Processor;
 import data.database.DatabaseHandler;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,7 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import tools.Executor;
+import tools.IMainView;
 import tools.ui.DialogCreator;
 import tools.Time;
 
@@ -21,10 +22,11 @@ import java.io.File;
 /**
  * Created by Fathurrohman on 5/20/2015.
  */
-public class MainMenuController extends Application {
+public class MainMenuController extends Application implements IMainView {
     // UI Variable
     Parent root;
     Stage primaryStage;
+
     @FXML
     LineChart<Number, Number> audioWaveChart;
     /**
@@ -51,7 +53,7 @@ public class MainMenuController extends Application {
     @FXML
     Label label_number_states;
     @FXML
-    TextField text_field_word;
+    TextField text_field_save_file_location;
 
     @FXML
     TextField text_field_training_file_location;
@@ -59,6 +61,11 @@ public class MainMenuController extends Application {
     // Class Variable
     File previousFileAddress = null;
     File soundFile = null;
+    File databaseFile = null;
+    Processor processor = null;
+
+    private int dialogTestingOption;
+    private int dialogTrainingOption;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -87,23 +94,23 @@ public class MainMenuController extends Application {
         // Choose from dialog
 
         String respond = DialogCreator.showChoicesTestingDialog(primaryStage);
-        File soundFiles = null;
 
         if (respond.equals(DialogCreator.SINGLE_RESPONE)) {
-            soundFiles = DialogCreator.showFileChooser(primaryStage, previousFileAddress);
+            soundFile = DialogCreator.showDirectoryChooser("Open Audio File", primaryStage, previousFileAddress);
+            dialogTestingOption = 0;
         } else if (respond.equals(DialogCreator.FOLDER_RESPONE)) {
-            soundFiles = DialogCreator.showDirectoryChooser(primaryStage, previousFileAddress);
+            soundFile = DialogCreator.showDirectoryChooser("Open Audio File", primaryStage, previousFileAddress);
+            dialogTestingOption = 1;
+        } else {
+            soundFile = null;
         }
 
-        if (soundFiles == null) {
+        if (soundFile == null) {
             DialogCreator.showNormalDialog(primaryStage, "No File/Folder Selected");
+            text_field_training_file_location.setText("");
         } else {
-            if (soundFiles.isFile()) {
-                addTextTesting(soundFiles.getName());// FIXME: 18-Dec-15
-            } else if (soundFiles.isDirectory()) {
-                addTextTesting(soundFiles.getName());
-                Processor.startTestingMultiple(soundFiles);
-            }
+            // TODO: 23-Dec-15 write list training file to text area
+            text_field_training_file_location.setText(soundFile.getPath());
         }
     }
 
@@ -113,9 +120,11 @@ public class MainMenuController extends Application {
         soundFile = null;
 
         if (respond.equals(DialogCreator.SINGLE_RESPONE)) {
-            soundFile = DialogCreator.showFileChooser(primaryStage, previousFileAddress);
+            soundFile = DialogCreator.showDirectoryChooser("Choose directory of all the training sound files", primaryStage, previousFileAddress);
+            dialogTrainingOption = 0;
         } else if (respond.equals(DialogCreator.FOLDER_RESPONE)) {
-            soundFile = DialogCreator.showDirectoryChooser(primaryStage, previousFileAddress);
+            soundFile = DialogCreator.showDirectoryChooser("Choose directory of all the training sound files", primaryStage, previousFileAddress);
+            dialogTrainingOption = 1;
         }
 
         if (soundFile == null) {
@@ -139,9 +148,61 @@ public class MainMenuController extends Application {
         if (soundFile == null) {
             DialogCreator.showNormalDialog(primaryStage, "No File/Folder Selected");
         } else {
-            Executor executor = new Executor(text_field_word.getText(), 128, soundFile); // TODO: 29-Dec-15 variable for cluster
-            executor.start();
+            processor = new Processor(this);
+            Thread backgroundThread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    switch (dialogTrainingOption) {
+                        case 0:
+                            processor.startTrainingWithoutPCA("", 256, soundFile);
+                            break;
+                        case 1:
+                            processor.startTraining("", 256, soundFile);
+                            break;
+                    }
+                }
+            });
+            backgroundThread.start();
         }
+    }
+
+    public void openFileDatabaseClicked() {
+        databaseFile = DialogCreator.showDirectoryChooser("Open Database directory contains subfolder codebook and Word Model Files", primaryStage, previousFileAddress);
+
+    }
+
+    public void runTheTest() {
+        if (soundFile == null && databaseFile == null) {
+            DialogCreator.showNormalDialog(primaryStage, "No File/Folder Selected");
+        } else {
+            if (soundFile.isFile()) {
+                addTextTesting(soundFile.getName());// FIXME: 18-Dec-15
+            } else if (soundFile.isDirectory()) {
+                addTextTesting(soundFile.getName());
+            }
+        }
+
+        processor = new Processor(this);
+        Thread backgroundThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                switch (dialogTrainingOption) {
+                    case 0:
+                        processor.startTestingWithoutPCA(soundFile, databaseFile);
+                        break;
+                    case 1:
+                        processor.startTestingMultiple(soundFile, databaseFile);
+                        break;
+                }
+            }
+        });
+        backgroundThread.start();
+    }
+
+    public void saveToButtonClicked() {
+        databaseFile = DialogCreator.showDirectoryChooser("Choose directory of all the training sound files", primaryStage, previousFileAddress);
+        DatabaseHandler.setDatabasePath(databaseFile);
+        text_field_save_file_location.setText(databaseFile.getAbsolutePath());
     }
 
     private void addTextTesting(String text) {
@@ -150,5 +211,15 @@ public class MainMenuController extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    @Override
+    public void writeLog(String context) {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                addTextTesting(context);
+            }
+        });
     }
 }

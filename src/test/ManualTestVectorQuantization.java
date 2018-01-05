@@ -30,19 +30,20 @@ public class ManualTestVectorQuantization {
         double[][] sample2 = new double[9][2];
         Array.copy2D(sample,sample2);
 
-
+        System.out.println("Vector Quantization");
         VectorQuantization vq = new VectorQuantization("test",sample,4);
         vq.print();
 
+        System.out.println("GenLloyd");
         GenLloyd g = new GenLloyd(sample2);
         g.calcClusters(4);
+        printCluster(g.getClusterPoints());
 
+        System.out.println("LBG");
         LBG lbg = new LBG(sample1);
         lbg.calculateCluster(4);
-
         printCluster(lbg.getCluster());
 
-        printCluster(g.getClusterPoints());
     }
 
     public static void printCluster(double[][] data) {

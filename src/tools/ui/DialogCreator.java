@@ -16,8 +16,8 @@ import java.util.Optional;
  */
 public class DialogCreator {
 
-    public static final String SINGLE_RESPONE = "Train Single Word?";
-    public static final String FOLDER_RESPONE = "Train Multiple Words?";
+    public static final String SINGLE_RESPONE = "Train without PCA?";
+    public static final String FOLDER_RESPONE = "Train with PCA?";
     public static final String CANCEL_RESPONE = "Dialog.Actions.CANCEL";
 
     public static void showNormalDialog(Stage stage, String information) {
@@ -52,7 +52,6 @@ public class DialogCreator {
         } else {
             return "error";
         }
-
 }
 
     public static File showFileChooser(Stage primaryStage, File previousFileAddress) {
@@ -72,10 +71,10 @@ public class DialogCreator {
         return previousFileAddress;
     }
 
-    public static File showDirectoryChooser(Stage primaryStage, File previousFileAddress) {
+    public static File showDirectoryChooser(String message, Stage primaryStage, File previousFileAddress) {
         // Open file dialog
         DirectoryChooser directoryChooser = new DirectoryChooser();
-        directoryChooser.setTitle("Open Audio File");
+        directoryChooser.setTitle(message);
 
         // Set file dialog to previous direcrory
         if(previousFileAddress != null) {
