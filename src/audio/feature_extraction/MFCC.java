@@ -327,6 +327,10 @@ public class MFCC {
         this.mfcc = ceptra;
     }
 
+    /**
+     * get MFCC
+     * @return double[number of frame in a speech file][number of coeficient(MFCC)]
+     */
     public double[][] getCeptra() {
         if (mfcc == null) {
             mfcc = new double[framedAudioData.length][totalMfccFeature];
@@ -334,7 +338,7 @@ public class MFCC {
             for (int i = 0; i < framedAudioData.length; i++) {
                 for (int j = 0; j < totalMfccFeature; j++) {
                     double data = 0;
-                    if (j < 12) {
+                    if (j < ceptralCoef) {
                         data = ceptra[i][j];
                     } else if (j >= ceptralCoef && j < (ceptralCoef * 2)) {
                         data = deltaCeptra[i][j - ceptralCoef];

@@ -1,9 +1,5 @@
 package data.vectorquantization.LBG;
 
-import data.database.Codebook;
-import data.database.DatabaseHandler;
-import data.database.WordModel;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -80,7 +76,7 @@ public class VectorQuantization {
 
         // Calculate average distortion
         for (int i = 0; i < dataPoint.size(); i++) {
-            distortionAverage += dataPoint.get(i).calculateEuclidenDistance(cluster_1);
+            distortionAverage += dataPoint.get(i).calculateEuclideanDistance(cluster_1);
         }
         distortionAverage /= (dataPoint.size() * numberOfDimension);
 
@@ -103,7 +99,7 @@ public class VectorQuantization {
                     double euclidenDistanceMin = Double.MAX_VALUE;
 
                     for (int k = 0; k < currentTotalCluster; k++) {
-                        double eucldenDistance = dataPoint.get(i).calculateEuclidenDistance(clusters.get(k));
+                        double eucldenDistance = dataPoint.get(i).calculateEuclideanDistance(clusters.get(k));
 
                         if (eucldenDistance < euclidenDistanceMin) {
                             euclidenDistanceMin = eucldenDistance;
@@ -134,7 +130,7 @@ public class VectorQuantization {
                 distortionAverage = 0.0;
 
                 for (int i = 0; i < sampleSize; i++) {
-                    distortionAverage += dataPoint.get(i).calculateEuclidenDistance(clusters.get(idClusterPerSample[i]));
+                    distortionAverage += dataPoint.get(i).calculateEuclideanDistance(clusters.get(idClusterPerSample[i]));
                 }
                 distortionAverage /= (sampleSize * numberOfDimension);
 
@@ -181,7 +177,7 @@ public class VectorQuantization {
         double minDistance = Double.MAX_VALUE;
 
         for (int i = 0; i < maxCluster; i++) {
-            double currentDistance = clusters.get(i).calculateEuclidenDistance(p);
+            double currentDistance = clusters.get(i).calculateEuclideanDistance(p);
             if (minDistance > currentDistance) {
                 result = i;
                 minDistance = currentDistance;

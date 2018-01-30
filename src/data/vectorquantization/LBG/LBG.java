@@ -51,16 +51,12 @@ public class LBG {
         loadFromDataBase(directoryDatabase);
     }
 
-//    public LBG(List<MFCC> dataSample) {
-//        mDimensionSize = dataSample.get(0).getCeptra().length;
-//        double[][] dataArray = new double[dataSample.size()][mDimensionSize];
-//        for (int i = 0; i < dataSample.size(); i++) {
-//            for (int j = 0; j < dataSample.get(0).getCeptra()[0].length; j++) {
-//                dataArray[i][j] = dataSample.get(i)[j];
-//            }
-//        }
-//        this.setDataSample(dataArray);
-//    }
+    public LBG(List<MFCC> dataSample, String empty) {
+        mDimensionSize = dataSample.get(0).getCeptra().length;
+        double[][] dataArray = new double[dataSample.size()][mDimensionSize];
+
+        this.setDataSample(dataArray);
+    }
 
     public LBG(List<Point> dataSample) {
         double[][] dataArray = new double[dataSample.size()][dataSample.get(0).getDimension()];
@@ -243,6 +239,22 @@ public class LBG {
             result[counter] = getClosestClusterIndex(point);
             counter++;
         }
+        return result;
+    }
+
+    /**
+     * @param mfcc
+     * @return observation sequence
+     */
+    public int[] getObservationSequence(double[][] mfcc) {
+        int[] result = new int[mfcc.length];
+        int counter = 0;
+
+        for (int i = 0; i < mfcc[counter].length; i++) {
+            result[counter] = getClosestClusterIndex(mfcc[counter]);
+            counter++;
+        }
+
         return result;
     }
 

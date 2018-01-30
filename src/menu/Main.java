@@ -13,14 +13,10 @@ import java.io.IOException;
  */
 public class Main extends Application {
 
-    // UI Variable
-    Parent root;
-    Stage primaryStage;
-
     @Override
     public void start(Stage primaryStage) throws Exception {
-        root = FXMLLoader.load(getClass().getResource("MaterialMainMenu.fxml"));
-        this.primaryStage = primaryStage;
+        Parent root = FXMLLoader.load(getClass().getResource("MaterialMainMenu.fxml"));
+        Stage primaryStage1 = primaryStage;
         primaryStage.setTitle("SPEECH RECOGNITION - Fathurrohman Elkusnandi");
         primaryStage.setScene(new Scene(root, 800, 480));
         primaryStage.show();

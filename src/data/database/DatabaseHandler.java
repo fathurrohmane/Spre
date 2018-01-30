@@ -1,9 +1,11 @@
 package data.database;
 
+import data.model.SoundFileInfo;
 import test.validator.hmm.HiddenMarkov;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Fathurrohman on 17-Dec-15.
@@ -22,7 +24,7 @@ public class DatabaseHandler {
     /**
      * Save codebook object to files
      *
-     * @param path   name of codebook or word
+     * @param path name of codebook or word
      */
 
     public static void setDatabasePath(File path) {
@@ -48,8 +50,6 @@ public class DatabaseHandler {
             out.close();
             fileOutputStream.close();
             System.out.println("codebook" + " has been saved in " + path);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -74,8 +74,6 @@ public class DatabaseHandler {
             out.close();
             fileOutputStream.close();
             System.out.println(name + " has been saved in " + path);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -95,9 +93,7 @@ public class DatabaseHandler {
             ObjectInputStream in = new ObjectInputStream(fileInputStream);
             output = (Codebook) in.readObject();
             System.out.println("Codebook" + " has been loaded " + databaseDirectory.getAbsolutePath());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return output;
@@ -117,9 +113,7 @@ public class DatabaseHandler {
             ObjectInputStream in = new ObjectInputStream(fileInputStream);
             output = (WordModel) in.readObject();
             System.out.println(name + " has been loaded " + path);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return output;
@@ -148,15 +142,13 @@ public class DatabaseHandler {
                 }
             }
             System.out.println("Load Completed with " + counter + "data");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return (WordModel[]) output.toArray();
     }
 
-    public static ArrayList<HiddenMarkov> loadAllWordModelToHMMs(File databaseDirectory) {
+    public static List<HiddenMarkov> loadAllWordModelToHMMs(File databaseDirectory) {
         System.out.println("Load All Word Model");
         ArrayList<HiddenMarkov> output = new ArrayList<HiddenMarkov>();
         int counter = 0;
@@ -174,11 +166,57 @@ public class DatabaseHandler {
                 }
             }
             System.out.println("Load Completed with " + counter + "data");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return output;
+    }
+
+    /**
+     * Read this kind structure file
+     * /root
+     * //aceh
+     * ///aceh_1.wav
+     * ///aceh_2.wav
+     * ///aceh_3.wav
+     * //bandung
+     * ///bandung_1.wav
+     * ///bandung_2.wav
+     * ///bandung_3.wav
+     *
+     * @param firstLevelDirectories root directory where the training/testing files
+     */
+    public static SoundFileInfo readFolder(File[] firstLevelDirectories) {
+        SoundFileInfo soundFileInfo = new SoundFileInfo();
+        // Browse all folder
+        for (File firstLevelDirectory : firstLevelDirectories) {
+            // if its a dir browse it
+            if (firstLevelDirectory.isDirectory()) {
+                String folderName = firstLevelDirectory.getName();
+                System.out.println("Directory :" + folderName);
+                // Get file list
+                File[] secondLevelDirectories = firstLevelDirectory.listFiles();
+                // If not empty
+                if (secondLevelDirectories != null) {
+                    // Save its name
+                    int counter = 0;
+                    for (File secondLevelDirectory : secondLevelDirectories) {
+                        if (secondLevelDirectory.isFile()) {
+                            soundFileInfo.addFilePath(secondLevelDirectory.getAbsolutePath());
+                            counter++;
+                        }
+                    }
+                    soundFileInfo.addWord(folderName, counter);
+                    // If empty
+                } else {
+                    System.out.println("Directory :" + firstLevelDirectory.getName() + " is EMPTY");
+                }
+                // if not show error
+            } else if (firstLevelDirectory.isFile()) {
+                System.out.println("File Outside Folder wont be read");
+                return null;
+            }
+        }
+        return soundFileInfo;
     }
 }

@@ -95,14 +95,18 @@ public class MainMenuController extends Application implements IMainView {
 
         String respond = DialogCreator.showChoicesTestingDialog(primaryStage);
 
-        if (respond.equals(DialogCreator.SINGLE_RESPONE)) {
-            soundFile = DialogCreator.showDirectoryChooser("Open Audio File", primaryStage, previousFileAddress);
-            dialogTestingOption = 0;
-        } else if (respond.equals(DialogCreator.FOLDER_RESPONE)) {
-            soundFile = DialogCreator.showDirectoryChooser("Open Audio File", primaryStage, previousFileAddress);
-            dialogTestingOption = 1;
-        } else {
-            soundFile = null;
+        switch (respond) {
+            case DialogCreator.SINGLE_RESPONE:
+                soundFile = DialogCreator.showDirectoryChooser("Open Audio File", primaryStage, previousFileAddress);
+                dialogTestingOption = 0;
+                break;
+            case DialogCreator.FOLDER_RESPONE:
+                soundFile = DialogCreator.showDirectoryChooser("Open Audio File", primaryStage, previousFileAddress);
+                dialogTestingOption = 1;
+                break;
+            default:
+                soundFile = null;
+                break;
         }
 
         if (soundFile == null) {
@@ -149,17 +153,14 @@ public class MainMenuController extends Application implements IMainView {
             DialogCreator.showNormalDialog(primaryStage, "No File/Folder Selected");
         } else {
             processor = new Processor(this);
-            Thread backgroundThread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    switch (dialogTrainingOption) {
-                        case 0:
-                            processor.startTrainingWithoutPCA("", 256, soundFile);
-                            break;
-                        case 1:
-                            processor.startTraining("", 256, soundFile);
-                            break;
-                    }
+            Thread backgroundThread = new Thread(() -> {
+                switch (dialogTrainingOption) {
+                    case 0:
+                        processor.startTrainingWithoutPCA("", 256, soundFile);
+                        break;
+                    case 1:
+                        processor.startTrainingWithPCA("", 256, soundFile);
+                        break;
                 }
             });
             backgroundThread.start();
@@ -183,17 +184,14 @@ public class MainMenuController extends Application implements IMainView {
         }
 
         processor = new Processor(this);
-        Thread backgroundThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                switch (dialogTrainingOption) {
-                    case 0:
-                        processor.startTestingWithoutPCA(soundFile, databaseFile);
-                        break;
-                    case 1:
-                        processor.startTestingMultiple(soundFile, databaseFile);
-                        break;
-                }
+        Thread backgroundThread = new Thread(() -> {
+            switch (dialogTestingOption) {
+                case 0:
+                    processor.startTestingWithoutPCA(soundFile, databaseFile);
+                    break;
+                case 1:
+                    processor.startTestingWithPCA(soundFile, databaseFile);
+                    break;
             }
         });
         backgroundThread.start();
@@ -215,11 +213,6 @@ public class MainMenuController extends Application implements IMainView {
 
     @Override
     public void writeLog(String context) {
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                addTextTesting(context);
-            }
-        });
+        Platform.runLater(() -> addTextTesting(context));
     }
 }

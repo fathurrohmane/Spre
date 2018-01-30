@@ -22,6 +22,6 @@ public class Executor extends Thread {
 
     @Override
     public void run() {
-        //Processor.startTraining(word, cluster, soundFile);
+        //Processor.startTrainingWithPCA(word, cluster, soundFile);
     }
 }

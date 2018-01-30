@@ -8,7 +8,7 @@ import java.util.Vector;
 public class Cluster extends Point {
 
     //All sample point in this cluster
-    public Vector<Point> pointsCollection = new Vector<Point>();
+    private Vector<Point> pointsCollection = new Vector<>();
 
     public Cluster(int dimension) {
         this.coordinates = new double[dimension];

@@ -2,13 +2,11 @@ package data.pca;
 
 import Jama.EigenvalueDecomposition;
 import Jama.Matrix;
+import Jama.SingularValueDecomposition;
 import audio.feature_extraction.MFCC;
 import data.vectorquantization.LBG.Point;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * Created by Fathurrohman on 25-Nov-15.
@@ -17,12 +15,10 @@ import java.util.TreeSet;
 public class PCA {
 
     private double[][] data;
+    private double[][] originalData;
     private double[] means;
 
-    private Matrix eigenVectors;
-    private EigenvalueDecomposition eigenData;
-    private double[] eigenValues;
-    private SortedSet<PrincipleComponent> principleComponents;
+    private List<PrincipleComponent> principleComponents;
 
     public PCA(List<Point> dataSample) {
         double[][] dataArray = new double[dataSample.size()][dataSample.get(0).getDimension()];
@@ -49,49 +45,53 @@ public class PCA {
 //calculate mean for each dimension
         means = calculateMean(data);
 //Adjust data by subtract by its mean
-        data = adjustedData(data, means);
+        data = adjustedData(data, means, false);
 //calculate mean for adjusted data
         means = calculateMean(data);
 //calculate covariance
         double[][] covariance = getCovariances(data, means);
         Matrix covarianceInMatrix = new Matrix(covariance);
         System.out.println("Matrix Covariance :");
-        covarianceInMatrix.print(data[0].length, data[0].length);
-        eigenData = covarianceInMatrix.eig();
+        covarianceInMatrix.print(data[0].length, 5);
+        EigenvalueDecomposition eigenData = covarianceInMatrix.eig();
+//        SingularValueDecomposition eigenData = covarianceInMatrix.svd();
 //calculate eigen vector and value
-        eigenValues = eigenData.getRealEigenvalues();
-        eigenVectors = eigenData.getV();
+        double[] eigenValues = eigenData.getRealEigenvalues();
+        Matrix eigenVectors = eigenData.getV();
         System.out.println("Eigen Vector :");
-        eigenVectors.print(data[0].length, data[0].length);
+        eigenVectors.print(data[0].length, 5);
         System.out.println("Eigen Value :");
-        for (int i = 0; i < eigenValues.length; i++) {
-            System.out.println(eigenValues[i]);
+        for (double eigenValue : eigenValues) {
+            System.out.println(eigenValue);
         }
         double[][] vecs = eigenVectors.getArray();
         int numOfComponents = eigenVectors.getColumnDimension(); // same as num rows.
-        principleComponents = new TreeSet<>();
+        principleComponents = new ArrayList<>();
 //Sort by eigen value -> higher eigenvalue higher priority
         for (int i = 0; i < numOfComponents; i++) {
             double[] eigenVector = new double[numOfComponents];
-            for (int j = 0; j < numOfComponents; j++) {
-                eigenVector[j] = vecs[i][j];
-            }
-            principleComponents.add(new PrincipleComponent(i, eigenValues[i], eigenVector));
+            System.arraycopy(vecs[i], 0, eigenVector, 0, numOfComponents);
+            principleComponents.add(new PrincipleComponent(eigenValues[i], eigenVector));
         }
+        Collections.sort(principleComponents);
+        System.out.println();
     }
 
     //Set result dimension -> dimensional reduction
-    public double[][] getPCAResult(int numberofdimension) {
+    public double[][] getPCAResult(int numberOfDimension) {
 //List of eigen vector sorted by eigenvalue
-        List<PCA.PrincipleComponent> mainComponents = getDominantComponents(numberofdimension);
-        Matrix features = PCA.getDominantComponentsMatrix(mainComponents);
-
+        List<PCA.PrincipleComponent> mainComponents = getDominantComponents(numberOfDimension);
+        Matrix features = getDominantComponentsMatrix(mainComponents);
+        System.out.println("Feature Matrix");
+        features.print(2, 4);
 //convert original data to Matrix
-        Matrix originalDataSubtractedbyMean = new Matrix(data);
+        Matrix originalDataSubtractedByMean = new Matrix(data);
 
 //featureVectorTranspose * originalDataSubtractedbyMeanTranspose
         Matrix featureTranspose = features.transpose();
-        Matrix originalDataAdjusted = originalDataSubtractedbyMean.transpose();
+        System.out.println("Feature Matrix Transposed");
+        featureTranspose.print(2, 4);
+        Matrix originalDataAdjusted = originalDataSubtractedByMean.transpose();
         Matrix result = featureTranspose.times(originalDataAdjusted);
 
 //Result in array
@@ -99,33 +99,68 @@ public class PCA {
     }
 
     //Set result dimension -> dimensional reduction
-    public double[][] getPCABackWithout(int numberofdimension) {
+    public double[][] getPercentagePCAResult(int minPercentage) {
+        double currentEigenValue = 0;
+        double totalEigenValue = 0;
+        int numberOfDimension = 0;
+        // calculate total of eigen value
+        for (PrincipleComponent p : principleComponents
+                ) {
+            totalEigenValue += p.eigenValue;
+        }
+        // calculate percentage
+        Iterator<PrincipleComponent> iterator = principleComponents.iterator();
+        do {
+            PrincipleComponent principleComponent = iterator.next();
+            currentEigenValue += principleComponent.eigenValue;
+            numberOfDimension++;
+        } while ((((currentEigenValue / totalEigenValue) * 100) < minPercentage) && iterator.hasNext());
+
 //List of eigen vector sorted by eigenvalue
-        List<PCA.PrincipleComponent> mainComponents = getAllComponents();
-        Matrix features = PCA.getBackComponentsMatrix(mainComponents);
+        List<PCA.PrincipleComponent> mainComponents = getDominantComponents(numberOfDimension);
+        Matrix features = getDominantComponentsMatrix(mainComponents);
 
 //convert original data to Matrix
-        Matrix originalDataSubtractedbyMean = new Matrix(data);
+        Matrix originalDataSubtractedByMean = new Matrix(data);
 
 //featureVectorTranspose * originalDataSubtractedbyMeanTranspose
         Matrix featureTranspose = features.transpose();
-        Matrix originalDataAdjusted = originalDataSubtractedbyMean.transpose();
+        Matrix originalDataAdjusted = originalDataSubtractedByMean.transpose();
         Matrix result = featureTranspose.times(originalDataAdjusted);
 
 //Result in array
         return result.transpose().getArray();
     }
 
-    public double[][] adjustedData(double[][] data, double[] means) {
+    /**
+     * Perform addition or subtraction from a data and its mean
+     *
+     * @param data     input
+     * @param means    its means
+     * @param addition if true (data + means) if false (data - means)
+     * @return data that has been adjusted with its mean
+     * CHECKED!
+     */
+    private double[][] adjustedData(double[][] data, double[] means, boolean addition) {
         double[][] output = new double[data.length][data[0].length];
         for (int i = 0; i < data.length; i++) {
             for (int j = 0; j < data[0].length; j++) {
-                output[i][j] = data[i][j] - means[j];
+                if (addition) {
+                    output[i][j] = data[i][j] + means[j];
+                } else {
+                    output[i][j] = data[i][j] - means[j];
+                }
             }
         }
         return output;
     }
 
+    /**
+     * Calculate means of the data
+     * @param data data input
+     * @return its mean
+     * CHECKED!
+     */
     private double[] calculateMean(double[][] data) {
         int numData = data.length;
         int n = data[0].length;
@@ -143,41 +178,18 @@ public class PCA {
 
 //divide by its total
         for (int i = 0; i < sum.length; i++) {
-            mean[i] = sum[i] / data.length;
+            mean[i] = sum[i] / numData;
         }
         return mean;
     }
 
-    public static Matrix getDominantComponentsMatrix(List<PrincipleComponent> dom) {
+    public Matrix getDominantComponentsMatrix(List<PrincipleComponent> dom) {
         int nRows = dom.get(0).eigenVector.length;
         int nCols = dom.size();
         Matrix matrix = new Matrix(nRows, nCols);
         for (int col = 0; col < nCols; col++) {
             for (int row = 0; row < nRows; row++) {
                 matrix.set(row, col, dom.get(col).eigenVector[row]);
-            }
-        }
-        return matrix;
-    }
-
-    public static Matrix getBackComponentsMatrix(List<PrincipleComponent> dom) {
-        int nRows = dom.get(0).eigenVector.length;
-        int nCols = dom.size();
-        Matrix matrix = new Matrix(nRows, nCols);
-        for (int col = 0; col < nCols; col++) {
-            PrincipleComponent p = null;
-            for (PrincipleComponent principleComponent : dom) {
-                if (principleComponent.getNormalOrder() == col) {
-                    p = principleComponent;
-                }
-            }
-
-            if (p == null) {
-                throw new IllegalArgumentException("no match");
-            }
-
-            for (int row = 0; row < nRows; row++) {
-                matrix.set(row, col, p.eigenVector[row]);
             }
         }
         return matrix;
@@ -227,52 +239,21 @@ public class PCA {
         return ret;
     }
 
-    public List<PrincipleComponent> getAllComponents() {
-        List<PrincipleComponent> ret = new ArrayList<>();
-        for (PrincipleComponent pc : principleComponents) {
-            ret.add(pc);
-        }
-        return ret;
-    }
-
-    public double[] getMeans() {
-        return means;
-    }
-
-    public double[][] getDataBack(double[][] data, int numberofOriginalDimension) {
-        Matrix datainMatrix = new Matrix(data);
-
+    public double[][] getOriginalDataBack() {
         //List of eigen vector sorted by eigenvalue
-        List<PCA.PrincipleComponent> mainComponents = getDominantComponents(numberofOriginalDimension);
-        Matrix features = PCA.getDominantComponentsMatrix(mainComponents);
+        List<PCA.PrincipleComponent> mainComponents = getDominantComponents(data[0].length);
+        Matrix features = getDominantComponentsMatrix(mainComponents);
+        Matrix finalData = new Matrix(getPCAResult(data[0].length));
+        Matrix result = features.inverse().times(finalData);
 
-        // Return data = eigenVectorTransposed * data after reduction
-        Matrix originalData = features.transpose().times(datainMatrix.transpose());
-
-        return originalData.transpose().getArray();
+        return adjustedData(result.getArray(), means, true);
     }
 
-    public Matrix getDataBackInMatrix(double[][] data, int numberofOriginalDimension) {
+    public class PrincipleComponent implements Comparable<PrincipleComponent> {
+        private double eigenValue;
+        private double[] eigenVector;
 
-        Matrix datainMatrix = new Matrix(data);
-
-        //List of eigen vector sorted by eigenvalue
-        List<PCA.PrincipleComponent> mainComponents = getDominantComponents(numberofOriginalDimension);
-        Matrix features = PCA.getDominantComponentsMatrix(mainComponents);
-
-        // Return data = eigenVectorTransposed * data after reduction
-        Matrix originalData = features.transpose().times(datainMatrix.transpose());
-
-        return originalData;
-    }
-
-    public static class PrincipleComponent implements Comparable<PrincipleComponent> {
-        private int normalOrder = 0;
-        public double eigenValue;
-        public double[] eigenVector;
-
-        public PrincipleComponent(int normalOrder, double eigenValue, double[] eigenVector) {
-            this.normalOrder = normalOrder;
+        public PrincipleComponent(double eigenValue, double[] eigenVector) {
             this.eigenValue = eigenValue;
             this.eigenVector = eigenVector;
         }
@@ -287,14 +268,10 @@ public class PCA {
             return ret;
         }
 
-        public int getNormalOrder() {
-            return normalOrder;
+        public String toString() {
+            return "Principle Component, eigenvalue: " + eigenValue+ ", eigenvector: ["
+                    + Arrays.toString(eigenVector) + "]";
         }
-
-        //        public String toString() {
-//            return "Principle Component, eigenvalue: " + Debug.num(eigenValue) + ", eigenvector: ["
-//                    + Debug.num(eigenVector) + "]";
-//        }
     }
 
 }

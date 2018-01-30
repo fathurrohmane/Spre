@@ -2,28 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/com_jfoenix_jfoenix_1_10_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/Main.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/MaterialMainMenu.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/menu/main/MaterialMainMenuController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/tools/IMainView.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/tools/IProcessListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/tools/MyMath.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SpeechRecognition.iml" afterPath="$PROJECT_DIR$/SpeechRecognition.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SpeechRecognition/menu/MainMenu.fxml" afterPath="$PROJECT_DIR$/out/production/SpeechRecognition/menu/MainMenu.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/audio/feature_extraction/MFCC.java" afterPath="$PROJECT_DIR$/src/audio/feature_extraction/MFCC.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/classification/Processor.java" afterPath="$PROJECT_DIR$/src/classification/Processor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/database/DatabaseHandler.java" afterPath="$PROJECT_DIR$/src/data/database/DatabaseHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/pca/PCA.java" afterPath="$PROJECT_DIR$/src/data/pca/PCA.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/vectorquantization/LBG/LBG.java" afterPath="$PROJECT_DIR$/src/data/vectorquantization/LBG/LBG.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/data/vectorquantization/LBG/Point.java" afterPath="$PROJECT_DIR$/src/data/vectorquantization/LBG/Point.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/menu/MainMenu.fxml" afterPath="$PROJECT_DIR$/src/menu/MainMenu.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/menu/MainMenuController.java" afterPath="$PROJECT_DIR$/src/menu/MainMenuController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/ManualTestPCA.java" afterPath="$PROJECT_DIR$/src/test/ManualTestPCA.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/ManualTestVectorQuantization.java" afterPath="$PROJECT_DIR$/src/test/ManualTestVectorQuantization.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/Executor.java" afterPath="$PROJECT_DIR$/src/tools/Executor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tools/ui/DialogCreator.java" afterPath="$PROJECT_DIR$/src/tools/ui/DialogCreator.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/data/model/SoundFileInfo.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/ArrayTest.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/DatabaseHandlerTest.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/PCATest.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/PointTest.java" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/com_jfoenix_jfoenix_1_10_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/com_jfoenix_jfoenix_1_10_0.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/SpeechRecognition.iml" afterPath="$PROJECT_DIR$/SpeechRecognition.iml" />
+      <change beforePath="$PROJECT_DIR$/src/audio/feature_extraction/MFCC.java" afterPath="$PROJECT_DIR$/src/audio/feature_extraction/MFCC.java" />
+      <change beforePath="$PROJECT_DIR$/src/classification/Processor.java" afterPath="$PROJECT_DIR$/src/classification/Processor.java" />
+      <change beforePath="$PROJECT_DIR$/src/data/database/DatabaseHandler.java" afterPath="$PROJECT_DIR$/src/data/database/DatabaseHandler.java" />
+      <change beforePath="$PROJECT_DIR$/src/data/pca/PCA.java" afterPath="$PROJECT_DIR$/src/data/pca/PCA.java" />
+      <change beforePath="$PROJECT_DIR$/src/data/vectorquantization/LBG/Cluster.java" afterPath="$PROJECT_DIR$/src/data/vectorquantization/LBG/Cluster.java" />
+      <change beforePath="$PROJECT_DIR$/src/data/vectorquantization/LBG/LBG.java" afterPath="$PROJECT_DIR$/src/data/vectorquantization/LBG/LBG.java" />
+      <change beforePath="$PROJECT_DIR$/src/data/vectorquantization/LBG/Point.java" afterPath="$PROJECT_DIR$/src/data/vectorquantization/LBG/Point.java" />
+      <change beforePath="$PROJECT_DIR$/src/data/vectorquantization/LBG/VectorQuantization.java" afterPath="$PROJECT_DIR$/src/data/vectorquantization/LBG/VectorQuantization.java" />
+      <change beforePath="$PROJECT_DIR$/src/menu/Main.java" afterPath="$PROJECT_DIR$/src/menu/Main.java" />
+      <change beforePath="$PROJECT_DIR$/src/menu/MainMenuController.java" afterPath="$PROJECT_DIR$/src/menu/MainMenuController.java" />
+      <change beforePath="$PROJECT_DIR$/src/test/ManualTestHMM.java" afterPath="$PROJECT_DIR$/src/test/ManualTestHMM.java" />
+      <change beforePath="$PROJECT_DIR$/src/test/ManualTestPCA.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/tools/Executor.java" afterPath="$PROJECT_DIR$/src/tools/Executor.java" />
+      <change beforePath="$PROJECT_DIR$/src/tools/array/Array.java" afterPath="$PROJECT_DIR$/src/tools/array/Array.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -81,7 +81,6 @@
     </breakpoint_any>
     <breakpoint_rules converted="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="JavaFxApplication" />
   </component>
@@ -90,79 +89,13 @@
       <file leaf-file-name="Processor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/classification/Processor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="89" column="53" lean-forward="false" selection-start-line="89" selection-start-column="53" selection-end-line="89" selection-end-column="53" />
-              <folding>
-                <element signature="e#8145#8151#0" expanded="true" />
-                <element signature="e#8197#8204#0" expanded="true" />
-                <element signature="e#10465#10471#0" expanded="true" />
-                <element signature="e#10517#10524#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Point.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/data/vectorquantization/LBG/Point.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="11" lean-forward="false" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
-              <folding>
-                <element signature="e#273#274#0" expanded="true" />
-                <element signature="e#316#317#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainMenuController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/menu/MainMenuController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2771">
-              <caret line="180" column="52" lean-forward="false" selection-start-line="180" selection-start-column="52" selection-end-line="180" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ManualTestPCA.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/ManualTestPCA.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="42" column="56" lean-forward="false" selection-start-line="42" selection-start-column="56" selection-end-line="42" selection-end-column="56" />
+            <state relative-caret-position="172">
+              <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#941#942#0" expanded="true" />
+                <element signature="e#981#982#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DialogCreator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tools/ui/DialogCreator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1105">
-              <caret line="73" column="33" lean-forward="false" selection-start-line="73" selection-start-column="33" selection-end-line="73" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LBG.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/data/vectorquantization/LBG/LBG.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="935">
-              <caret line="64" column="11" lean-forward="false" selection-start-line="64" selection-start-column="11" selection-end-line="64" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/menu/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="24" column="57" lean-forward="false" selection-start-line="24" selection-start-column="57" selection-end-line="24" selection-end-column="57" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -170,8 +103,8 @@
       <file leaf-file-name="MFCC.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/audio/feature_extraction/MFCC.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1428">
-              <caret line="91" column="13" lean-forward="false" selection-start-line="91" selection-start-column="13" selection-end-line="91" selection-end-column="13" />
+            <state relative-caret-position="5593">
+              <caret line="338" column="60" lean-forward="false" selection-start-line="338" selection-start-column="60" selection-end-line="338" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -180,11 +113,109 @@
       <file leaf-file-name="PCA.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/data/pca/PCA.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="52" column="34" lean-forward="false" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
+            <state relative-caret-position="189">
+              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding>
-                <element signature="e#10026#10027#0" expanded="true" />
-                <element signature="e#10068#10069#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="method#getPercentagePCAResult#0;class#PCA#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PCATest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/PCATest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="47">
+              <caret line="29" column="26" lean-forward="true" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainMenuController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/menu/MainMenuController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="157">
+              <caret line="192" column="38" lean-forward="false" selection-start-line="192" selection-start-column="38" selection-end-line="192" selection-end-column="38" />
+              <folding>
+                <element signature="e#7107#7108#0" expanded="true" />
+                <element signature="e#7171#7172#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Platform.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/application/Platform.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="81" column="23" lean-forward="false" selection-start-line="81" selection-start-column="23" selection-end-line="81" selection-end-column="23" />
+              <folding>
+                <element signature="e#2657#2658#0" expanded="true" />
+                <element signature="e#2704#2705#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DialogCreator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tools/ui/DialogCreator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-170">
+              <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainMenu.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/menu/MainMenu.fxml">
+          <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="211">
+              <caret line="69" column="25" lean-forward="false" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Matrix.java" pinned="false" current-in-tab="false">
+        <entry file="file://L:/Cloud/Dropbox/TA/Code/Jama/Matrix.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="376" column="15" lean-forward="false" selection-start-line="376" selection-start-column="15" selection-end-line="376" selection-end-column="15" />
+              <folding>
+                <element signature="e#10535#10536#0" expanded="true" />
+                <element signature="e#10559#10560#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SingularValueDecomposition.class" pinned="false" current-in-tab="false">
+        <entry file="jar://L:/Cloud/Dropbox/TA/Code/Jama-1.0.3.jar!/Jama/SingularValueDecomposition.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+              <folding>
+                <marker date="1517142170399" expanded="false" signature="0:104" ph="/.../" />
+                <marker date="1517142170399" expanded="false" signature="128:173" ph="..." />
+                <marker date="1517142170399" expanded="true" signature="460:16205" ph="{...}" />
+                <marker date="1517142170399" expanded="false" signature="16231:16242" ph=" { " />
+                <marker date="1517142170399" expanded="false" signature="16306:16312" ph=" }" />
+                <marker date="1517142170399" expanded="false" signature="16338:16349" ph=" { " />
+                <marker date="1517142170399" expanded="false" signature="16391:16397" ph=" }" />
+                <marker date="1517142170399" expanded="false" signature="16438:16449" ph=" { " />
+                <marker date="1517142170399" expanded="false" signature="16463:16469" ph=" }" />
+                <marker date="1517142170399" expanded="true" signature="16496:16836" ph="{...}" />
+                <marker date="1517142170399" expanded="false" signature="16863:16874" ph=" { " />
+                <marker date="1517142170399" expanded="false" signature="16891:16897" ph=" }" />
+                <marker date="1517142170399" expanded="false" signature="16923:16934" ph=" { " />
+                <marker date="1517142170399" expanded="false" signature="16990:16996" ph=" }" />
+                <marker date="1517142170399" expanded="true" signature="17020:17338" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -199,41 +230,42 @@
         <option value="JavaFXApplication" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>text_field_save_file_location</find>
-      <find>get</find>
-      <find>test</find>
-      <find>PCA</find>
-      <find>mfccs</find>
-      <find>complexVectors</find>
-      <find>delta</find>
-      <find>[0]</find>
-      <find>getMFCCs</find>
-      <find>framedAudioData</find>
-      <find>ceptra</find>
-      <find>getC</find>
-      <find>mfcc</find>
-      <find>accousticVectors</find>
-      <find>numberOfFrame</find>
-      <find>sampleRate</find>
-      <find>meansInput</find>
-      <find>eigen vec</find>
-      <find>System</find>
-      <find>getObservationSequence</find>
-      <find>mel</find>
-      <find>higherFilterFrequency</find>
-      <find>viter</find>
-      <find>Viterbi</find>
-      <find>orwar</find>
-      <find>viterbi</find>
-      <find>training</find>
-      <find>principleComponents</find>
-      <find>d</find>
+      <find>12</find>
+      <find>Test</find>
+      <find>numberOfEign</find>
+      <find>filePath</find>
+      <find>wordsList</find>
       <find>numberofSoundFilePerWord</find>
+      <find>databaseDirectory</find>
+      <find>ceptra</find>
+      <find>syste</find>
+      <find>transform</find>
+      <find>dim</find>
+      <find>v</find>
+      <find>pcaRotationTransformation</find>
+      <find>mean</find>
+      <find>re-estimation</find>
+      <find>tres</find>
+      <find>getD</find>
+      <find>eig</find>
+      <find>value</find>
+      <find>getV</find>
+      <find>get</find>
+      <find>Singular</find>
+      <find>eigenData</find>
+      <find>print</find>
+      <find>principleComponents</find>
+      <find>Ma</find>
+      <find>Matrix</find>
+      <find>test</find>
+      <find>runThe</find>
+      <find>openFileTestingClicked</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -257,17 +289,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/data/vectorquantization/LBG/Cluster.java" />
-        <option value="$PROJECT_DIR$/src/tools/WaveData.java" />
-        <option value="$PROJECT_DIR$/src/classification/Testing.java" />
-        <option value="C:/Program Files/Java/jdk1.8.0_25/src.zip!/java/util/Random.java" />
-        <option value="$PROJECT_DIR$/src/test/GG.java" />
-        <option value="C:/Program Files/Java/jdk1.8.0_25/src.zip!/java/io/File.java" />
-        <option value="C:/Program Files/Java/jdk1.8.0_25/src.zip!/java/io/FileInputStream.java" />
-        <option value="$PROJECT_DIR$/src/tools/Time.java" />
-        <option value="$PROJECT_DIR$/src/tools/DialogCreator.java" />
         <option value="C:/Program Files/Java/jdk1.8.0_25/src.zip!/java/lang/ClassLoader.java" />
-        <option value="$PROJECT_DIR$/src/test/ManualTestHMM.java" />
         <option value="$PROJECT_DIR$/src/classification/HiddenMarkov.java" />
         <option value="C:/Program Files/Java/jdk1.8.0_25/src.zip!/java/util/Formatter.java" />
         <option value="C:/Program Files/Java/jdk1.8.0_25/javafx-src.zip!/javafx/stage/Stage.java" />
@@ -288,26 +310,36 @@
         <option value="$PROJECT_DIR$/src/tools/IMainView.java" />
         <option value="$PROJECT_DIR$/src/tools/Executor.java" />
         <option value="$PROJECT_DIR$/src/audio/AudioProcessing.java" />
-        <option value="$PROJECT_DIR$/src/data/database/DatabaseHandler.java" />
-        <option value="$PROJECT_DIR$/src/data/vectorquantization/LBG/Point.java" />
         <option value="$PROJECT_DIR$/src/test/ManualTestVectorQuantization.java" />
-        <option value="$PROJECT_DIR$/src/data/vectorquantization/LBG/LBG.java" />
         <option value="L:/Cloud/Dropbox/TA/Works/database/New folder/codebook/Jama-1.0.2.jar!/Jama/EigenvalueDecomposition.class" />
         <option value="$PROJECT_DIR$/src/tools/MyMath.java" />
-        <option value="$PROJECT_DIR$/src/test/ManualTestPCA.java" />
-        <option value="$PROJECT_DIR$/src/audio/feature_extraction/MFCC.java" />
         <option value="$PROJECT_DIR$/src/test/validator/hmm/HiddenMarkov.java" />
         <option value="$PROJECT_DIR$/src/menu/MainMenu.fxml" />
         <option value="$PROJECT_DIR$/src/menu/main/MainMenu.fxml" />
         <option value="$PROJECT_DIR$/src/menu/main/MainMenuController.java" />
         <option value="$PROJECT_DIR$/src/menu/main/MaterialMainMenu.fxml" />
-        <option value="$PROJECT_DIR$/src/menu/Main.java" />
         <option value="$PROJECT_DIR$/src/menu/main/MaterialMainMenuController.java" />
         <option value="$PROJECT_DIR$/src/menu/MaterialMainMenu.fxml" />
         <option value="$PROJECT_DIR$/src/tools/ui/DialogCreator.java" />
-        <option value="$PROJECT_DIR$/src/classification/Processor.java" />
+        <option value="$PROJECT_DIR$/src/menu/Main.java" />
+        <option value="$PROJECT_DIR$/src/audio/feature_extraction/MFCC.java" />
+        <option value="$PROJECT_DIR$/src/test/ManualTestHMM.java" />
+        <option value="$PROJECT_DIR$/src/test/ManualTestPoint.java" />
+        <option value="$PROJECT_DIR$/src/data/vectorquantization/LBG/PointTest.java" />
+        <option value="$PROJECT_DIR$/src/test/PointTest.java" />
+        <option value="$PROJECT_DIR$/src/data/database/DatabaseHandler.java" />
+        <option value="$PROJECT_DIR$/src/test/DatabaseHandlerTest.java" />
+        <option value="$PROJECT_DIR$/src/data/model/SoundFileInfo.java" />
+        <option value="$PROJECT_DIR$/src/data/vectorquantization/LBG/LBG.java" />
+        <option value="$PROJECT_DIR$/src/test/ArrayTest.java" />
+        <option value="$PROJECT_DIR$/src/tools/array/Array.java" />
+        <option value="$PROJECT_DIR$/src/data/vectorquantization/LBG/Cluster.java" />
+        <option value="$PROJECT_DIR$/src/data/vectorquantization/LBG/Point.java" />
+        <option value="$PROJECT_DIR$/src/test/ManualTestPCA.java" />
         <option value="$PROJECT_DIR$/src/data/pca/PCA.java" />
+        <option value="$PROJECT_DIR$/src/test/PCATest.java" />
         <option value="$PROJECT_DIR$/src/menu/MainMenuController.java" />
+        <option value="$PROJECT_DIR$/src/classification/Processor.java" />
       </list>
     </option>
   </component>
@@ -315,11 +347,10 @@
     <treeState />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1456" />
-    <option name="height" value="876" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-7" />
+    <option name="width" value="734" />
+    <option name="height" value="867" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -356,11 +387,36 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="SpeechRecognition" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SpeechRecognition" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SpeechRecognition" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SpeechRecognition" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SpeechRecognition" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SpeechRecognition" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="menu" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SpeechRecognition" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -374,7 +430,7 @@
     <property name="GoToClass.includeLibraries" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/Jama-1.0.2.jar!/" />
+    <property name="last_opened_file_path" value="L:/Cloud/Dropbox/TA/Code/Jama-1.0.3.jar!/" />
     <property name="options.lastSelected" value="vcs.Git" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -395,38 +451,39 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="829" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Groovy JUnit" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="false" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
-    <property name="SearchEverywhereHistoryKey" value="Main&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/menu/MainMenuController.java&#10;Process&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/classification/Processor.java&#10;MFCC&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/audio/feature_extraction/MFCC.java&#10;Hid&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/validator/hmm/HiddenMarkov.java&#10;PCA&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/pca/PCA.java&#10;Hidd&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/validator/hmm/HiddenMarkov.java&#10;Pro&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/classification/Processor.java&#10;VQ&#9;PSI&#9;JAVA://data.vectorquantization.LBG.VectorQuantization&#10;mfcc&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/audio/feature_extraction/MFCC.java&#10;HMM&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/test/ManualTestHMM.java&#10;Hidde&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/test/validator/hmm/HiddenMarkov.java&#10;Clus&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/data/vectorquantization/LBG/Cluster.java&#10;Word&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/data/database/WordModel.java&#10;data&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/data/database/DatabaseHandler.java" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
+    <property name="SearchEverywhereHistoryKey" value="Process&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/classification/Processor.java&#10;Main&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/menu/Main.java&#10;PCA&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/PCATest.java&#10;PCAT&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/PCATest.java&#10;Sing&#9;FILE&#9;jar://L:/Cloud/Dropbox/TA/Code/Jama-1.0.3.jar!/Jama/SingularValueDecomposition.class&#10;Point&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/vectorquantization/LBG/Point.java&#10;LBG&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/vectorquantization/LBG/LBG.java&#10;MFCC&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/audio/feature_extraction/MFCC.java&#10;Hidde&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/validator/hmm/HiddenMarkov.java&#10;Proce&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/classification/Processor.java&#10;Poin&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/vectorquantization/LBG/Point.java&#10;A&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/tools/array/Array.java&#10;Arr&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ArrayTest.java&#10;Ar&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ArrayTest.java&#10;Pr&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/classification/Processor.java&#10;ArrayTe&#9;RUN_CONFIGURATION&#9;ArrayTest&#10;Arra&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ArrayTest.java&#10;PC&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ManualTestPCA.java&#10;ArrayT&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ArrayTest.java&#10;Array&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ArrayTest.java&#10;WordL&#9;PSI&#9;JAVA://data.model.SoundFileInfo.WordList&#10;Data&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/database/DatabaseHandler.java&#10;HiddenM&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/validator/hmm/HiddenMarkov.java&#10;Test&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/PointTest.java&#10;Hid&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/validator/hmm/HiddenMarkov.java&#10;Hidd&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/validator/hmm/HiddenMarkov.java&#10;Pro&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/classification/Processor.java&#10;VQ&#9;PSI&#9;JAVA://data.vectorquantization.LBG.VectorQuantization&#10;mfcc&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/audio/feature_extraction/MFCC.java&#10;HMM&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/test/ManualTestHMM.java&#10;Clus&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/data/vectorquantization/LBG/Cluster.java&#10;Word&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/data/database/WordModel.java&#10;data&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/data/database/DatabaseHandler.java" />
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="create.test.in.the.same.root" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
       <recent name="test" />
       <recent name="data.vectorquantization.LBG" />
     </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="groovy.util.GroovyTestCase" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Project\Java\SpeechRecognition\src\tools\audio" />
-      <recent name="D:\Project\Java\SpeechRecognition\src\data\vectorquantization" />
-      <recent name="D:\Project\Java\SpeechRecognition\src\tools" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="L:\Project\Java\SpeechRecognition\src\menu" />
+      <recent name="D:\Project\Java\SpeechRecognition\src\test\validator\hmm" />
       <recent name="D:\Project\Java\SpeechRecognition\src\audio" />
-      <recent name="D:\Project\Java\SpeechRecognition\src\menu" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="data.vectorquantization.LBG" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="L:\Project\Java\SpeechRecognition\src\menu" />
-      <recent name="D:\Project\Java\SpeechRecognition\src\test\validator\hmm" />
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+      <recent name="groovy.util.GroovyTestCase" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="L:\Project\Java\SpeechRecognition\lib" />
+      <recent name="D:\Project\Java\SpeechRecognition\src\tools\audio" />
+      <recent name="D:\Project\Java\SpeechRecognition\src\data\vectorquantization" />
+      <recent name="D:\Project\Java\SpeechRecognition\src\tools" />
       <recent name="D:\Project\Java\SpeechRecognition\src\audio" />
     </key>
   </component>
@@ -443,17 +500,25 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.Main">
-    <configuration default="false" name="FFT" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="data.*" />
+          <option name="PATTERN" value="sample.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="data.FFT" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="MAIN_CLASS_NAME" value="menu.MainMenuController" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
@@ -461,18 +526,76 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="SpeechRecognition" />
       <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
-      <method />
     </configuration>
-    <configuration default="false" name="MainMenuController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="menu.main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="menu.main.MainMenuController" />
+    <configuration name="TestHMM" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="test.ManualTestHMM" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="SpeechRecognition" />
+      <envs />
+    </configuration>
+    <configuration name="TestPCA" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="test.ManualTestPCA" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="SpeechRecognition" />
+      <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+    </configuration>
+    <configuration name="TestVQ" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="test.ManualTestVectorQuantization" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="SpeechRecognition" />
+      <envs />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -481,36 +604,193 @@
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="SpeechRecognition" />
+      <module name="" />
       <envs />
-      <method />
     </configuration>
-    <configuration default="false" name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="ArrayTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
-          <option name="PATTERN" value="menu.*" />
+          <option name="PATTERN" value="test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="menu.Main" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <module name="SpeechRecognition" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.ArrayTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="SpeechRecognition" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
       <envs />
-      <method />
+      <patterns />
+    </configuration>
+    <configuration name="DatabaseHandlerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="SpeechRecognition" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.DatabaseHandlerTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="PCATest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="SpeechRecognition" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.PCATest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="PCATest.getPCAResult" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="SpeechRecognition" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.PCATest" />
+      <option name="METHOD_NAME" value="getPCAResult" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="PointTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="SpeechRecognition" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="test" />
+      <option name="MAIN_CLASS_NAME" value="test.PointTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
-      <method />
     </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="" />
@@ -540,6 +820,35 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method />
     </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="0" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="SELECTED_CLOUD_DEVICE_CONFIGURATION_ID" value="0" />
+      <option name="SELECTED_CLOUD_DEVICE_PROJECT_ID" value="" />
+      <option name="IS_VALID_CLOUD_MATRIX_SELECTION" value="false" />
+      <option name="INVALID_CLOUD_MATRIX_SELECTION_ERROR" value="" />
+      <option name="IS_VALID_CLOUD_DEVICE_SELECTION" value="false" />
+      <option name="INVALID_CLOUD_DEVICE_SELECTION_ERROR" value="" />
+      <option name="CLOUD_DEVICE_SERIAL_NUMBER" value="" />
+      <method />
+    </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
       <option name="TESTING_TYPE" value="0" />
@@ -567,30 +876,6 @@
       </Profilers>
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -605,27 +890,6 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <method />
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
       <method />
     </configuration>
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
@@ -674,180 +938,30 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
-      <method />
-    </configuration>
-    <configuration default="false" name="TestHMM" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="test.ManualTestHMM" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="SpeechRecognition" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="TestPCA" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="test.ManualTestPCA" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="SpeechRecognition" />
-      <envs />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="Main" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="sample.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="menu.MainMenuController" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="SpeechRecognition" />
-      <envs />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="TestVQ" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="test.ManualTestVectorQuantization" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" value="" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="SpeechRecognition" />
-      <envs />
-      <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="" />
-        <option name="TRANSPORT" value="0" />
-        <option name="LOCAL" value="true" />
-      </RunnerSettings>
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Debug" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <list size="7">
-      <item index="0" class="java.lang.String" itemvalue="Application.TestHMM" />
-      <item index="1" class="java.lang.String" itemvalue="Application.TestPCA" />
-      <item index="2" class="java.lang.String" itemvalue="Application.Main" />
-      <item index="3" class="java.lang.String" itemvalue="Application.TestVQ" />
-      <item index="4" class="java.lang.String" itemvalue="Application.FFT" />
-      <item index="5" class="java.lang.String" itemvalue="Application.MainMenuController" />
-      <item index="6" class="java.lang.String" itemvalue="Application.Main (1)" />
-    </list>
-    <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Application.Main (1)" />
-        <item index="1" class="java.lang.String" itemvalue="Application.MainMenuController" />
-        <item index="2" class="java.lang.String" itemvalue="Application.FFT" />
-      </list>
-    </recent_temporary>
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
-      <module name="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="DEPLOY" value="true" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="USE_COMMAND_LINE" value="true" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="0" />
-      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
-      <option name="SELECTED_CLOUD_DEVICE_CONFIGURATION_ID" value="0" />
-      <option name="SELECTED_CLOUD_DEVICE_PROJECT_ID" value="" />
-      <option name="IS_VALID_CLOUD_MATRIX_SELECTION" value="false" />
-      <option name="INVALID_CLOUD_MATRIX_SELECTION_ERROR" value="" />
-      <option name="IS_VALID_CLOUD_DEVICE_SELECTION" value="false" />
-      <option name="INVALID_CLOUD_DEVICE_SELECTION_ERROR" value="" />
-      <option name="CLOUD_DEVICE_SERIAL_NUMBER" value="" />
-      <method />
-    </configuration>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
     </configuration>
+    <list size="9">
+      <item index="0" class="java.lang.String" itemvalue="Application.TestHMM" />
+      <item index="1" class="java.lang.String" itemvalue="Application.TestPCA" />
+      <item index="2" class="java.lang.String" itemvalue="Application.Main" />
+      <item index="3" class="java.lang.String" itemvalue="Application.TestVQ" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.PointTest" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.DatabaseHandlerTest" />
+      <item index="6" class="java.lang.String" itemvalue="JUnit.ArrayTest" />
+      <item index="7" class="java.lang.String" itemvalue="JUnit.PCATest" />
+      <item index="8" class="java.lang.String" itemvalue="JUnit.PCATest.getPCAResult" />
+    </list>
+    <recent_temporary>
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.PCATest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.PCATest.getPCAResult" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.ArrayTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.DatabaseHandlerTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.PointTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -934,8 +1048,47 @@
       <option name="project" value="LOCAL" />
       <updated>1499667512657</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Fixed lot of thing.">
+      <created>1515139963061</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1515139963061</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="PCATest - 2018.01.30 at 09h 55m 16s.xml">
+      <configuration name="PCATest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PCATest - 2018.01.30 at 09h 55m 49s.xml">
+      <configuration name="PCATest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PCATest - 2018.01.30 at 10h 16m 45s.xml">
+      <configuration name="PCATest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PCATest - 2018.01.30 at 10h 18m 10s.xml">
+      <configuration name="PCATest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PCATest - 2018.01.30 at 10h 27m 29s.xml">
+      <configuration name="PCATest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PCATest - 2018.01.30 at 10h 27m 50s.xml">
+      <configuration name="PCATest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PCATest - 2018.01.30 at 10h 27m 52s.xml">
+      <configuration name="PCATest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PCATest - 2018.01.30 at 10h 35m 00s.xml">
+      <configuration name="PCATest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PCATest - 2018.01.30 at 10h 35m 19s.xml">
+      <configuration name="PCATest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PCATest - 2018.01.30 at 10h 39m 43s.xml">
+      <configuration name="PCATest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="1302000" />
@@ -954,38 +1107,38 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32795697" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31848854" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3266129" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32879657" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5389785" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3689759" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34278002" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.53846157" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32258064" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23853868" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24928367" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21275072" sideWeight="0.3456284" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3251366" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.58456975" sideWeight="0.65437156" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37651822" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290469" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33064517" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39967373" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31854838" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3267974" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1047,50 +1200,101 @@
           <option name="timeStamp" value="196" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/data/vectorquantization/LBG/LBG.java</url>
-          <line>202</line>
+          <url>file://$PROJECT_DIR$/src/data/pca/PCA.java</url>
+          <line>129</line>
           <properties />
-          <option name="timeStamp" value="208" />
+          <option name="timeStamp" value="229" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/data/pca/PCA.java</url>
-          <line>249</line>
+          <url>file://$PROJECT_DIR$/src/test/DatabaseHandlerTest.java</url>
+          <line>22</line>
           <properties />
-          <option name="timeStamp" value="211" />
+          <option name="timeStamp" value="234" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/data/pca/PCA.java</url>
-          <line>97</line>
+          <url>file://$PROJECT_DIR$/src/classification/Processor.java</url>
+          <line>139</line>
           <properties />
-          <option name="timeStamp" value="212" />
+          <option name="timeStamp" value="242" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/data/pca/PCA.java</url>
-          <line>174</line>
+          <url>file://$PROJECT_DIR$/src/classification/Processor.java</url>
+          <line>102</line>
           <properties />
-          <option name="timeStamp" value="215" />
+          <option name="timeStamp" value="244" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/data/pca/PCA.java</url>
-          <line>169</line>
+          <url>file://$PROJECT_DIR$/src/test/ArrayTest.java</url>
+          <line>56</line>
           <properties />
-          <option name="timeStamp" value="216" />
+          <option name="timeStamp" value="254" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/data/pca/PCA.java</url>
-          <line>69</line>
+          <url>file://$PROJECT_DIR$/src/classification/Processor.java</url>
+          <line>300</line>
           <properties />
-          <option name="timeStamp" value="217" />
+          <option name="timeStamp" value="258" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/classification/Processor.java</url>
+          <line>303</line>
+          <properties />
+          <option name="timeStamp" value="260" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/classification/Processor.java</url>
+          <line>264</line>
+          <properties />
+          <option name="timeStamp" value="262" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/classification/Processor.java</url>
+          <line>274</line>
+          <properties />
+          <option name="timeStamp" value="264" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/ArrayTest.java</url>
+          <line>76</line>
+          <properties />
+          <option name="timeStamp" value="265" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/classification/Processor.java</url>
+          <line>371</line>
+          <properties />
+          <option name="timeStamp" value="267" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/classification/Processor.java</url>
+          <line>81</line>
+          <properties />
+          <option name="timeStamp" value="291" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/classification/Processor.java</url>
+          <line>308</line>
+          <properties />
+          <option name="timeStamp" value="295" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/classification/Processor.java</url>
+          <line>314</line>
+          <properties />
+          <option name="timeStamp" value="296" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="218" />
+      <option name="time" value="297" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="means" language="JAVA" />
+        <watch expression="totalCeptrasPerWord" />
+        <watch expression="mfccReducted" />
+        <watch expression="mfccsAfterPCA" />
       </configuration>
     </watches-manager>
   </component>
@@ -1099,187 +1303,18 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://D:/Download/Chrome/Jama-1.0.3.jar!/Jama/Matrix.class" />
-    <entry file="file://$PROJECT_DIR$/src/audio/ComplexVector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/vectorquantization/LBG/Cluster.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="13" column="49" lean-forward="false" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/audio/feature_extraction/FFT.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="85" column="13" lean-forward="false" selection-start-line="85" selection-start-column="13" selection-end-line="85" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/validator/mkonrad/Distances.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/audio/AudioExtractor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="39" column="49" lean-forward="false" selection-start-line="39" selection-start-column="49" selection-end-line="39" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/Complex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="45" column="13" lean-forward="false" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/FFT.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1700">
-          <caret line="100" column="28" lean-forward="false" selection-start-line="100" selection-start-column="28" selection-end-line="100" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/database/Codebook.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tools/Executor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" column="15" lean-forward="true" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tools/IProcessListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="49" lean-forward="false" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tools/audio/WaveData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-381">
-          <caret line="28" column="11" lean-forward="false" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/database/WordModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="96" column="16" lean-forward="false" selection-start-line="96" selection-start-column="16" selection-end-line="96" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/database/DatabaseHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="164" column="58" lean-forward="true" selection-start-line="164" selection-start-column="58" selection-end-line="164" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/Thread.java" />
-    <entry file="file://$PROJECT_DIR$/src/tools/array/Array.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="40" column="48" lean-forward="false" selection-start-line="40" selection-start-column="48" selection-end-line="40" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/validator/mkonrad/GenLloyd.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1870">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/ManualTestVectorQuantization.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="37" column="13" lean-forward="false" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/Downloads/Jama-1.0.3.jar!/Jama/EigenvalueDecomposition.class" />
-    <entry file="jar://$USER_HOME$/Downloads/Jama-1.0.3.jar!/Jama/Matrix.class" />
-    <entry file="file://$PROJECT_DIR$/src/data/vectorquantization/LBG/VectorQuantization.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="36" column="20" lean-forward="false" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/audio/PreProcessing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="37" lean-forward="true" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://L:/Cloud/Dropbox/TA/Works/database/New folder/codebook/Jama-1.0.2.jar!/Jama/Matrix.class" />
-    <entry file="file://$PROJECT_DIR$/src/tools/audio/EndPointDetection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/validator/hmm/HiddenMarkov.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7633">
-          <caret line="497" column="35" lean-forward="false" selection-start-line="497" selection-start-column="35" selection-end-line="497" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classification/HiddenMarkov.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4148">
-          <caret line="246" column="40" lean-forward="false" selection-start-line="246" selection-start-column="40" selection-end-line="246" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu/main/MainMenu.form" />
-    <entry file="file://$PROJECT_DIR$/src/menu/main/MainMenu.java" />
-    <entry file="file://$PROJECT_DIR$/src/tools/MyMath.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="25" lean-forward="false" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/menu/main/MainMenuController.java" />
     <entry file="file://$PROJECT_DIR$/src/menu/main/MainMenu.fxml" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/application/Application.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/Class.java" />
-    <entry file="file://$PROJECT_DIR$/src/audio/AudioProcessing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="14" column="32" lean-forward="false" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/menu/MaterialMainMenu.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/menu/main/MaterialMainMenuController.java">
@@ -1287,30 +1322,6 @@
         <state relative-caret-position="391">
           <caret line="23" column="68" lean-forward="false" selection-start-line="23" selection-start-column="68" selection-end-line="23" selection-end-column="68" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tools/IMainView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/ManualTestHMM.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="36" lean-forward="false" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu/MainMenu.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="245" lean-forward="false" selection-start-line="28" selection-start-column="206" selection-end-line="28" selection-end-column="245" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/data/pca/KernelPCA.java">
@@ -1321,88 +1332,334 @@
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/util/List.java" />
-    <entry file="jar://L:/Cloud/Dropbox/TA/Works/database/New folder/codebook/Jama-1.0.2.jar!/Jama/EigenvalueDecomposition.class" />
+    <entry file="file://$PROJECT_DIR$/src/tools/audio/WaveData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="28" column="11" lean-forward="false" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/ManualTestPoint.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/util/ArrayList.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/ManualTestHMM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="30" lean-forward="false" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/PointTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="54" column="46" lean-forward="false" selection-start-line="54" selection-start-column="46" selection-end-line="54" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/audio/AudioProcessing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="54" column="20" lean-forward="false" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tools/IProcessListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/util/Map.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/DatabaseHandlerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="29" column="1" lean-forward="false" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/database/DatabaseHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3655">
+          <caret line="222" column="0" lean-forward="false" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tools/IMainView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="9" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/Complex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2108">
+          <caret line="128" column="27" lean-forward="false" selection-start-line="128" selection-start-column="27" selection-end-line="128" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/model/SoundFileInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="50" column="17" lean-forward="false" selection-start-line="50" selection-start-column="17" selection-end-line="50" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/System.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7650">
+          <caret line="492" column="30" lean-forward="false" selection-start-line="492" selection-start-column="30" selection-end-line="492" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/ArrayTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1581">
+          <caret line="97" column="71" lean-forward="false" selection-start-line="97" selection-start-column="71" selection-end-line="97" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/pca_transform-1.0.2.jar!/com/mkobos/pca_transform/covmatrixevd/CovarianceMatrixEVDCalculator.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/vectorquantization/LBG/Cluster.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="39" column="37" lean-forward="false" selection-start-line="39" selection-start-column="37" selection-end-line="39" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tools/array/Array.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="5" lean-forward="false" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/Jama-1.0.2.jar!/Jama/Matrix.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/pca_transform-1.0.2.jar!/com/mkobos/pca_transform/covmatrixevd/EVDBased.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/pca_transform-1.0.2.jar!/com/mkobos/pca_transform/PCA.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1547">
+          <caret line="112" column="49" lean-forward="false" selection-start-line="112" selection-start-column="24" selection-end-line="112" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/ManualTestPCA.java" />
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/org/junit/Assert.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5627">
+          <caret line="360" column="23" lean-forward="false" selection-start-line="360" selection-start-column="23" selection-end-line="360" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/validator/hmm/HiddenMarkov.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6341">
+          <caret line="421" column="36" lean-forward="false" selection-start-line="421" selection-start-column="36" selection-end-line="421" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/data/vectorquantization/LBG/Point.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="11" lean-forward="false" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
+        <state relative-caret-position="119">
+          <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
           <folding>
-            <element signature="e#273#274#0" expanded="true" />
-            <element signature="e#316#317#0" expanded="true" />
+            <element signature="e#1256#1257#0" expanded="false" />
+            <element signature="e#1293#1294#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu/MainMenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2771">
-          <caret line="180" column="52" lean-forward="false" selection-start-line="180" selection-start-column="52" selection-end-line="180" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tools/ui/DialogCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="73" column="33" lean-forward="false" selection-start-line="73" selection-start-column="33" selection-end-line="73" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/data/vectorquantization/LBG/LBG.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="64" column="11" lean-forward="false" selection-start-line="64" selection-start-column="11" selection-end-line="64" selection-end-column="11" />
+        <state relative-caret-position="2278">
+          <caret line="143" column="17" lean-forward="false" selection-start-line="143" selection-start-column="17" selection-end-line="143" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu/Main.java">
+    <entry file="jar://L:/Cloud/Dropbox/TA/Works/database/New folder/codebook/Jama-1.0.2.jar!/Jama/Matrix.class" />
+    <entry file="jar://L:/Cloud/Dropbox/TA/Works/database/New folder/codebook/Jama-1.0.2.jar!/Jama/EigenvalueDecomposition.class" />
+    <entry file="jar://L:/Cloud/Dropbox/TA/Code/Jama-1.0.3.jar!/Jama/EigenvalueDecomposition.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="24" column="57" lean-forward="false" selection-start-line="24" selection-start-column="57" selection-end-line="24" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/pca/PCA.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="52" column="34" lean-forward="false" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
+        <state relative-caret-position="102">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding>
-            <element signature="e#10026#10027#0" expanded="true" />
-            <element signature="e#10068#10069#0" expanded="true" />
+            <marker date="1517142170399" expanded="false" signature="0:104" ph="/.../" />
+            <marker date="1517142170399" expanded="false" signature="128:173" ph="..." />
+            <marker date="1517142170399" expanded="true" signature="567:5049" ph="{...}" />
+            <marker date="1517142170399" expanded="true" signature="5075:8912" ph="{...}" />
+            <marker date="1517142170399" expanded="true" signature="8940:11940" ph="{...}" />
+            <marker date="1517142170399" expanded="true" signature="12016:12505" ph="{...}" />
+            <marker date="1517142170399" expanded="true" signature="12531:30593" ph="{...}" />
+            <marker date="1517142170399" expanded="true" signature="30643:31812" ph="{...}" />
+            <marker date="1517142170399" expanded="false" signature="31838:31849" ph=" { " />
+            <marker date="1517142170399" expanded="false" signature="31891:31897" ph=" }" />
+            <marker date="1517142170399" expanded="false" signature="31939:31950" ph=" { " />
+            <marker date="1517142170399" expanded="false" signature="31964:31970" ph=" }" />
+            <marker date="1517142170399" expanded="false" signature="32012:32023" ph=" { " />
+            <marker date="1517142170399" expanded="false" signature="32037:32043" ph=" }" />
+            <marker date="1517142170399" expanded="true" signature="32070:32615" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/ManualTestPCA.java">
+    <entry file="jar://L:/Cloud/Dropbox/TA/Code/Jama-1.0.3.jar!/Jama/SingularValueDecomposition.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="42" column="56" lean-forward="false" selection-start-line="42" selection-start-column="56" selection-end-line="42" selection-end-column="56" />
+        <state relative-caret-position="102">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1517142170399" expanded="false" signature="0:104" ph="/.../" />
+            <marker date="1517142170399" expanded="false" signature="128:173" ph="..." />
+            <marker date="1517142170399" expanded="true" signature="460:16205" ph="{...}" />
+            <marker date="1517142170399" expanded="false" signature="16231:16242" ph=" { " />
+            <marker date="1517142170399" expanded="false" signature="16306:16312" ph=" }" />
+            <marker date="1517142170399" expanded="false" signature="16338:16349" ph=" { " />
+            <marker date="1517142170399" expanded="false" signature="16391:16397" ph=" }" />
+            <marker date="1517142170399" expanded="false" signature="16438:16449" ph=" { " />
+            <marker date="1517142170399" expanded="false" signature="16463:16469" ph=" }" />
+            <marker date="1517142170399" expanded="true" signature="16496:16836" ph="{...}" />
+            <marker date="1517142170399" expanded="false" signature="16863:16874" ph=" { " />
+            <marker date="1517142170399" expanded="false" signature="16891:16897" ph=" }" />
+            <marker date="1517142170399" expanded="false" signature="16923:16934" ph=" { " />
+            <marker date="1517142170399" expanded="false" signature="16990:16996" ph=" }" />
+            <marker date="1517142170399" expanded="true" signature="17020:17338" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/audio/feature_extraction/MFCC.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1428">
-          <caret line="91" column="13" lean-forward="false" selection-start-line="91" selection-start-column="13" selection-end-line="91" selection-end-column="13" />
+        <state relative-caret-position="5593">
+          <caret line="338" column="60" lean-forward="false" selection-start-line="338" selection-start-column="60" selection-end-line="338" selection-end-column="60" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://L:/Cloud/Dropbox/TA/Code/Jama/EigenvalueDecomposition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-646">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://L:/Cloud/Dropbox/TA/Code/Jama/Matrix.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="376" column="15" lean-forward="false" selection-start-line="376" selection-start-column="15" selection-end-line="376" selection-end-column="15" />
+          <folding>
+            <element signature="e#10535#10536#0" expanded="true" />
+            <element signature="e#10559#10560#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/menu/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/PCATest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="47">
+          <caret line="29" column="26" lean-forward="true" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="1770" column="0" lean-forward="false" selection-start-line="1770" selection-start-column="0" selection-end-line="1770" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/menu/MainMenu.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="69" column="25" lean-forward="false" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tools/ui/DialogCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-170">
+          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/application/Platform.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="81" column="23" lean-forward="false" selection-start-line="81" selection-start-column="23" selection-end-line="81" selection-end-column="23" />
+          <folding>
+            <element signature="e#2657#2658#0" expanded="true" />
+            <element signature="e#2704#2705#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/menu/MainMenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="192" column="38" lean-forward="false" selection-start-line="192" selection-start-column="38" selection-end-line="192" selection-end-column="38" />
+          <folding>
+            <element signature="e#7107#7108#0" expanded="true" />
+            <element signature="e#7171#7172#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/pca/PCA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getPercentagePCAResult#0;class#PCA#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/classification/Processor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="89" column="53" lean-forward="false" selection-start-line="89" selection-start-column="53" selection-end-line="89" selection-end-column="53" />
+        <state relative-caret-position="172">
+          <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
           <folding>
-            <element signature="e#8145#8151#0" expanded="true" />
-            <element signature="e#8197#8204#0" expanded="true" />
-            <element signature="e#10465#10471#0" expanded="true" />
-            <element signature="e#10517#10524#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#941#942#0" expanded="true" />
+            <element signature="e#981#982#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1466,7 +1723,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
