@@ -59,10 +59,10 @@ public class MainMenuController extends Application implements IMainView {
     TextField text_field_training_file_location;
 
     // Class Variable
-    File previousFileAddress = null;
-    File soundFile = null;
-    File databaseFile = null;
-    Processor processor = null;
+    private File previousFileAddress = null;
+    private File soundFile = null;
+    private File databaseFile = null;
+    private Processor processor = null;
 
     private int dialogTestingOption;
     private int dialogTrainingOption;
@@ -162,6 +162,7 @@ public class MainMenuController extends Application implements IMainView {
                         processor.startTrainingWithPCA("", 256, soundFile);
                         break;
                 }
+                processor = null;
             });
             backgroundThread.start();
         }
@@ -193,8 +194,10 @@ public class MainMenuController extends Application implements IMainView {
                     processor.startTestingWithPCA(soundFile, databaseFile);
                     break;
             }
+            processor = null;
         });
         backgroundThread.start();
+
     }
 
     public void saveToButtonClicked() {
@@ -205,6 +208,10 @@ public class MainMenuController extends Application implements IMainView {
 
     private void addTextTesting(String text) {
         text_area_testing.appendText(Time.getTime() + text + "\n");
+    }
+
+    public void clearTestTextArea() {
+        text_area_testing.clear();
     }
 
     public static void main(String[] args) {

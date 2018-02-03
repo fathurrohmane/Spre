@@ -4,18 +4,19 @@ import Jama.EigenvalueDecomposition;
 import Jama.Matrix;
 import Jama.SingularValueDecomposition;
 import audio.feature_extraction.MFCC;
+import data.database.DatabaseHandler;
 import data.vectorquantization.LBG.Point;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * Created by Fathurrohman on 25-Nov-15.
  * Based on http://www.cs.otago.ac.nz/cosc453/student_tutorials/principal_components.pdf
  */
-public class PCA {
+public class PCA implements Serializable {
 
     private double[][] data;
-    private double[][] originalData;
     private double[] means;
 
     private List<PrincipleComponent> principleComponents;
@@ -57,6 +58,7 @@ public class PCA {
 //        SingularValueDecomposition eigenData = covarianceInMatrix.svd();
 //calculate eigen vector and value
         double[] eigenValues = eigenData.getRealEigenvalues();
+//        double[] eigenValues = eigenData.getSingularValues();
         Matrix eigenVectors = eigenData.getV();
         System.out.println("Eigen Vector :");
         eigenVectors.print(data[0].length, 5);
@@ -82,20 +84,47 @@ public class PCA {
 //List of eigen vector sorted by eigenvalue
         List<PCA.PrincipleComponent> mainComponents = getDominantComponents(numberOfDimension);
         Matrix features = getDominantComponentsMatrix(mainComponents);
-        System.out.println("Feature Matrix");
-        features.print(2, 4);
+        //System.out.println("Feature Matrix");
+        //features.print(2, 4);
 //convert original data to Matrix
         Matrix originalDataSubtractedByMean = new Matrix(data);
 
 //featureVectorTranspose * originalDataSubtractedbyMeanTranspose
         Matrix featureTranspose = features.transpose();
-        System.out.println("Feature Matrix Transposed");
-        featureTranspose.print(2, 4);
+        //System.out.println("Feature Matrix Transposed");
+        //featureTranspose.print(2, 4);
         Matrix originalDataAdjusted = originalDataSubtractedByMean.transpose();
         Matrix result = featureTranspose.times(originalDataAdjusted);
 
 //Result in array
         return result.transpose().getArray();
+    }
+
+    //Get
+    public double[][] getPCAResult(double[][] input, int numberOfDimension) {
+        if (principleComponents != null) {
+//List of eigen vector sorted by eigenvalue
+            List<PCA.PrincipleComponent> mainComponents = getDominantComponents(numberOfDimension);
+            Matrix features = getDominantComponentsMatrix(mainComponents);
+            //System.out.println("Feature Matrix");
+            //features.print(2, 4);
+//Adjust data input
+            double[][] adjustedInput = adjustedData(input, calculateMean(input), false);
+            Matrix originalDataSubtractedByMean = new Matrix(adjustedInput);
+
+//featureVectorTranspose * originalDataSubtractedbyMeanTranspose
+            Matrix featureTranspose = features.transpose();
+            //System.out.println("Feature Matrix Transposed");
+            //featureTranspose.print(2, 4);
+            Matrix originalDataAdjusted = originalDataSubtractedByMean.transpose();
+            Matrix result = featureTranspose.times(originalDataAdjusted);
+
+//Result in array
+            return result.transpose().getArray();
+        } else {
+            throw new IllegalArgumentException("Principal component is missing! Cant perform dimension reduction if its empty. Maybe its not loaded yet from file?");
+        }
+
     }
 
     //Set result dimension -> dimensional reduction
@@ -226,7 +255,7 @@ public class PCA {
         return covariance;
     }
 
-    public List<PrincipleComponent> getDominantComponents(int n) {
+    private List<PrincipleComponent> getDominantComponents(int n) {
         List<PrincipleComponent> ret = new ArrayList<>();
         int count = 0;
         for (PrincipleComponent pc : principleComponents) {
@@ -249,7 +278,11 @@ public class PCA {
         return adjustedData(result.getArray(), means, true);
     }
 
-    public class PrincipleComponent implements Comparable<PrincipleComponent> {
+    public void saveToDisk() {
+        DatabaseHandler.savePCA(this);
+    }
+
+    public class PrincipleComponent implements Comparable<PrincipleComponent>, Serializable {
         private double eigenValue;
         private double[] eigenVector;
 

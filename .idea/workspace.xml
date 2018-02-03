@@ -2,28 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/data/model/SoundFileInfo.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/ArrayTest.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/DatabaseHandlerTest.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/PCATest.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/PointTest.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/com_jfoenix_jfoenix_1_10_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/com_jfoenix_jfoenix_1_10_0.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/SpeechRecognition.iml" afterPath="$PROJECT_DIR$/SpeechRecognition.iml" />
-      <change beforePath="$PROJECT_DIR$/src/audio/feature_extraction/MFCC.java" afterPath="$PROJECT_DIR$/src/audio/feature_extraction/MFCC.java" />
+      <change beforePath="$PROJECT_DIR$/out/production/SpeechRecognition/menu/MainMenu.fxml" afterPath="$PROJECT_DIR$/out/production/SpeechRecognition/menu/MainMenu.fxml" />
       <change beforePath="$PROJECT_DIR$/src/classification/Processor.java" afterPath="$PROJECT_DIR$/src/classification/Processor.java" />
       <change beforePath="$PROJECT_DIR$/src/data/database/DatabaseHandler.java" afterPath="$PROJECT_DIR$/src/data/database/DatabaseHandler.java" />
       <change beforePath="$PROJECT_DIR$/src/data/pca/PCA.java" afterPath="$PROJECT_DIR$/src/data/pca/PCA.java" />
-      <change beforePath="$PROJECT_DIR$/src/data/vectorquantization/LBG/Cluster.java" afterPath="$PROJECT_DIR$/src/data/vectorquantization/LBG/Cluster.java" />
       <change beforePath="$PROJECT_DIR$/src/data/vectorquantization/LBG/LBG.java" afterPath="$PROJECT_DIR$/src/data/vectorquantization/LBG/LBG.java" />
-      <change beforePath="$PROJECT_DIR$/src/data/vectorquantization/LBG/Point.java" afterPath="$PROJECT_DIR$/src/data/vectorquantization/LBG/Point.java" />
-      <change beforePath="$PROJECT_DIR$/src/data/vectorquantization/LBG/VectorQuantization.java" afterPath="$PROJECT_DIR$/src/data/vectorquantization/LBG/VectorQuantization.java" />
-      <change beforePath="$PROJECT_DIR$/src/menu/Main.java" afterPath="$PROJECT_DIR$/src/menu/Main.java" />
+      <change beforePath="$PROJECT_DIR$/src/menu/MainMenu.fxml" afterPath="$PROJECT_DIR$/src/menu/MainMenu.fxml" />
       <change beforePath="$PROJECT_DIR$/src/menu/MainMenuController.java" afterPath="$PROJECT_DIR$/src/menu/MainMenuController.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/ManualTestHMM.java" afterPath="$PROJECT_DIR$/src/test/ManualTestHMM.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/ManualTestPCA.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/tools/Executor.java" afterPath="$PROJECT_DIR$/src/tools/Executor.java" />
-      <change beforePath="$PROJECT_DIR$/src/tools/array/Array.java" afterPath="$PROJECT_DIR$/src/tools/array/Array.java" />
+      <change beforePath="$PROJECT_DIR$/src/test/PCATest.java" afterPath="$PROJECT_DIR$/src/test/PCATest.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -89,23 +76,24 @@
       <file leaf-file-name="Processor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/classification/Processor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+            <state relative-caret-position="493">
+              <caret line="62" column="19" lean-forward="true" selection-start-line="62" selection-start-column="19" selection-end-line="62" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#941#942#0" expanded="true" />
-                <element signature="e#981#982#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MFCC.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/audio/feature_extraction/MFCC.java">
+      <file leaf-file-name="DatabaseHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/data/database/DatabaseHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5593">
-              <caret line="338" column="60" lean-forward="false" selection-start-line="338" selection-start-column="60" selection-end-line="338" selection-end-column="60" />
-              <folding />
+            <state relative-caret-position="1353">
+              <caret line="132" column="22" lean-forward="false" selection-start-line="132" selection-start-column="22" selection-end-line="132" selection-end-column="22" />
+              <folding>
+                <element signature="e#6428#6439#0" expanded="true" />
+                <element signature="e#7548#7562#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -113,11 +101,41 @@
       <file leaf-file-name="PCA.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/data/pca/PCA.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+            <state relative-caret-position="638">
+              <caret line="284" column="91" lean-forward="false" selection-start-line="284" selection-start-column="91" selection-end-line="284" selection-end-column="91" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#getPercentagePCAResult#0;class#PCA#0" expanded="false" />
+                <element signature="e#10385#10386#0" expanded="true" />
+                <element signature="e#10430#10431#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LBG.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/data/vectorquantization/LBG/LBG.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="319">
+              <caret line="289" column="47" lean-forward="true" selection-start-line="289" selection-start-column="47" selection-end-line="289" selection-end-column="47" />
+              <folding>
+                <element signature="e#1395#1396#0" expanded="true" />
+                <element signature="e#1446#1447#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Codebook.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/data/database/Codebook.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="45" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="45" />
+              <folding>
+                <element signature="e#589#590#0" expanded="true" />
+                <element signature="e#641#642#0" expanded="true" />
+                <element signature="e#761#762#0" expanded="true" />
+                <element signature="e#801#802#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -126,8 +144,8 @@
       <file leaf-file-name="PCATest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/PCATest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="47">
-              <caret line="29" column="26" lean-forward="true" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
+            <state relative-caret-position="489">
+              <caret line="81" column="23" lean-forward="false" selection-start-line="81" selection-start-column="23" selection-end-line="81" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -136,35 +154,16 @@
       <file leaf-file-name="MainMenuController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/menu/MainMenuController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="192" column="38" lean-forward="false" selection-start-line="192" selection-start-column="38" selection-end-line="192" selection-end-column="38" />
+            <state relative-caret-position="268">
+              <caret line="204" column="24" lean-forward="false" selection-start-line="204" selection-start-column="24" selection-end-line="204" selection-end-column="24" />
               <folding>
-                <element signature="e#7107#7108#0" expanded="true" />
-                <element signature="e#7171#7172#0" expanded="true" />
+                <element signature="e#6998#6999#0" expanded="true" />
+                <element signature="e#7072#7073#0" expanded="true" />
+                <element signature="e#7111#7112#0" expanded="true" />
+                <element signature="e#7152#7153#0" expanded="true" />
+                <element signature="e#7284#7285#0" expanded="true" />
+                <element signature="e#7348#7349#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Platform.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/application/Platform.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="81" column="23" lean-forward="false" selection-start-line="81" selection-start-column="23" selection-end-line="81" selection-end-column="23" />
-              <folding>
-                <element signature="e#2657#2658#0" expanded="true" />
-                <element signature="e#2704#2705#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DialogCreator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tools/ui/DialogCreator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-170">
-              <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -175,8 +174,8 @@
             <state />
           </provider>
           <provider editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="69" column="25" lean-forward="false" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="25" />
+            <state relative-caret-position="1105">
+              <caret line="65" column="25" lean-forward="false" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -185,37 +184,11 @@
       <file leaf-file-name="Matrix.java" pinned="false" current-in-tab="false">
         <entry file="file://L:/Cloud/Dropbox/TA/Code/Jama/Matrix.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="376" column="15" lean-forward="false" selection-start-line="376" selection-start-column="15" selection-end-line="376" selection-end-column="15" />
+            <state relative-caret-position="14790">
+              <caret line="912" column="15" lean-forward="false" selection-start-line="912" selection-start-column="15" selection-end-line="912" selection-end-column="15" />
               <folding>
                 <element signature="e#10535#10536#0" expanded="true" />
                 <element signature="e#10559#10560#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SingularValueDecomposition.class" pinned="false" current-in-tab="false">
-        <entry file="jar://L:/Cloud/Dropbox/TA/Code/Jama-1.0.3.jar!/Jama/SingularValueDecomposition.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-              <folding>
-                <marker date="1517142170399" expanded="false" signature="0:104" ph="/.../" />
-                <marker date="1517142170399" expanded="false" signature="128:173" ph="..." />
-                <marker date="1517142170399" expanded="true" signature="460:16205" ph="{...}" />
-                <marker date="1517142170399" expanded="false" signature="16231:16242" ph=" { " />
-                <marker date="1517142170399" expanded="false" signature="16306:16312" ph=" }" />
-                <marker date="1517142170399" expanded="false" signature="16338:16349" ph=" { " />
-                <marker date="1517142170399" expanded="false" signature="16391:16397" ph=" }" />
-                <marker date="1517142170399" expanded="false" signature="16438:16449" ph=" { " />
-                <marker date="1517142170399" expanded="false" signature="16463:16469" ph=" }" />
-                <marker date="1517142170399" expanded="true" signature="16496:16836" ph="{...}" />
-                <marker date="1517142170399" expanded="false" signature="16863:16874" ph=" { " />
-                <marker date="1517142170399" expanded="false" signature="16891:16897" ph=" }" />
-                <marker date="1517142170399" expanded="false" signature="16923:16934" ph=" { " />
-                <marker date="1517142170399" expanded="false" signature="16990:16996" ph=" }" />
-                <marker date="1517142170399" expanded="true" signature="17020:17338" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -236,9 +209,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>12</find>
-      <find>Test</find>
-      <find>numberOfEign</find>
       <find>filePath</find>
       <find>wordsList</find>
       <find>numberofSoundFilePerWord</find>
@@ -259,13 +229,16 @@
       <find>get</find>
       <find>Singular</find>
       <find>eigenData</find>
-      <find>print</find>
       <find>principleComponents</find>
       <find>Ma</find>
       <find>Matrix</find>
       <find>test</find>
       <find>runThe</find>
+      <find>Eigen Value</find>
       <find>openFileTestingClicked</find>
+      <find>print</find>
+      <find>System</find>
+      <find>save</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -314,7 +287,6 @@
         <option value="L:/Cloud/Dropbox/TA/Works/database/New folder/codebook/Jama-1.0.2.jar!/Jama/EigenvalueDecomposition.class" />
         <option value="$PROJECT_DIR$/src/tools/MyMath.java" />
         <option value="$PROJECT_DIR$/src/test/validator/hmm/HiddenMarkov.java" />
-        <option value="$PROJECT_DIR$/src/menu/MainMenu.fxml" />
         <option value="$PROJECT_DIR$/src/menu/main/MainMenu.fxml" />
         <option value="$PROJECT_DIR$/src/menu/main/MainMenuController.java" />
         <option value="$PROJECT_DIR$/src/menu/main/MaterialMainMenu.fxml" />
@@ -327,19 +299,20 @@
         <option value="$PROJECT_DIR$/src/test/ManualTestPoint.java" />
         <option value="$PROJECT_DIR$/src/data/vectorquantization/LBG/PointTest.java" />
         <option value="$PROJECT_DIR$/src/test/PointTest.java" />
-        <option value="$PROJECT_DIR$/src/data/database/DatabaseHandler.java" />
         <option value="$PROJECT_DIR$/src/test/DatabaseHandlerTest.java" />
         <option value="$PROJECT_DIR$/src/data/model/SoundFileInfo.java" />
-        <option value="$PROJECT_DIR$/src/data/vectorquantization/LBG/LBG.java" />
         <option value="$PROJECT_DIR$/src/test/ArrayTest.java" />
         <option value="$PROJECT_DIR$/src/tools/array/Array.java" />
         <option value="$PROJECT_DIR$/src/data/vectorquantization/LBG/Cluster.java" />
         <option value="$PROJECT_DIR$/src/data/vectorquantization/LBG/Point.java" />
         <option value="$PROJECT_DIR$/src/test/ManualTestPCA.java" />
-        <option value="$PROJECT_DIR$/src/data/pca/PCA.java" />
-        <option value="$PROJECT_DIR$/src/test/PCATest.java" />
         <option value="$PROJECT_DIR$/src/menu/MainMenuController.java" />
+        <option value="$PROJECT_DIR$/src/menu/MainMenu.fxml" />
+        <option value="$PROJECT_DIR$/src/test/PCATest.java" />
+        <option value="$PROJECT_DIR$/src/data/vectorquantization/LBG/LBG.java" />
+        <option value="$PROJECT_DIR$/src/data/database/DatabaseHandler.java" />
         <option value="$PROJECT_DIR$/src/classification/Processor.java" />
+        <option value="$PROJECT_DIR$/src/data/pca/PCA.java" />
       </list>
     </option>
   </component>
@@ -348,7 +321,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
+    <option name="x" value="486" />
+    <option name="y" value="-8" />
     <option name="width" value="734" />
     <option name="height" value="867" />
   </component>
@@ -387,10 +361,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -417,6 +389,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -456,7 +430,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
-    <property name="SearchEverywhereHistoryKey" value="Process&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/classification/Processor.java&#10;Main&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/menu/Main.java&#10;PCA&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/PCATest.java&#10;PCAT&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/PCATest.java&#10;Sing&#9;FILE&#9;jar://L:/Cloud/Dropbox/TA/Code/Jama-1.0.3.jar!/Jama/SingularValueDecomposition.class&#10;Point&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/vectorquantization/LBG/Point.java&#10;LBG&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/vectorquantization/LBG/LBG.java&#10;MFCC&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/audio/feature_extraction/MFCC.java&#10;Hidde&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/validator/hmm/HiddenMarkov.java&#10;Proce&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/classification/Processor.java&#10;Poin&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/vectorquantization/LBG/Point.java&#10;A&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/tools/array/Array.java&#10;Arr&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ArrayTest.java&#10;Ar&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ArrayTest.java&#10;Pr&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/classification/Processor.java&#10;ArrayTe&#9;RUN_CONFIGURATION&#9;ArrayTest&#10;Arra&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ArrayTest.java&#10;PC&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ManualTestPCA.java&#10;ArrayT&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ArrayTest.java&#10;Array&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ArrayTest.java&#10;WordL&#9;PSI&#9;JAVA://data.model.SoundFileInfo.WordList&#10;Data&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/database/DatabaseHandler.java&#10;HiddenM&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/validator/hmm/HiddenMarkov.java&#10;Test&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/PointTest.java&#10;Hid&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/validator/hmm/HiddenMarkov.java&#10;Hidd&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/validator/hmm/HiddenMarkov.java&#10;Pro&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/classification/Processor.java&#10;VQ&#9;PSI&#9;JAVA://data.vectorquantization.LBG.VectorQuantization&#10;mfcc&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/audio/feature_extraction/MFCC.java&#10;HMM&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/test/ManualTestHMM.java&#10;Clus&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/data/vectorquantization/LBG/Cluster.java&#10;Word&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/data/database/WordModel.java&#10;data&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/data/database/DatabaseHandler.java" />
+    <property name="SearchEverywhereHistoryKey" value="Code&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/database/Codebook.java&#10;Process&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/classification/Processor.java&#10;PCA&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/pca/PCA.java&#10;LBG&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/vectorquantization/LBG/LBG.java&#10;Database&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/database/DatabaseHandler.java&#10;Procee&#9;PSI&#9;JAVA://java.lang.ProcessEnvironment&#10;Proce&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/classification/Processor.java&#10;Main&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/menu/MainMenuController.java&#10;PCAT&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/PCATest.java&#10;Sing&#9;FILE&#9;jar://L:/Cloud/Dropbox/TA/Code/Jama-1.0.3.jar!/Jama/SingularValueDecomposition.class&#10;Point&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/vectorquantization/LBG/Point.java&#10;MFCC&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/audio/feature_extraction/MFCC.java&#10;Hidde&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/validator/hmm/HiddenMarkov.java&#10;Poin&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/vectorquantization/LBG/Point.java&#10;A&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/tools/array/Array.java&#10;Arr&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ArrayTest.java&#10;Ar&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ArrayTest.java&#10;Pr&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/classification/Processor.java&#10;ArrayTe&#9;RUN_CONFIGURATION&#9;ArrayTest&#10;Arra&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ArrayTest.java&#10;PC&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ManualTestPCA.java&#10;ArrayT&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ArrayTest.java&#10;Array&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ArrayTest.java&#10;WordL&#9;PSI&#9;JAVA://data.model.SoundFileInfo.WordList&#10;Data&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/database/DatabaseHandler.java&#10;HiddenM&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/validator/hmm/HiddenMarkov.java&#10;Test&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/PointTest.java&#10;Hid&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/validator/hmm/HiddenMarkov.java&#10;Hidd&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/validator/hmm/HiddenMarkov.java&#10;Pro&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/classification/Processor.java&#10;VQ&#9;PSI&#9;JAVA://data.vectorquantization.LBG.VectorQuantization&#10;mfcc&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/audio/feature_extraction/MFCC.java&#10;HMM&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/test/ManualTestHMM.java&#10;Clus&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/data/vectorquantization/LBG/Cluster.java&#10;Word&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/data/database/WordModel.java&#10;data&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/data/database/DatabaseHandler.java" />
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="false" />
@@ -1055,31 +1029,17 @@
       <option name="project" value="LOCAL" />
       <updated>1515139963061</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Refactoring mainly Processor class, and add some tests.">
+      <created>1517300854028</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1517300854028</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PCATest - 2018.01.30 at 09h 55m 16s.xml">
-      <configuration name="PCATest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PCATest - 2018.01.30 at 09h 55m 49s.xml">
-      <configuration name="PCATest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PCATest - 2018.01.30 at 10h 16m 45s.xml">
-      <configuration name="PCATest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PCATest - 2018.01.30 at 10h 18m 10s.xml">
-      <configuration name="PCATest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PCATest - 2018.01.30 at 10h 27m 29s.xml">
-      <configuration name="PCATest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PCATest - 2018.01.30 at 10h 27m 50s.xml">
-      <configuration name="PCATest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PCATest - 2018.01.30 at 10h 27m 52s.xml">
-      <configuration name="PCATest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="PCATest - 2018.01.30 at 10h 35m 00s.xml">
       <configuration name="PCATest" configurationId="JUnit" />
     </history-entry>
@@ -1087,6 +1047,27 @@
       <configuration name="PCATest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="PCATest - 2018.01.30 at 10h 39m 43s.xml">
+      <configuration name="PCATest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PCATest - 2018.01.30 at 16h 18m 09s.xml">
+      <configuration name="PCATest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PCATest - 2018.01.30 at 16h 21m 00s.xml">
+      <configuration name="PCATest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PCATest - 2018.01.31 at 06h 44m 37s.xml">
+      <configuration name="PCATest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PCATest - 2018.01.31 at 06h 44m 46s.xml">
+      <configuration name="PCATest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PCATest - 2018.01.31 at 06h 48m 13s.xml">
+      <configuration name="PCATest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PCATest - 2018.02.02 at 09h 03m 17s.xml">
+      <configuration name="PCATest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PCATest - 2018.02.02 at 09h 04m 52s.xml">
       <configuration name="PCATest" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -1104,6 +1085,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32795697" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1113,14 +1095,13 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3266129" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32879657" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34278002" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.53846157" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.62078273" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30769232" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32258064" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21275072" sideWeight="0.3456284" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3251366" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.58456975" sideWeight="0.65437156" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21418338" sideWeight="0.32163742" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21418338" sideWeight="0.67836255" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1139,6 +1120,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3251366" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1164,130 +1146,113 @@
     <MESSAGE value="First runnable program&#10;&#10;TODO: &#10;- Fix MFCC&#10;- Learn HMM&#10;- Integrate PCA&#10;&#10;&#10;" />
     <MESSAGE value="Fix depricated Dialog&#10;&#10;TODO: &#10;- Fix MFCC&#10;- Learn HMM&#10;- Integrate PCA" />
     <MESSAGE value="Fixed lot of thing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed lot of thing." />
+    <MESSAGE value="Refactoring mainly Processor class, and add some tests." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring mainly Processor class, and add some tests." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/classification/HiddenMarkov.java</url>
           <line>222</line>
           <properties />
           <option name="timeStamp" value="108" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/audio/feature_extraction/MFCC.java</url>
           <line>286</line>
           <properties />
           <option name="timeStamp" value="182" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/audio/feature_extraction/MFCC.java</url>
           <line>313</line>
           <properties />
           <option name="timeStamp" value="183" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/audio/feature_extraction/MFCC.java</url>
           <line>260</line>
           <properties />
           <option name="timeStamp" value="184" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/audio/feature_extraction/MFCC.java</url>
           <line>261</line>
           <properties />
           <option name="timeStamp" value="196" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/data/pca/PCA.java</url>
-          <line>129</line>
+          <line>158</line>
           <properties />
           <option name="timeStamp" value="229" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/test/DatabaseHandlerTest.java</url>
           <line>22</line>
           <properties />
           <option name="timeStamp" value="234" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/classification/Processor.java</url>
-          <line>139</line>
-          <properties />
-          <option name="timeStamp" value="242" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/classification/Processor.java</url>
-          <line>102</line>
-          <properties />
-          <option name="timeStamp" value="244" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/test/ArrayTest.java</url>
           <line>56</line>
           <properties />
           <option name="timeStamp" value="254" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/classification/Processor.java</url>
-          <line>300</line>
-          <properties />
-          <option name="timeStamp" value="258" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/classification/Processor.java</url>
-          <line>303</line>
-          <properties />
-          <option name="timeStamp" value="260" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/classification/Processor.java</url>
-          <line>264</line>
-          <properties />
-          <option name="timeStamp" value="262" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/classification/Processor.java</url>
-          <line>274</line>
-          <properties />
-          <option name="timeStamp" value="264" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/test/ArrayTest.java</url>
           <line>76</line>
           <properties />
           <option name="timeStamp" value="265" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/classification/Processor.java</url>
-          <line>371</line>
+          <line>457</line>
           <properties />
           <option name="timeStamp" value="267" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/classification/Processor.java</url>
-          <line>81</line>
-          <properties />
-          <option name="timeStamp" value="291" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/classification/Processor.java</url>
-          <line>308</line>
+          <line>374</line>
           <properties />
           <option name="timeStamp" value="295" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/classification/Processor.java</url>
-          <line>314</line>
+          <line>380</line>
           <properties />
           <option name="timeStamp" value="296" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/classification/Processor.java</url>
+          <line>251</line>
+          <properties />
+          <option name="timeStamp" value="302" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/classification/Processor.java</url>
+          <line>297</line>
+          <properties />
+          <option name="timeStamp" value="303" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/classification/Processor.java</url>
+          <line>188</line>
+          <properties />
+          <option name="timeStamp" value="304" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/classification/Processor.java</url>
+          <line>115</line>
+          <properties />
+          <option name="timeStamp" value="305" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="297" />
+      <option name="time" value="306" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1303,9 +1268,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/menu/main/MainMenuController.java" />
-    <entry file="file://$PROJECT_DIR$/src/menu/main/MainMenu.fxml" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/application/Application.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/Class.java" />
     <entry file="file://$PROJECT_DIR$/src/menu/MaterialMainMenu.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
@@ -1375,13 +1337,6 @@
         <state relative-caret-position="374">
           <caret line="29" column="1" lean-forward="false" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/database/DatabaseHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3655">
-          <caret line="222" column="0" lean-forward="false" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1457,13 +1412,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/pca_transform-1.0.2.jar!/com/mkobos/pca_transform/PCA.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1547">
-          <caret line="112" column="49" lean-forward="false" selection-start-line="112" selection-start-column="24" selection-end-line="112" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/ManualTestPCA.java" />
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/org/junit/Assert.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -1476,7 +1424,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6341">
           <caret line="421" column="36" lean-forward="false" selection-start-line="421" selection-start-column="36" selection-end-line="421" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1484,18 +1431,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-          <folding>
-            <element signature="e#1256#1257#0" expanded="false" />
-            <element signature="e#1293#1294#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/vectorquantization/LBG/LBG.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2278">
-          <caret line="143" column="17" lean-forward="false" selection-start-line="143" selection-start-column="17" selection-end-line="143" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1505,23 +1440,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <marker date="1517142170399" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1517142170399" expanded="false" signature="128:173" ph="..." />
-            <marker date="1517142170399" expanded="true" signature="567:5049" ph="{...}" />
-            <marker date="1517142170399" expanded="true" signature="5075:8912" ph="{...}" />
-            <marker date="1517142170399" expanded="true" signature="8940:11940" ph="{...}" />
-            <marker date="1517142170399" expanded="true" signature="12016:12505" ph="{...}" />
-            <marker date="1517142170399" expanded="true" signature="12531:30593" ph="{...}" />
-            <marker date="1517142170399" expanded="true" signature="30643:31812" ph="{...}" />
-            <marker date="1517142170399" expanded="false" signature="31838:31849" ph=" { " />
-            <marker date="1517142170399" expanded="false" signature="31891:31897" ph=" }" />
-            <marker date="1517142170399" expanded="false" signature="31939:31950" ph=" { " />
-            <marker date="1517142170399" expanded="false" signature="31964:31970" ph=" }" />
-            <marker date="1517142170399" expanded="false" signature="32012:32023" ph=" { " />
-            <marker date="1517142170399" expanded="false" signature="32037:32043" ph=" }" />
-            <marker date="1517142170399" expanded="true" signature="32070:32615" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1529,31 +1447,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <marker date="1517142170399" expanded="false" signature="0:104" ph="/.../" />
-            <marker date="1517142170399" expanded="false" signature="128:173" ph="..." />
-            <marker date="1517142170399" expanded="true" signature="460:16205" ph="{...}" />
-            <marker date="1517142170399" expanded="false" signature="16231:16242" ph=" { " />
-            <marker date="1517142170399" expanded="false" signature="16306:16312" ph=" }" />
-            <marker date="1517142170399" expanded="false" signature="16338:16349" ph=" { " />
-            <marker date="1517142170399" expanded="false" signature="16391:16397" ph=" }" />
-            <marker date="1517142170399" expanded="false" signature="16438:16449" ph=" { " />
-            <marker date="1517142170399" expanded="false" signature="16463:16469" ph=" }" />
-            <marker date="1517142170399" expanded="true" signature="16496:16836" ph="{...}" />
-            <marker date="1517142170399" expanded="false" signature="16863:16874" ph=" { " />
-            <marker date="1517142170399" expanded="false" signature="16891:16897" ph=" }" />
-            <marker date="1517142170399" expanded="false" signature="16923:16934" ph=" { " />
-            <marker date="1517142170399" expanded="false" signature="16990:16996" ph=" }" />
-            <marker date="1517142170399" expanded="true" signature="17020:17338" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/audio/feature_extraction/MFCC.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5593">
-          <caret line="338" column="60" lean-forward="false" selection-start-line="338" selection-start-column="60" selection-end-line="338" selection-end-column="60" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1561,18 +1454,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-646">
           <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://L:/Cloud/Dropbox/TA/Code/Jama/Matrix.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="376" column="15" lean-forward="false" selection-start-line="376" selection-start-column="15" selection-end-line="376" selection-end-column="15" />
-          <folding>
-            <element signature="e#10535#10536#0" expanded="true" />
-            <element signature="e#10559#10560#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1584,18 +1465,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/PCATest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="47">
-          <caret line="29" column="26" lean-forward="true" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="145">
           <caret line="1770" column="0" lean-forward="false" selection-start-line="1770" selection-start-column="0" selection-end-line="1770" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tools/ui/DialogCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/application/Platform.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="952">
+          <caret line="81" column="23" lean-forward="false" selection-start-line="81" selection-start-column="23" selection-end-line="81" selection-end-column="23" />
+          <folding>
+            <element signature="e#2657#2658#0" expanded="false" />
+            <element signature="e#2704#2705#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/audio/feature_extraction/MFCC.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/scene/control/TextInputControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16201">
+          <caret line="1060" column="16" lean-forward="false" selection-start-line="1060" selection-start-column="16" selection-end-line="1060" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -1605,61 +1511,115 @@
         <state />
       </provider>
       <provider editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="69" column="25" lean-forward="false" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="25" />
+        <state relative-caret-position="1105">
+          <caret line="65" column="25" lean-forward="false" selection-start-line="65" selection-start-column="25" selection-end-line="65" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tools/ui/DialogCreator.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/ProcessEnvironment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-170">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
+        <state relative-caret-position="102">
+          <caret line="68" column="12" lean-forward="false" selection-start-line="68" selection-start-column="12" selection-end-line="68" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/application/Platform.java">
+    <entry file="file://L:/Cloud/Dropbox/TA/Code/Jama/Matrix.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="81" column="23" lean-forward="false" selection-start-line="81" selection-start-column="23" selection-end-line="81" selection-end-column="23" />
+        <state relative-caret-position="14790">
+          <caret line="912" column="15" lean-forward="false" selection-start-line="912" selection-start-column="15" selection-end-line="912" selection-end-column="15" />
           <folding>
-            <element signature="e#2657#2658#0" expanded="true" />
-            <element signature="e#2704#2705#0" expanded="true" />
+            <element signature="e#10535#10536#0" expanded="true" />
+            <element signature="e#10559#10560#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/menu/MainMenuController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="192" column="38" lean-forward="false" selection-start-line="192" selection-start-column="38" selection-end-line="192" selection-end-column="38" />
+        <state relative-caret-position="268">
+          <caret line="204" column="24" lean-forward="false" selection-start-line="204" selection-start-column="24" selection-end-line="204" selection-end-column="24" />
           <folding>
-            <element signature="e#7107#7108#0" expanded="true" />
-            <element signature="e#7171#7172#0" expanded="true" />
+            <element signature="e#6998#6999#0" expanded="true" />
+            <element signature="e#7072#7073#0" expanded="true" />
+            <element signature="e#7111#7112#0" expanded="true" />
+            <element signature="e#7152#7153#0" expanded="true" />
+            <element signature="e#7284#7285#0" expanded="true" />
+            <element signature="e#7348#7349#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/pca_transform-1.0.2.jar!/com/mkobos/pca_transform/PCA.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="682">
+          <caret line="112" column="49" lean-forward="false" selection-start-line="112" selection-start-column="24" selection-end-line="112" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/PCATest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="81" column="23" lean-forward="false" selection-start-line="81" selection-start-column="23" selection-end-line="81" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/vectorquantization/LBG/LBG.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="289" column="47" lean-forward="true" selection-start-line="289" selection-start-column="47" selection-end-line="289" selection-end-column="47" />
+          <folding>
+            <element signature="e#1395#1396#0" expanded="true" />
+            <element signature="e#1446#1447#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/database/DatabaseHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1353">
+          <caret line="132" column="22" lean-forward="false" selection-start-line="132" selection-start-column="22" selection-end-line="132" selection-end-column="22" />
+          <folding>
+            <element signature="e#6428#6439#0" expanded="true" />
+            <element signature="e#7548#7562#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/database/Codebook.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="45" lean-forward="false" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="45" />
+          <folding>
+            <element signature="e#589#590#0" expanded="true" />
+            <element signature="e#641#642#0" expanded="true" />
+            <element signature="e#761#762#0" expanded="true" />
+            <element signature="e#801#802#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/data/pca/PCA.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        <state relative-caret-position="638">
+          <caret line="284" column="91" lean-forward="false" selection-start-line="284" selection-start-column="91" selection-end-line="284" selection-end-column="91" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#getPercentagePCAResult#0;class#PCA#0" expanded="false" />
+            <element signature="e#10385#10386#0" expanded="true" />
+            <element signature="e#10430#10431#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/classification/Processor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+        <state relative-caret-position="493">
+          <caret line="62" column="19" lean-forward="true" selection-start-line="62" selection-start-column="19" selection-end-line="62" selection-end-column="19" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#941#942#0" expanded="true" />
-            <element signature="e#981#982#0" expanded="true" />
           </folding>
         </state>
       </provider>

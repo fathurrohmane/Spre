@@ -278,13 +278,14 @@ public class LBG {
     public void loadFromDataBase(File directoryDatabase) {
         Codebook codebook = DatabaseHandler.loadCodeBook(directoryDatabase);
         mCluster = codebook.getCluster();
+        mDimensionSize = codebook.getDimensionSize();
     }
 
     public void saveToDatabase() {
         Codebook codebook = new Codebook();
 
         codebook.setDimensionSize(mDimensionSize);
-        codebook.setCluster(mCluster);
+        codebook.setCluster(mCluster.clone());
 
         DatabaseHandler.saveCodebook(codebook);
         writeMessage("Codebook saved.");

@@ -1,6 +1,7 @@
 package data.database;
 
 import data.model.SoundFileInfo;
+import data.pca.PCA;
 import test.validator.hmm.HiddenMarkov;
 
 import java.io.*;
@@ -14,9 +15,11 @@ public class DatabaseHandler {
 
     private static final String DATABASE_FOLDER = "database";
     private static final String CODEBOOK_FOLDER = "codebook";
+    private static final String PCA_FOLDER = "pca";
     private static final String WORD_MODEL_FOLDER = "wordmodel";
 
     private static final String EXTENSION_CODEBOOK = ".cdb";
+    private static final String EXTENSION_PCA = ".pca";
     private static final String EXTENSION_WORD_MODEL = ".mdl";
 
     private static File databasePath = null;
@@ -50,6 +53,28 @@ public class DatabaseHandler {
             out.close();
             fileOutputStream.close();
             System.out.println("codebook" + " has been saved in " + path);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void savePCA(PCA pca) {
+        try {
+            String path = databasePath.getAbsolutePath().concat("\\" + PCA_FOLDER);
+            File folder = new File(path);
+            if (!folder.exists()) {
+                folder.mkdirs();
+            }
+
+            String pathFile = folder.getAbsolutePath().concat("\\" + "pca" + EXTENSION_PCA);
+            File codebookFile = new File(pathFile);
+
+            FileOutputStream fileOutputStream = new FileOutputStream(codebookFile);
+            ObjectOutputStream out = new ObjectOutputStream(fileOutputStream);
+            out.writeObject(pca);
+            out.close();
+            fileOutputStream.close();
+            System.out.println("PCA" + " has been saved in " + path);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -93,6 +118,25 @@ public class DatabaseHandler {
             ObjectInputStream in = new ObjectInputStream(fileInputStream);
             output = (Codebook) in.readObject();
             System.out.println("Codebook" + " has been loaded " + databaseDirectory.getAbsolutePath());
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return output;
+    }
+
+    /**
+     * Load pca from database/files
+     *
+     * @param databaseDirectory name of pca files
+     * @return PCA object
+     */
+    public static PCA loadPCA(File databaseDirectory) {
+        PCA output = null;
+        try {
+            FileInputStream fileInputStream = new FileInputStream(databaseDirectory + "\\" + PCA_FOLDER + "\\" + "pca" + EXTENSION_PCA);
+            ObjectInputStream in = new ObjectInputStream(fileInputStream);
+            output = (PCA) in.readObject();
+            System.out.println("PCA" + " has been loaded " + databaseDirectory.getAbsolutePath());
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
