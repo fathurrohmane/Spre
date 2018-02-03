@@ -97,7 +97,7 @@ public class Processor implements IProcessListener {
         LBG lbg = new LBG(mfccsAfterPCA);
         lbg.setListener(this);
         lbg.calculateCluster(cluster);
-        lbg.saveToDatabase();
+        lbg.saveToDisk();
         lbg.removeListener();
 
         // Time stamp vector quantization done
@@ -230,7 +230,7 @@ public class Processor implements IProcessListener {
         LBG lbg = new LBG(ceptra);
         lbg.setListener(this);
         lbg.calculateCluster(cluster);
-        lbg.saveToDatabase();
+        lbg.saveToDisk();
         lbg.removeListener();
 
         // Time stamp Vector Quantization(VQ)

@@ -192,7 +192,7 @@ public class VectorQuantization {
 //        clusters = codebook.getClusters();
 //    }
 //
-//    public void saveToDatabase() {
+//    public void saveToDisk() {
 //        Codebook codebook = new Codebook();
 //
 //        codebook.setDimension(numberOfDimension);

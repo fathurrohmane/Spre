@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/audio/feature_extraction/MFCC.java" afterPath="$PROJECT_DIR$/src/audio/feature_extraction/MFCC.java" />
       <change beforePath="$PROJECT_DIR$/src/classification/Processor.java" afterPath="$PROJECT_DIR$/src/classification/Processor.java" />
-      <change beforePath="$PROJECT_DIR$/src/data/database/DatabaseHandler.java" afterPath="$PROJECT_DIR$/src/data/database/DatabaseHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/menu/MainMenuController.java" afterPath="$PROJECT_DIR$/src/menu/MainMenuController.java" />
+      <change beforePath="$PROJECT_DIR$/src/data/vectorquantization/LBG/LBG.java" afterPath="$PROJECT_DIR$/src/data/vectorquantization/LBG/LBG.java" />
+      <change beforePath="$PROJECT_DIR$/src/data/vectorquantization/LBG/VectorQuantization.java" afterPath="$PROJECT_DIR$/src/data/vectorquantization/LBG/VectorQuantization.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -76,8 +75,8 @@
               <caret line="216" column="26" lean-forward="true" selection-start-line="216" selection-start-column="26" selection-end-line="216" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#15616#15617#0" expanded="true" />
-                <element signature="e#15658#15659#0" expanded="true" />
+                <element signature="e#15608#15609#0" expanded="true" />
+                <element signature="e#15650#15651#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -105,11 +104,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseHandler.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DatabaseHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/data/database/DatabaseHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="55" column="33" lean-forward="true" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
+            <state relative-caret-position="221">
+              <caret line="36" column="23" lean-forward="false" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
               <folding>
                 <element signature="e#6428#6439#0" expanded="true" />
                 <element signature="e#7548#7562#0" expanded="true" />
@@ -121,26 +120,28 @@
       <file leaf-file-name="PCA.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/data/pca/PCA.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="638">
-              <caret line="284" column="91" lean-forward="false" selection-start-line="284" selection-start-column="91" selection-end-line="284" selection-end-column="91" />
+            <state relative-caret-position="0">
+              <caret line="0" column="17" lean-forward="true" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#getPercentagePCAResult#0;class#PCA#0" expanded="false" />
-                <element signature="e#10385#10386#0" expanded="true" />
-                <element signature="e#10430#10431#0" expanded="true" />
+                <element signature="e#10439#10440#0" expanded="true" />
+                <element signature="e#10484#10485#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LBG.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LBG.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/data/vectorquantization/LBG/LBG.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="289" column="47" lean-forward="true" selection-start-line="289" selection-start-column="47" selection-end-line="289" selection-end-column="47" />
+            <state relative-caret-position="187">
+              <caret line="14" column="74" lean-forward="true" selection-start-line="14" selection-start-column="74" selection-end-line="14" selection-end-column="74" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="e#1395#1396#0" expanded="true" />
                 <element signature="e#1446#1447#0" expanded="true" />
+                <element signature="e#9124#9125#0" expanded="true" />
+                <element signature="e#9164#9165#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -314,12 +315,12 @@
         <option value="$PROJECT_DIR$/src/test/ManualTestPCA.java" />
         <option value="$PROJECT_DIR$/src/menu/MainMenu.fxml" />
         <option value="$PROJECT_DIR$/src/test/PCATest.java" />
-        <option value="$PROJECT_DIR$/src/data/vectorquantization/LBG/LBG.java" />
-        <option value="$PROJECT_DIR$/src/data/pca/PCA.java" />
         <option value="$PROJECT_DIR$/src/menu/MainMenuController.java" />
         <option value="$PROJECT_DIR$/src/data/database/DatabaseHandler.java" />
         <option value="$PROJECT_DIR$/src/classification/Processor.java" />
         <option value="$PROJECT_DIR$/src/audio/feature_extraction/MFCC.java" />
+        <option value="$PROJECT_DIR$/src/data/pca/PCA.java" />
+        <option value="$PROJECT_DIR$/src/data/vectorquantization/LBG/LBG.java" />
       </list>
     </option>
   </component>
@@ -1050,7 +1051,21 @@
       <option name="project" value="LOCAL" />
       <updated>1517677098999</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Remove unused code in Processor class (Method that handling pca files to process) and fix some typo and warning">
+      <created>1517678465958</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1517678465958</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Refactor PCA class">
+      <created>1517678764993</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1517678764993</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1114,6 +1129,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21418338" sideWeight="0.32163742" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32388663" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21418338" sideWeight="0.67836255" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1133,7 +1149,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3251366" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1162,7 +1177,8 @@
     <MESSAGE value="Refactoring mainly Processor class, and add some tests." />
     <MESSAGE value="Add capability to save PCA to disk and load it when testing." />
     <MESSAGE value="Remove unused code in Processor class (Method that handling pca files to process) and fix some typo and warning" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove unused code in Processor class (Method that handling pca files to process) and fix some typo and warning" />
+    <MESSAGE value="Refactor PCA class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor PCA class" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1199,7 +1215,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/data/pca/PCA.java</url>
-          <line>158</line>
+          <line>164</line>
           <properties />
           <option name="timeStamp" value="229" />
         </line-breakpoint>
@@ -1521,17 +1537,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/vectorquantization/LBG/LBG.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="289" column="47" lean-forward="true" selection-start-line="289" selection-start-column="47" selection-end-line="289" selection-end-column="47" />
-          <folding>
-            <element signature="e#1395#1396#0" expanded="true" />
-            <element signature="e#1446#1447#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/data/database/Codebook.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1541,19 +1546,6 @@
             <element signature="e#641#642#0" expanded="true" />
             <element signature="e#761#762#0" expanded="true" />
             <element signature="e#801#802#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/data/pca/PCA.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="284" column="91" lean-forward="false" selection-start-line="284" selection-start-column="91" selection-end-line="284" selection-end-column="91" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getPercentagePCAResult#0;class#PCA#0" expanded="false" />
-            <element signature="e#10385#10386#0" expanded="true" />
-            <element signature="e#10430#10431#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1582,8 +1574,8 @@
           <caret line="216" column="26" lean-forward="true" selection-start-line="216" selection-start-column="26" selection-end-line="216" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#15616#15617#0" expanded="true" />
-            <element signature="e#15658#15659#0" expanded="true" />
+            <element signature="e#15608#15609#0" expanded="true" />
+            <element signature="e#15650#15651#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1603,13 +1595,39 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/pca/PCA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="17" lean-forward="true" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#10439#10440#0" expanded="true" />
+            <element signature="e#10484#10485#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/data/database/DatabaseHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="55" column="33" lean-forward="true" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
+        <state relative-caret-position="221">
+          <caret line="36" column="23" lean-forward="false" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
           <folding>
             <element signature="e#6428#6439#0" expanded="true" />
             <element signature="e#7548#7562#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/data/vectorquantization/LBG/LBG.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="14" column="74" lean-forward="true" selection-start-line="14" selection-start-column="74" selection-end-line="14" selection-end-column="74" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1395#1396#0" expanded="true" />
+            <element signature="e#1446#1447#0" expanded="true" />
+            <element signature="e#9124#9125#0" expanded="true" />
+            <element signature="e#9164#9165#0" expanded="true" />
           </folding>
         </state>
       </provider>

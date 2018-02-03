@@ -212,7 +212,7 @@ public class LBG {
         return mCluster;
     }
 
-    public int getClosestClusterIndex(double[] data) {
+    private int getClosestClusterIndex(double[] data) {
         double min = Double.MAX_VALUE;
         int result = 0;
         for (int i = 0; i < mCluster.length; i++) {
@@ -227,7 +227,7 @@ public class LBG {
     }
 
     /**
-     * @param mfcc
+     * @param mfcc input of acoustic vector
      * @return observation sequence
      */
     public int[] getObservationSequence(MFCC mfcc) {
@@ -243,7 +243,7 @@ public class LBG {
     }
 
     /**
-     * @param mfcc
+     * @param mfcc input of acoustic vector
      * @return observation sequence
      */
     public int[] getObservationSequence(double[][] mfcc) {
@@ -275,13 +275,20 @@ public class LBG {
 //        return result;
 //    }
 
-    public void loadFromDataBase(File directoryDatabase) {
+    /**
+     * Load from disk
+     * @param directoryDatabase directory root
+     */
+    private void loadFromDataBase(File directoryDatabase) {
         Codebook codebook = DatabaseHandler.loadCodeBook(directoryDatabase);
         mCluster = codebook.getCluster();
         mDimensionSize = codebook.getDimensionSize();
     }
 
-    public void saveToDatabase() {
+    /**
+     * Save codebook to disk
+     */
+    public void saveToDisk() {
         Codebook codebook = new Codebook();
 
         codebook.setDimensionSize(mDimensionSize);
@@ -301,7 +308,7 @@ public class LBG {
         }
     }
 
-    public void writeMessage(String context) {
+    private void writeMessage(String context) {
         if (listener != null) {
             listener.getMessage(new Date().toString(), context);
         }
