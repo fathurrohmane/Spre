@@ -2,12 +2,9 @@ package audio.feature_extraction;
 
 import data.Complex;
 import data.FFT;
-import data.pca.PCA;
 import tools.IProcessListener;
-import tools.array.Array;
 
 import java.util.Date;
-import java.util.logging.Logger;
 
 /**
  * Created by Fathurrohman on 5/20/2015.
@@ -105,7 +102,7 @@ public class MFCC {
     }
 
     private void preEmphasis() {
-        // Calculate preemphasis per sample
+        // Calculate pre-emphasis per sample
         for (int i = 1; i < audioData.length; i++) {
             audioData[i] = (audioData[i] - preEmphasisCoefficient * audioData[i - 1]);
         }
@@ -380,7 +377,7 @@ public class MFCC {
         }
     }
 
-    public void writeMessage(String context) {
+    private void writeMessage(String context) {
         if (listener != null) {
             listener.getMessage(new Date().toString(), context);
         }

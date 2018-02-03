@@ -156,10 +156,10 @@ public class MainMenuController extends Application implements IMainView {
             Thread backgroundThread = new Thread(() -> {
                 switch (dialogTrainingOption) {
                     case 0:
-                        processor.startTrainingWithoutPCA("", 256, soundFile);
+                        processor.startTrainingWithoutPCA(256, soundFile);
                         break;
                     case 1:
-                        processor.startTrainingWithPCA("", 256, soundFile);
+                        processor.startTrainingWithPCA(256, soundFile);
                         break;
                 }
                 processor = null;

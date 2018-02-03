@@ -231,6 +231,10 @@ public class DatabaseHandler {
      * @param firstLevelDirectories root directory where the training/testing files
      */
     public static SoundFileInfo readFolder(File[] firstLevelDirectories) {
+        if (firstLevelDirectories == null) {
+            throw new NullPointerException();
+        }
+
         SoundFileInfo soundFileInfo = new SoundFileInfo();
         // Browse all folder
         for (File firstLevelDirectory : firstLevelDirectories) {

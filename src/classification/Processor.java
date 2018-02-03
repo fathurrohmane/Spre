@@ -1,6 +1,5 @@
 package classification;
 
-import Jama.Matrix;
 import audio.AudioProcessing;
 import audio.feature_extraction.MFCC;
 import data.database.DatabaseHandler;
@@ -11,7 +10,6 @@ import data.vectorquantization.LBG.Point;
 import test.validator.hmm.HiddenMarkov;
 import tools.IMainView;
 import tools.IProcessListener;
-import tools.array.Array;
 
 import java.io.File;
 import java.util.*;
@@ -20,8 +18,8 @@ import java.util.*;
  * Created by Fathurrohman on 08-Dec-15.
  * Class Training will handle all the process for speech recognition in Training part
  * The process is
- * 1. Get audio data -> AudioProcessing.java -> get audiodata in double format
- * 2. Get MFCC feature -> MFCC.java -> get feature vector of audiodata in double format
+ * 1. Get audio data -> AudioProcessing.java -> get audio data in double format
+ * 2. Get MFCC feature -> MFCC.java -> get feature vector of audio data in double format
  * 3.
  */
 public class Processor implements IProcessListener {
@@ -39,13 +37,12 @@ public class Processor implements IProcessListener {
     /**
      * Static method to create new codebook
      *
-     * @param word             name of word that spoken in sound file
      * @param cluster          number of cluster or observation symbol
      * @param soundDirectories file
      */
-    public void startTrainingWithPCA(String word, int cluster, File soundDirectories) {
+    public void startTrainingWithPCA(int cluster, File soundDirectories) {
         // array list ceptra
-        List<MFCC> accousticVectors = new ArrayList<>();
+        List<MFCC> acousticVectors = new ArrayList<>();
         List<Point> ceptra = new ArrayList<>();
 
         SoundFileInfo soundFileInfo = DatabaseHandler.readFolder(soundDirectories.listFiles());
@@ -54,6 +51,7 @@ public class Processor implements IProcessListener {
         printTimeStamp("start");
 
         // Read all files
+        assert soundFileInfo != null;
         for (String path :
                 soundFileInfo.getFilePath()) {
             File file = new File(path);
@@ -71,25 +69,21 @@ public class Processor implements IProcessListener {
             for (int i = 0; i < mfcc.getCeptra().length; i++) {
                 ceptra.add(new Point(mfcc.getCeptra()[i]));
             }
-            accousticVectors.add(mfcc);
+            acousticVectors.add(mfcc);
             mfcc.removeListener();
         }
 
         // Time stamp feature extraction done
         printTimeStamp("mfcc");
 
-//      PCA ============
+        //PCA
         double[][] mfccsAfterPCA = reduceDimensionWithPca(numberOfEign, ceptra);
-//    double[][] mfccsAfterPCA = reduceDimensionWithPcaPerClass(numberOfEign, soundFileInfo, accousticVectors);
-//    double[][] mfccsAfterPCA = reduceDimensionWithPcaPerFile(numberOfEign, accousticVectors);
-//    double[][] mfccsAfterPCA = reduceDimensionWithPcaPerFileCombined(numberOfEign, accousticVectors);
-//    double[][] mfccsAfterPCA = reduceDimensionWithPca_2PerClass(numberOfEign, soundFileInfo, accousticVectors);
 
         // Time stamp dimension reduction done
         printTimeStamp("pca");
 
         int counter = 0;
-        for (MFCC mfcc : accousticVectors
+        for (MFCC mfcc : acousticVectors
                 ) {
             int numberOfFrame = mfcc.getCeptra().length;
             double[][] ceptras = new double[numberOfFrame][mfccsAfterPCA[0].length]; // number of frame and new dimension
@@ -109,7 +103,7 @@ public class Processor implements IProcessListener {
         // Time stamp vector quantization done
         printTimeStamp("vq");
 
-        createWordModel(soundFileInfo, accousticVectors, lbg, cluster);
+        createWordModel(soundFileInfo, acousticVectors, lbg, cluster);
 
         // Time stamp classification done
         printTimeStamp("hmm");
@@ -120,7 +114,7 @@ public class Processor implements IProcessListener {
     public void startTestingWithPCA(File soundDirectories, File databaseDirectory) {
 
         // array list ceptra
-        List<MFCC> accousticVectors = new ArrayList<>();
+        List<MFCC> acousticVectors = new ArrayList<>();
         List<Point> ceptra = new ArrayList<>();
 
         SoundFileInfo soundFileInfo = DatabaseHandler.readFolder(soundDirectories.listFiles());
@@ -129,6 +123,7 @@ public class Processor implements IProcessListener {
         printTimeStamp("start");
 
         // Read all files
+        assert soundFileInfo != null;
         for (String path :
                 soundFileInfo.getFilePath()) {
             File file = new File(path);
@@ -138,7 +133,7 @@ public class Processor implements IProcessListener {
             // MFCC
             MFCC mfcc = new MFCC(audioProcessing.getAudioData()
                     , audioProcessing.getAudioSampleRate()
-                    , file.getName() // TODO: 01-Feb-16 is file.getName() is enough?
+                    , file.getName()
             );
             mfcc.setListener(this);
 
@@ -147,27 +142,23 @@ public class Processor implements IProcessListener {
             for (int i = 0; i < mfcc.getCeptra().length; i++) {
                 ceptra.add(new Point(mfcc.getCeptra()[i]));
             }
-            accousticVectors.add(mfcc);
+            acousticVectors.add(mfcc);
             mfcc.removeListener();
         }
 
         // Time stamp feature extraction done
         printTimeStamp("mfcc");
 
-//      PCA ==============
+        // PCA
         PCA pca = DatabaseHandler.loadPCA(databaseDirectory);
         double[][] mfccsAfterPCA = reduceDimensionWithPca(pca, numberOfEign, ceptra);
-//      double[][] mfccsAfterPCA = reduceDimensionWithPcaPerClass(numberOfEign, soundFileInfo, accousticVectors);
-//      double[][] mfccsAfterPCA = reduceDimensionWithPcaPerFile(numberOfEign, accousticVectors);
-//      double[][] mfccsAfterPCA = reduceDimensionWithPcaPerFileCombined(numberOfEign, accousticVectors);
-//      double[][] mfccsAfterPCA = reduceDimensionWithPca_2PerClass(numberOfEign, soundFileInfo, accousticVectors);
 
         // Time stamp dimension reduction done
         printTimeStamp("pca");
 
-        // Copy reduced mfcc to Accoustic vectors or arraylist of mfcc
+        // Copy reduced mfcc to Acoustic vectors or array list of mfcc
         int counter = 0;
-        for (MFCC mfcc : accousticVectors
+        for (MFCC mfcc : acousticVectors
                 ) {
             int numberOfFrame = mfcc.getCeptra().length;
             double[][] ceptras = new double[numberOfFrame][mfccsAfterPCA[0].length]; // number of frame and new dimension
@@ -177,12 +168,13 @@ public class Processor implements IProcessListener {
             mfcc.setCeptra(ceptras);
         }
 
+        // VQ
         LBG lbg = new LBG(databaseDirectory);
 
-        // Time stamp Vector quantizatio(VQ)
+        // Time stamp Vector quantization(VQ)
         printTimeStamp("vq");
 
-        wordDetection(lbg, accousticVectors, databaseDirectory);
+        wordDetection(lbg, acousticVectors, databaseDirectory);
 
         // Time stamp Classification(HMM)
         printTimeStamp("hmm");
@@ -193,11 +185,10 @@ public class Processor implements IProcessListener {
     /**
      * Static method to create new codebook
      *
-     * @param word             name of word that spoken in sound file
      * @param cluster          number of cluster or observation symbol
      * @param soundDirectories file
      */
-    public void startTrainingWithoutPCA(String word, int cluster, File soundDirectories) {
+    public void startTrainingWithoutPCA(int cluster, File soundDirectories) {
 
         // array list ceptra
         List<MFCC> mfccs = new ArrayList<>();
@@ -352,117 +343,63 @@ public class Processor implements IProcessListener {
         }
     }
 
-    private double[][] reduceDimensionWithPcaPerClass(int dimension, SoundFileInfo soundFileInfo, List<MFCC> accousticVectors) {
+    /**
+     * Reduce data dimension with PCA
+     *
+     * @param dimension       number of dimension to keep
+     * @param acousticVectors list of all acoustic vectors
+     * @return Reduced dimension of acoustic vectors
+     */
+    private double[][] reduceDimensionWithPca(int dimension, List<Point> acousticVectors) {
         getMessage(new Date().toString(), "Calculating PCA");
-        double[][] mfccsAfterPCA = new double[0][dimension];
+        double[][] totalCeptra = new double[acousticVectors.size()][acousticVectors.get(0).getDimension()];
         int counter = 0;
-        for (SoundFileInfo.WordList wordList : soundFileInfo.getWordLists()) {
-            double[][] totalCeptrasPerWord = new double[0][dimension];
-            for (int i = 0; i < wordList.getTotal(); i++) {
-                totalCeptrasPerWord = Array.addArray(totalCeptrasPerWord, accousticVectors.get(counter).getCeptra());
-                counter++;
-            }
-            PCA pca = new PCA(totalCeptrasPerWord);
-            double[][] mfccReducted = pca.getPCAResult(dimension);
-            mfccsAfterPCA = Array.addArray(mfccsAfterPCA, mfccReducted);
-        }
-        getMessage(new Date().toString(), "Done PCA");
-        return mfccsAfterPCA;
-    }
-
-    private double[][] reduceDimensionWithPca(int dimension, List<Point> accousticVectors) {
-        getMessage(new Date().toString(), "Calculating PCA");
-        double[][] totalCeptra = new double[accousticVectors.size()][accousticVectors.get(0).getDimension()];
-        int counter = 0;
-        for (Point point : accousticVectors) {
+        for (Point point : acousticVectors) {
             totalCeptra[counter] = point.getCoordinates().clone();
             counter++;
         }
+        // Create pca and calculate
         PCA pca = new PCA(totalCeptra);
+        // Save to disk
         pca.saveToDisk();
-        double[][] mfccReducted = pca.getPCAResult(dimension).clone();
+
+        double[][] mfccReduced = pca.getPCAResult(dimension).clone();
         getMessage(new Date().toString(), "Done PCA");
-        return mfccReducted;
+        return mfccReduced;
     }
 
-    private double[][] reduceDimensionWithPca(PCA pca, int dimension, List<Point> accousticVectors) {
+    /**
+     * Reduce data dimension with PCA
+     *
+     * @param pca             PCA that have been trained / loaded from disk
+     * @param dimension       number of dimension to keep
+     * @param acousticVectors list of all acoustic vectors
+     * @return Reduced dimension of acoustic vectors
+     */
+    private double[][] reduceDimensionWithPca(PCA pca, int dimension, List<Point> acousticVectors) {
         if (pca != null) {
             getMessage(new Date().toString(), "Calculating PCA");
-            double[][] totalCeptra = new double[accousticVectors.size()][accousticVectors.get(0).getDimension()];
+            double[][] totalCeptra = new double[acousticVectors.size()][acousticVectors.get(0).getDimension()];
             int counter = 0;
-            for (Point point : accousticVectors) {
+            for (Point point : acousticVectors) {
                 totalCeptra[counter] = point.getCoordinates().clone();
                 counter++;
             }
 
-            double[][] mfccReducted = pca.getPCAResult(totalCeptra, dimension).clone();
+            double[][] mfccReduced = pca.getPCAResult(totalCeptra, dimension).clone();
             getMessage(new Date().toString(), "Done PCA");
-            return mfccReducted;
+            return mfccReduced;
         } else {
             throw new IllegalArgumentException("PCA is null!");
         }
 
     }
 
-    private double[][] reduceDimensionWithPca_2All(int dimension, SoundFileInfo soundFileInfo, List<MFCC> accousticVectors, List<Point> mfccs) {
-        getMessage(new Date().toString(), "Calculating PCA");
-        double[][] mfccsAfterPCA = new double[0][dimension];
-        int counter = 0;
-
-        double[][] allMFCCsForAllFiles = new double[0][accousticVectors.get(0).getCeptra()[0].length];
-        for (Point point : mfccs) {
-            //allMFCCsForAllFiles = Array.addArray(allMFCCsForAllFiles, point.getCoordinates());
-        }
-
-        for (SoundFileInfo.WordList wordList : soundFileInfo.getWordLists()) {
-            double[][] totalCeptrasPerWord = new double[0][dimension];
-            for (int i = 0; i < wordList.getTotal(); i++) {
-                totalCeptrasPerWord = Array.addArray(totalCeptrasPerWord, accousticVectors.get(counter).getCeptra());
-                counter++;
-            }
-
-//            Matrix input = new Matrix(totalCeptrasPerWord);
-//            com.mkobos.pca_transform.PCA pca = new com.mkobos.pca_transform.PCA(input);
-//            Matrix matrixResult = pca.transform(input, com.mkobos.pca_transform.PCA.TransformationType.ROTATION);
-//            mfccsAfterPCA = Array.addArray(mfccsAfterPCA, matrixResult.getArray());
-        }
-        getMessage(new Date().toString(), "Done PCA");
-        return mfccsAfterPCA;
-    }
-
-    private double[][] reduceDimensionWithPcaPerFile(int dimension, List<MFCC> accousticVectors) {
-        getMessage(new Date().toString(), "Calculating PCA");
-        double[][] mfccsAfterPCA = new double[0][dimension];
-        for (MFCC mfcc : accousticVectors) {
-            PCA pca = new PCA(mfcc.getCeptra());
-            double[][] mfccReducted = pca.getPCAResult(dimension);
-            mfccsAfterPCA = Array.addArray(mfccsAfterPCA, mfccReducted);
-        }
-        getMessage(new Date().toString(), "Done PCA");
-        return mfccsAfterPCA;
-    }
-
-    private double[][] reduceDimensionWithPcaPerFileCombined(int dimension, List<MFCC> accousticVectors) {
-        getMessage(new Date().toString(), "Calculating PCA");
-        double[][] mfccsAfterPCA = new double[accousticVectors.size()][];
-        int counter = 0;
-        for (MFCC mfcc : accousticVectors) {
-            double[] combinedMFCC = new double[0];
-            for (int i = 0; i < mfcc.getCeptra().length; i++) {
-                combinedMFCC = Array.addToSideArray(combinedMFCC, mfcc.getCeptra()[i]);
-            }
-            mfccsAfterPCA[counter] = combinedMFCC;
-            counter++;
-        }
-        mfccsAfterPCA = Array.normalize(mfccsAfterPCA);
-        PCA pca = new PCA(mfccsAfterPCA);
-        double[][] mfccReducted = pca.getPCAResult(dimension);
-        getMessage(new Date().toString(), "Done PCA");
-        return mfccReducted;
-    }
-
+    /**
+     * Output timestamp to text area
+     * @param type type of process
+     */
     private void printTimeStamp(String type) {
-
         String start = "Start (ms) : ";
         String mfcc = "Feature extraction(MFCC) done (ms) : ";
         String pca = "Dimension reduction(PCA) done (ms) : ";
