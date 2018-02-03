@@ -2,8 +2,6 @@ package data.pca;
 
 import Jama.EigenvalueDecomposition;
 import Jama.Matrix;
-import Jama.SingularValueDecomposition;
-import audio.feature_extraction.MFCC;
 import data.database.DatabaseHandler;
 import data.vectorquantization.LBG.Point;
 
@@ -34,7 +32,7 @@ public class PCA implements Serializable {
     }
 
     public PCA(double[][] dataSample) {
-//initiation
+        //initiation
         data = new double[dataSample.length][dataSample[0].length];
         means = new double[dataSample[0].length];
         data = dataSample.clone();
@@ -43,22 +41,22 @@ public class PCA implements Serializable {
     }
 
     private void calculate() {
-//calculate mean for each dimension
+        //calculate mean for each dimension
         means = calculateMean(data);
-//Adjust data by subtract by its mean
+        //Adjust data by subtract by its mean
         data = adjustedData(data, means, false);
-//calculate mean for adjusted data
+        //calculate mean for adjusted data
         means = calculateMean(data);
-//calculate covariance
+
+        //calculate covariance
         double[][] covariance = getCovariances(data, means);
         Matrix covarianceInMatrix = new Matrix(covariance);
         System.out.println("Matrix Covariance :");
         covarianceInMatrix.print(data[0].length, 5);
         EigenvalueDecomposition eigenData = covarianceInMatrix.eig();
-//        SingularValueDecomposition eigenData = covarianceInMatrix.svd();
-//calculate eigen vector and value
+
+        //calculate eigen vector and value
         double[] eigenValues = eigenData.getRealEigenvalues();
-//        double[] eigenValues = eigenData.getSingularValues();
         Matrix eigenVectors = eigenData.getV();
         System.out.println("Eigen Vector :");
         eigenVectors.print(data[0].length, 5);
@@ -66,60 +64,68 @@ public class PCA implements Serializable {
         for (double eigenValue : eigenValues) {
             System.out.println(eigenValue);
         }
+
         double[][] vecs = eigenVectors.getArray();
         int numOfComponents = eigenVectors.getColumnDimension(); // same as num rows.
         principleComponents = new ArrayList<>();
+
 //Sort by eigen value -> higher eigenvalue higher priority
         for (int i = 0; i < numOfComponents; i++) {
             double[] eigenVector = new double[numOfComponents];
             System.arraycopy(vecs[i], 0, eigenVector, 0, numOfComponents);
             principleComponents.add(new PrincipleComponent(eigenValues[i], eigenVector));
         }
+
         Collections.sort(principleComponents);
-        System.out.println();
     }
 
     //Set result dimension -> dimensional reduction
     public double[][] getPCAResult(int numberOfDimension) {
-//List of eigen vector sorted by eigenvalue
+        //List of eigen vector sorted by eigenvalue
         List<PCA.PrincipleComponent> mainComponents = getDominantComponents(numberOfDimension);
         Matrix features = getDominantComponentsMatrix(mainComponents);
         //System.out.println("Feature Matrix");
         //features.print(2, 4);
-//convert original data to Matrix
+
+        //convert original data to Matrix
         Matrix originalDataSubtractedByMean = new Matrix(data);
 
-//featureVectorTranspose * originalDataSubtractedbyMeanTranspose
+        //featureVectorTranspose * originalDataSubtractedbyMeanTranspose
         Matrix featureTranspose = features.transpose();
         //System.out.println("Feature Matrix Transposed");
         //featureTranspose.print(2, 4);
         Matrix originalDataAdjusted = originalDataSubtractedByMean.transpose();
         Matrix result = featureTranspose.times(originalDataAdjusted);
 
-//Result in array
+        //Result in array
         return result.transpose().getArray();
     }
 
-    //Get
+    /**
+     * Tranform input data with this PCA
+     * @param input data to reduce
+     * @param numberOfDimension number of dimension to keep
+     * @return input data reduced
+     */
     public double[][] getPCAResult(double[][] input, int numberOfDimension) {
         if (principleComponents != null) {
-//List of eigen vector sorted by eigenvalue
+            //List of eigen vector sorted by eigenvalue
             List<PCA.PrincipleComponent> mainComponents = getDominantComponents(numberOfDimension);
             Matrix features = getDominantComponentsMatrix(mainComponents);
             //System.out.println("Feature Matrix");
             //features.print(2, 4);
-//Adjust data input
+            //Adjust data input
             double[][] adjustedInput = adjustedData(input, calculateMean(input), false);
             Matrix originalDataSubtractedByMean = new Matrix(adjustedInput);
 
-//featureVectorTranspose * originalDataSubtractedbyMeanTranspose
+            //featureVectorTranspose * originalDataSubtractedByMeanTranspose
             Matrix featureTranspose = features.transpose();
             //System.out.println("Feature Matrix Transposed");
             //featureTranspose.print(2, 4);
             Matrix originalDataAdjusted = originalDataSubtractedByMean.transpose();
             Matrix result = featureTranspose.times(originalDataAdjusted);
 
-//Result in array
+            //Result in array
             return result.transpose().getArray();
         } else {
             throw new IllegalArgumentException("Principal component is missing! Cant perform dimension reduction if its empty. Maybe its not loaded yet from file?");
@@ -145,19 +151,19 @@ public class PCA implements Serializable {
             numberOfDimension++;
         } while ((((currentEigenValue / totalEigenValue) * 100) < minPercentage) && iterator.hasNext());
 
-//List of eigen vector sorted by eigenvalue
+        //List of eigen vector sorted by eigenvalue
         List<PCA.PrincipleComponent> mainComponents = getDominantComponents(numberOfDimension);
         Matrix features = getDominantComponentsMatrix(mainComponents);
 
-//convert original data to Matrix
+        //convert original data to Matrix
         Matrix originalDataSubtractedByMean = new Matrix(data);
 
-//featureVectorTranspose * originalDataSubtractedbyMeanTranspose
+        //featureVectorTranspose * originalDataSubtractedByMeanTranspose
         Matrix featureTranspose = features.transpose();
         Matrix originalDataAdjusted = originalDataSubtractedByMean.transpose();
         Matrix result = featureTranspose.times(originalDataAdjusted);
 
-//Result in array
+        //Result in array
         return result.transpose().getArray();
     }
 
@@ -197,22 +203,21 @@ public class PCA implements Serializable {
         double[] sum = new double[n];
         double[] mean = new double[n];
 
-//Sum all data
-        for (int i = 0; i < numData; i++) {
-            double[] vec = data[i];
+        //Sum all data
+        for (double[] vec : data) {
             for (int j = 0; j < data[0].length; j++) {
                 sum[j] += vec[j];
             }
         }
 
-//divide by its total
+        //divide by its total
         for (int i = 0; i < sum.length; i++) {
             mean[i] = sum[i] / numData;
         }
         return mean;
     }
 
-    public Matrix getDominantComponentsMatrix(List<PrincipleComponent> dom) {
+    private Matrix getDominantComponentsMatrix(List<PrincipleComponent> dom) {
         int nRows = dom.get(0).eigenVector.length;
         int nCols = dom.size();
         Matrix matrix = new Matrix(nRows, nCols);
@@ -244,9 +249,9 @@ public class PCA implements Serializable {
     private double calculateCovariance(double[][] data, int colA, int colB, double[] means) {
         double covariance = 0.0;
 
-        for (int i = 0; i < data.length; i++) {
-            double a = data[i][colA] - means[colA];
-            double b = data[i][colB] - means[colB];
+        for (double[] aData : data) {
+            double a = aData[colA] - means[colA];
+            double b = aData[colB] - means[colB];
 
             covariance += (a * b);
         }
@@ -286,7 +291,7 @@ public class PCA implements Serializable {
         private double eigenValue;
         private double[] eigenVector;
 
-        public PrincipleComponent(double eigenValue, double[] eigenVector) {
+        PrincipleComponent(double eigenValue, double[] eigenVector) {
             this.eigenValue = eigenValue;
             this.eigenVector = eigenVector;
         }
@@ -302,7 +307,7 @@ public class PCA implements Serializable {
         }
 
         public String toString() {
-            return "Principle Component, eigenvalue: " + eigenValue+ ", eigenvector: ["
+            return "Principle Component, eigenvalue: " + eigenValue+ ", eigen vector: ["
                     + Arrays.toString(eigenVector) + "]";
         }
     }
