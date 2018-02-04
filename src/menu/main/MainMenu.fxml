@@ -87,7 +87,7 @@
                                     <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                                  </GridPane.margin>
                               </Button>
-                              <CheckBox mnemonicParsing="false" text="Reduce Dimension with PCA" GridPane.columnIndex="3">
+                              <CheckBox fx:id="checkBoxReduceDimension" mnemonicParsing="false" text="Reduce Dimension with PCA" GridPane.columnIndex="3">
                                  <GridPane.margin>
                                     <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                                  </GridPane.margin>
@@ -99,7 +99,7 @@
                                           <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <TextField prefHeight="25.0" prefWidth="50.0" promptText="39" text="39" HBox.hgrow="NEVER">
+                                    <TextField fx:id="textFieldDimensionReductionNumber" prefHeight="25.0" prefWidth="50.0" promptText="39" text="39" HBox.hgrow="NEVER">
                                        <padding>
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </padding>
@@ -146,24 +146,24 @@
                                     <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                                  </GridPane.margin>
                               </ProgressBar>
-                              <Button mnemonicParsing="false" text="Reset" GridPane.rowIndex="1">
+                              <Button fx:id="buttonReset" mnemonicParsing="false" text="Reset" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets bottom="8.0" left="8.0" right="8.0" top="4.0" />
                                  </GridPane.margin>
                               </Button>
-                              <Button mnemonicParsing="false" style="-fx-background-color: #cd0000;" text="Stop" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                              <Button fx:id="buttonStopProcess" mnemonicParsing="false" style="-fx-background-color: #cd0000;" text="Stop" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                  <GridPane.margin>
                                     <Insets bottom="8.0" left="4.0" right="4.0" top="4.0" />
                                  </GridPane.margin>
                               </Button>
                               <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                                  <children>
-                                    <Button mnemonicParsing="false" text="Testing">
+                                    <Button fx:id="buttonTesting" mnemonicParsing="false" text="Testing">
                                        <HBox.margin>
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" text="Training">
+                                    <Button fx:id="buttonTraining" mnemonicParsing="false" text="Training">
                                        <HBox.margin>
                                           <Insets bottom="4.0" left="4.0" right="8.0" top="4.0" />
                                        </HBox.margin>
@@ -189,7 +189,7 @@
                               <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                            </VBox.margin>
                         </Label>
-                        <Label layoutX="18.0" layoutY="39.0" text="D://Kappa/123">
+                        <Label fx:id="textLabelDatabaseLocation" layoutX="18.0" layoutY="39.0" text="D://Kappa/123">
                            <VBox.margin>
                               <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                            </VBox.margin>
@@ -199,7 +199,7 @@
                               <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                            </VBox.margin>
                         </Label>
-                        <TextArea prefHeight="125.0" prefWidth="242.0" promptText="Load database first!">
+                        <TextArea fx:id="textAreaTrainedWordList" prefHeight="125.0" prefWidth="242.0" promptText="Load database first!">
                            <VBox.margin>
                               <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                            </VBox.margin>
@@ -207,27 +207,27 @@
                               <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                            </padding>
                         </TextArea>
-                        <CheckBox mnemonicParsing="false" text="Show MFCC Log">
+                        <CheckBox fx:id="checkBoxShowMFCCLog" mnemonicParsing="false" text="Show MFCC Log">
                            <VBox.margin>
                               <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                            </VBox.margin>
                         </CheckBox>
-                        <CheckBox layoutX="18.0" layoutY="247.0" mnemonicParsing="false" text="Show PCA Log">
+                        <CheckBox fx:id="checkBoxShowPCALog" layoutX="18.0" layoutY="247.0" mnemonicParsing="false" text="Show PCA Log">
                            <VBox.margin>
                               <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                            </VBox.margin>
                         </CheckBox>
-                        <CheckBox layoutX="10.0" layoutY="268.0" mnemonicParsing="false" text="Show VQ Log">
+                        <CheckBox fx:id="checkBoxShowVQLog" layoutX="10.0" layoutY="268.0" mnemonicParsing="false" text="Show VQ Log">
                            <VBox.margin>
                               <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                            </VBox.margin>
                         </CheckBox>
-                        <CheckBox layoutX="10.0" layoutY="285.0" mnemonicParsing="false" text="Show HMM Log">
+                        <CheckBox fx:id="checkBoxShowHMMLog" layoutX="10.0" layoutY="285.0" mnemonicParsing="false" text="Show HMM Log">
                            <VBox.margin>
                               <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                            </VBox.margin>
                         </CheckBox>
-                        <CheckBox layoutX="18.0" layoutY="322.0" mnemonicParsing="false" text="Show Calculation Time">
+                        <CheckBox fx:id="checkBoxShowCalculationTime" layoutX="18.0" layoutY="322.0" mnemonicParsing="false" text="Show Calculation Time">
                            <VBox.margin>
                               <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                            </VBox.margin>
@@ -237,7 +237,7 @@
                               <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                            </VBox.margin>
                         </Label>
-                        <Label alignment="CENTER" layoutX="18.0" layoutY="347.0" prefHeight="73.0" prefWidth="260.0" text="100%">
+                        <Label fx:id="textLabelRecognitionRate" alignment="CENTER" layoutX="18.0" layoutY="347.0" prefHeight="73.0" prefWidth="260.0" text="100%">
                            <font>
                               <Font size="50.0" />
                            </font>
