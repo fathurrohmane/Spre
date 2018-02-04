@@ -193,7 +193,8 @@ public class DatabaseHandler {
     }
 
     public static List<HiddenMarkov> loadAllWordModelToHMMs(File databaseDirectory) {
-        System.out.println("Load All Word Model");
+        //System.out.println("Load All Word Model");
+
         ArrayList<HiddenMarkov> output = new ArrayList<HiddenMarkov>();
         int counter = 0;
         try {
@@ -209,7 +210,7 @@ public class DatabaseHandler {
                     output.add(new HiddenMarkov(wordModel));
                 }
             }
-            System.out.println("Load Completed with " + counter + "data");
+            //System.out.println("Load Completed with " + counter + "data");
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }

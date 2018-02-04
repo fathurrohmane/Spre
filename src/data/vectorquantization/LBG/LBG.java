@@ -24,6 +24,8 @@ import java.util.List;
  */
 public class LBG {
 
+    public static final int MAX_CLUSTER = 256;
+
     private double[][] mDataSample;
     private double[][] mCluster;
 

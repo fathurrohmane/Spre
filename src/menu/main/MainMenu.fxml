@@ -14,11 +14,12 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menu.main.MainMenuController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menu.main.MainMenuMenuController">
    <children>
       <VBox prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -67,22 +68,22 @@
                                     <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                                  </GridPane.margin>
                               </Label>
-                              <TextField fx:id="textFieldSoundDirectory" GridPane.columnIndex="1">
+                              <TextField fx:id="textFieldSoundDirectory" editable="false" GridPane.columnIndex="1">
                                  <GridPane.margin>
                                     <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                                  </GridPane.margin>
                               </TextField>
-                              <TextField fx:id="textFieldDatabaseDirectory" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <TextField fx:id="textFieldDatabaseDirectory" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                                  </GridPane.margin>
                               </TextField>
-                              <Button alignment="TOP_LEFT" mnemonicParsing="false" text="Open" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                              <Button fx:id="buttonOpenSoundDirectory" alignment="TOP_LEFT" mnemonicParsing="false" onAction="#openSoundFileDirectory" text="Open" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
                                  <GridPane.margin>
                                     <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                                  </GridPane.margin>
                               </Button>
-                              <Button mnemonicParsing="false" text="Open" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                              <Button fx:id="buttonOpenDatabaseDirectory" mnemonicParsing="false" onAction="#openDatabaseDirectory" text="Open" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                  <GridPane.margin>
                                     <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                                  </GridPane.margin>
@@ -151,19 +152,19 @@
                                     <Insets bottom="8.0" left="8.0" right="8.0" top="4.0" />
                                  </GridPane.margin>
                               </Button>
-                              <Button fx:id="buttonStopProcess" mnemonicParsing="false" style="-fx-background-color: #cd0000;" text="Stop" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                              <Button fx:id="buttonStopProcess" mnemonicParsing="false" onAction="#stopProgram" style="-fx-background-color: #cd0000;" text="Stop" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                  <GridPane.margin>
                                     <Insets bottom="8.0" left="4.0" right="4.0" top="4.0" />
                                  </GridPane.margin>
                               </Button>
                               <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                                  <children>
-                                    <Button fx:id="buttonTesting" mnemonicParsing="false" text="Testing">
+                                    <Button fx:id="buttonTesting" mnemonicParsing="false" onAction="#beginTesting" text="Testing">
                                        <HBox.margin>
                                           <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button fx:id="buttonTraining" mnemonicParsing="false" text="Training">
+                                    <Button fx:id="buttonTraining" mnemonicParsing="false" onAction="#beginTraining" text="Training">
                                        <HBox.margin>
                                           <Insets bottom="4.0" left="4.0" right="8.0" top="4.0" />
                                        </HBox.margin>
@@ -174,9 +175,80 @@
                         </GridPane>
                      </children>
                   </VBox>
-                  <VBox prefHeight="475.0" prefWidth="275.0" HBox.hgrow="NEVER">
+                  <VBox prefHeight="525.0" prefWidth="265.0">
                      <children>
-                        <Label text="Settings">
+                        <VBox prefHeight="475.0" prefWidth="275.0">
+                           <children>
+                              <Label text="Settings">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Database Location :">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="textLabelDatabaseLocation" layoutX="18.0" layoutY="39.0" text="D://Kappa/123">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label text="Trained Words :">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextArea fx:id="textAreaTrainedWordList" prefHeight="125.0" prefWidth="242.0" promptText="Load database first!">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                 </padding>
+                              </TextArea>
+                              <CheckBox fx:id="checkBoxShowMFCCLog" mnemonicParsing="false" selected="true" text="Show MFCC Log">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
+                                 </VBox.margin>
+                              </CheckBox>
+                              <CheckBox fx:id="checkBoxShowPCALog" layoutX="18.0" layoutY="247.0" mnemonicParsing="false" selected="true" text="Show PCA Log">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
+                                 </VBox.margin>
+                              </CheckBox>
+                              <CheckBox fx:id="checkBoxShowVQLog" layoutX="10.0" layoutY="268.0" mnemonicParsing="false" selected="true" text="Show VQ Log">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
+                                 </VBox.margin>
+                              </CheckBox>
+                              <CheckBox fx:id="checkBoxShowHMMLog" layoutX="10.0" layoutY="285.0" mnemonicParsing="false" selected="true" text="Show HMM Log">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
+                                 </VBox.margin>
+                              </CheckBox>
+                              <CheckBox fx:id="checkBoxShowCalculationTime" layoutX="18.0" layoutY="322.0" mnemonicParsing="false" selected="true" text="Show Calculation Time">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
+                                 </VBox.margin>
+                              </CheckBox>
+                              <Label layoutX="18.0" layoutY="89.0" text="Recognition Result :">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="textLabelRecognitionRate" alignment="CENTER" layoutX="18.0" layoutY="347.0" prefHeight="73.0" prefWidth="260.0" text="0%">
+                                 <font>
+                                    <Font size="50.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <Pane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <Label text="Fathurrohman Elkusnandi">
                            <VBox.margin>
                               <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                            </VBox.margin>
@@ -184,63 +256,10 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label text="Database Location :">
+                        <Label minHeight="53.0" text="Implementasi Sistem Pengenalan Ucapan Bahasa Indonesia Menggunakan Kombinasi MFCC dan PCA Berbasis HMM" textOverrun="CLIP" wrapText="true">
                            <VBox.margin>
                               <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                            </VBox.margin>
-                        </Label>
-                        <Label fx:id="textLabelDatabaseLocation" layoutX="18.0" layoutY="39.0" text="D://Kappa/123">
-                           <VBox.margin>
-                              <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label text="Trained Words :">
-                           <VBox.margin>
-                              <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
-                           </VBox.margin>
-                        </Label>
-                        <TextArea fx:id="textAreaTrainedWordList" prefHeight="125.0" prefWidth="242.0" promptText="Load database first!">
-                           <VBox.margin>
-                              <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
-                           </VBox.margin>
-                           <padding>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </padding>
-                        </TextArea>
-                        <CheckBox fx:id="checkBoxShowMFCCLog" mnemonicParsing="false" text="Show MFCC Log">
-                           <VBox.margin>
-                              <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
-                           </VBox.margin>
-                        </CheckBox>
-                        <CheckBox fx:id="checkBoxShowPCALog" layoutX="18.0" layoutY="247.0" mnemonicParsing="false" text="Show PCA Log">
-                           <VBox.margin>
-                              <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
-                           </VBox.margin>
-                        </CheckBox>
-                        <CheckBox fx:id="checkBoxShowVQLog" layoutX="10.0" layoutY="268.0" mnemonicParsing="false" text="Show VQ Log">
-                           <VBox.margin>
-                              <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
-                           </VBox.margin>
-                        </CheckBox>
-                        <CheckBox fx:id="checkBoxShowHMMLog" layoutX="10.0" layoutY="285.0" mnemonicParsing="false" text="Show HMM Log">
-                           <VBox.margin>
-                              <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
-                           </VBox.margin>
-                        </CheckBox>
-                        <CheckBox fx:id="checkBoxShowCalculationTime" layoutX="18.0" layoutY="322.0" mnemonicParsing="false" text="Show Calculation Time">
-                           <VBox.margin>
-                              <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
-                           </VBox.margin>
-                        </CheckBox>
-                        <Label layoutX="18.0" layoutY="89.0" text="Recognition Result :">
-                           <VBox.margin>
-                              <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label fx:id="textLabelRecognitionRate" alignment="CENTER" layoutX="18.0" layoutY="347.0" prefHeight="73.0" prefWidth="260.0" text="100%">
-                           <font>
-                              <Font size="50.0" />
-                           </font>
                         </Label>
                      </children>
                   </VBox>

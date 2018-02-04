@@ -8,7 +8,7 @@ import data.pca.PCA;
 import data.vectorquantization.LBG.LBG;
 import data.vectorquantization.LBG.Point;
 import test.validator.hmm.HiddenMarkov;
-import tools.IMainView;
+import tools.MainMenuView;
 import tools.IProcessListener;
 
 import java.io.File;
@@ -24,23 +24,22 @@ import java.util.*;
  */
 public class Processor implements IProcessListener {
 
-    private IMainView mainView;
+    private MainMenuView mainMenuView;
 
-    private int numberOfEign = 24;
     private Map<String, Long> timeStamp;
 
-    public Processor(IMainView mainView) {
-        this.mainView = mainView;
+    public Processor(MainMenuView mainMenuView) {
+        this.mainMenuView = mainMenuView;
         timeStamp = new HashMap<>();
     }
 
     /**
      * Static method to create new codebook
      *
-     * @param cluster          number of cluster or observation symbol
+     * @param targetDimensionSize number of target dimension (39 -> x)
      * @param soundDirectories file
      */
-    public void startTrainingWithPCA(int cluster, File soundDirectories) {
+    public void startTrainingWithPCA(int targetDimensionSize, File soundDirectories) {
         // array list ceptra
         List<MFCC> acousticVectors = new ArrayList<>();
         List<Point> ceptra = new ArrayList<>();
@@ -77,7 +76,7 @@ public class Processor implements IProcessListener {
         printTimeStamp("mfcc");
 
         //PCA
-        double[][] mfccsAfterPCA = reduceDimensionWithPca(numberOfEign, ceptra);
+        double[][] mfccsAfterPCA = reduceDimensionWithPca(targetDimensionSize, ceptra);
 
         // Time stamp dimension reduction done
         printTimeStamp("pca");
@@ -96,14 +95,14 @@ public class Processor implements IProcessListener {
         // Create codebook
         LBG lbg = new LBG(mfccsAfterPCA);
         lbg.setListener(this);
-        lbg.calculateCluster(cluster);
+        lbg.calculateCluster(LBG.MAX_CLUSTER);
         lbg.saveToDisk();
         lbg.removeListener();
 
         // Time stamp vector quantization done
         printTimeStamp("vq");
 
-        createWordModel(soundFileInfo, acousticVectors, lbg, cluster);
+        createWordModel(soundFileInfo, acousticVectors, lbg, LBG.MAX_CLUSTER);
 
         // Time stamp classification done
         printTimeStamp("hmm");
@@ -111,7 +110,7 @@ public class Processor implements IProcessListener {
         timeStamp.forEach((k, v) -> getMessage(new Date().toString(), k + " : " + v));
     }
 
-    public void startTestingWithPCA(File soundDirectories, File databaseDirectory) {
+    public void startTestingWithPCA(int targetDimensionSize, File soundDirectories, File databaseDirectory) {
 
         // array list ceptra
         List<MFCC> acousticVectors = new ArrayList<>();
@@ -151,7 +150,7 @@ public class Processor implements IProcessListener {
 
         // PCA
         PCA pca = DatabaseHandler.loadPCA(databaseDirectory);
-        double[][] mfccsAfterPCA = reduceDimensionWithPca(pca, numberOfEign, ceptra);
+        double[][] mfccsAfterPCA = reduceDimensionWithPca(pca, targetDimensionSize, ceptra);
 
         // Time stamp dimension reduction done
         printTimeStamp("pca");
@@ -185,10 +184,9 @@ public class Processor implements IProcessListener {
     /**
      * Static method to create new codebook
      *
-     * @param cluster          number of cluster or observation symbol
      * @param soundDirectories file
      */
-    public void startTrainingWithoutPCA(int cluster, File soundDirectories) {
+    public void startTrainingWithoutPCA(File soundDirectories) {
 
         // array list ceptra
         List<MFCC> mfccs = new ArrayList<>();
@@ -229,14 +227,14 @@ public class Processor implements IProcessListener {
         // Create codebook
         LBG lbg = new LBG(ceptra);
         lbg.setListener(this);
-        lbg.calculateCluster(cluster);
+        lbg.calculateCluster(LBG.MAX_CLUSTER);
         lbg.saveToDisk();
         lbg.removeListener();
 
         // Time stamp Vector Quantization(VQ)
         printTimeStamp("vq");
 
-        createWordModel(soundFileInfo, mfccs, lbg, cluster);
+        createWordModel(soundFileInfo, mfccs, lbg, LBG.MAX_CLUSTER);
 
         // Time stamp Classification
         printTimeStamp("hmm");
@@ -265,7 +263,7 @@ public class Processor implements IProcessListener {
             // MFCC
             MFCC mfcc = new MFCC(audioProcessing.getAudioData()
                     , audioProcessing.getAudioSampleRate()
-                    , file.getName() // TODO: 01-Feb-16 is file.getName() is enough?
+                    , file.getName()
             );
             mfcc.setListener(this);
             // Type of MFCC
@@ -317,7 +315,7 @@ public class Processor implements IProcessListener {
         getMessage(new Date().toString(), "Recognition rate = " + (result * 100) + " %");
     }
 
-    private void createWordModel(SoundFileInfo soundFileInfo, List<MFCC> accousticVectors, LBG lbg, int cluster) {
+    private void createWordModel(SoundFileInfo soundFileInfo, List<MFCC> acousticVectors, LBG lbg, int cluster) {
         // Create word model
         int counter = 0;
         for (int i = 0; i < soundFileInfo.getWordLists().size(); i++) {
@@ -328,7 +326,7 @@ public class Processor implements IProcessListener {
             // But the mfccs keeps counting
             int temp = counter;
             for (int j = temp; j < (temp + soundFileInfo.getWordLists().get(i).getTotal()); j++) {
-                observation[j - temp] = lbg.getObservationSequence(accousticVectors.get(j));
+                observation[j - temp] = lbg.getObservationSequence(acousticVectors.get(j));
                 counter++;
             }
 
@@ -437,6 +435,6 @@ public class Processor implements IProcessListener {
 
     @Override
     public void getMessage(String time, String context) {
-        mainView.writeLog(context);
+        mainMenuView.writeLog(context);
     }
 }

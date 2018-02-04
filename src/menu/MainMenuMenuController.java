@@ -13,7 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import tools.IMainView;
+import tools.MainMenuView;
 import tools.ui.DialogCreator;
 import tools.Time;
 
@@ -22,7 +22,7 @@ import java.io.File;
 /**
  * Created by Fathurrohman on 5/20/2015.
  */
-public class MainMenuController extends Application implements IMainView {
+public class MainMenuMenuController extends Application implements MainMenuView {
     // UI Variable
     Parent root;
     Stage primaryStage;
@@ -156,7 +156,7 @@ public class MainMenuController extends Application implements IMainView {
             Thread backgroundThread = new Thread(() -> {
                 switch (dialogTrainingOption) {
                     case 0:
-                        processor.startTrainingWithoutPCA(256, soundFile);
+                        processor.startTrainingWithoutPCA(soundFile);
                         break;
                     case 1:
                         processor.startTrainingWithPCA(256, soundFile);
@@ -191,7 +191,7 @@ public class MainMenuController extends Application implements IMainView {
                     processor.startTestingWithoutPCA(soundFile, databaseFile);
                     break;
                 case 1:
-                    processor.startTestingWithPCA(soundFile, databaseFile);
+                    processor.startTestingWithPCA(39, soundFile, databaseFile);
                     break;
             }
             processor = null;
