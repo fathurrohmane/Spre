@@ -19,6 +19,7 @@ import tools.ui.DialogCreator;
 import tools.Time;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * Created by Fathurrohman on 5/20/2015.
@@ -160,7 +161,7 @@ public class MainMenuMenuController extends Application implements MainView {
                         processor.startTrainingWithoutPCA(soundFile);
                         break;
                     case 1:
-                        processor.startTrainingWithPCA(256, soundFile);
+                        processor.startTrainingWithPCA(24, soundFile);
                         break;
                 }
                 processor = null;
@@ -192,7 +193,7 @@ public class MainMenuMenuController extends Application implements MainView {
                     processor.startTestingWithoutPCA(soundFile, databaseFile);
                     break;
                 case 1:
-                    processor.startTestingWithPCA(39, soundFile, databaseFile);
+                    processor.startTestingWithPCA(24, soundFile, databaseFile);
                     break;
             }
             processor = null;
@@ -220,7 +221,22 @@ public class MainMenuMenuController extends Application implements MainView {
     }
 
     @Override
-    public void writeToTextArea(int processType, String input) {
+    public void writeToTextAreaConsole(int processType, String input) {
         Platform.runLater(() -> addTextTesting(input));
+    }
+
+    @Override
+    public void writeToTextAreaTrainedWordList(List<String> words) {
+
+    }
+
+    @Override
+    public void writeProgress(int progress) {
+
+    }
+
+    @Override
+    public void writeToLabelRecognitionRate(double rate) {
+
     }
 }

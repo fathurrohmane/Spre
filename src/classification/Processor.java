@@ -8,7 +8,6 @@ import data.pca.PCA;
 import data.vectorquantization.LBG.LBG;
 import data.vectorquantization.LBG.Point;
 import test.validator.hmm.HiddenMarkov;
-import tools.MainMenuView;
 import tools.MainView;
 import tools.ProcessListener;
 
@@ -332,6 +331,8 @@ public class Processor implements ProcessListener {
         }
         double result = (double) rightAnswer / mfccs.size();
         writeLog(ProcessListener.BASIC, "Recognition rate = " + (result * 100) + " %");
+        mainMenuView.writeToLabelRecognitionRate(result * 100);
+
     }
 
     private void createWordModel(SoundFileInfo soundFileInfo, List<MFCC> acousticVectors, LBG lbg, int cluster) {
@@ -454,6 +455,6 @@ public class Processor implements ProcessListener {
 
     @Override
     public void writeLog(int processType, String context) {
-        mainMenuView.writeToTextArea(processType, context);
+        mainMenuView.writeToTextAreaConsole(processType, context);
     }
 }

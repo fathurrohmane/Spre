@@ -76,7 +76,7 @@ public class PCA extends Process implements Serializable {
 //Sort by eigen value -> higher eigenvalue higher priority
         for (int i = 0; i < numOfComponents; i++) {
             double[] eigenVector = new double[numOfComponents];
-            //System.arraycopy(vecs[i], 0, eigenVector, 0, numOfComponents);
+            System.arraycopy(vecs[i], 0, eigenVector, 0, numOfComponents);
             principleComponents.add(new PrincipleComponent(eigenValues[i], eigenVector));
         }
 

@@ -21,6 +21,7 @@ import tools.ui.DialogCreator;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class MainMenuController extends Application implements MainView {
 
@@ -114,29 +115,14 @@ public class MainMenuController extends Application implements MainView {
     }
 
     public void beginTesting() {
-//        if (soundFile == null && databaseFile == null) {
-//            DialogCreator.showNormalDialog(primaryStage, "No File/Folder Selected");
-//        } else {
-//            if (soundFile.isFile()) {
-//                addTextTesting(soundFile.getName());// FIXME: 18-Dec-15
-//            } else if (soundFile.isDirectory()) {
-//                addTextTesting(soundFile.getName());
-//            }
-//        }
-//
-//        processor = new Processor(this);
-//        Thread backgroundThread = new Thread(() -> {
-//            switch (dialogTestingOption) {
-//                case 0:
-//                    processor.startTestingWithoutPCA(soundFile, databaseFile);
-//                    break;
-//                case 1:
-//                    processor.startTestingWithPCA(soundFile, databaseFile);
-//                    break;
-//            }
-//            processor = null;
-//        });
-//        backgroundThread.start();
+        if (soundFile == null || databaseFile == null) {
+            DialogCreator.showNormalDialog(stage, "Missing database data or sound data!");
+        } else {
+            changeButtonAtRunningState(true);
+            processor = new Processor(this);
+            executor = new Executor();
+            executor.start(checkBoxReduceDimension.isSelected(), false);
+        }
     }
 
     public void beginTraining() {
@@ -146,7 +132,7 @@ public class MainMenuController extends Application implements MainView {
             changeButtonAtRunningState(true);
             processor = new Processor(this);
             executor = new Executor();
-            executor.start();
+            executor.start(checkBoxReduceDimension.isSelected(), true);
         }
     }
 
@@ -197,12 +183,13 @@ public class MainMenuController extends Application implements MainView {
     /**
      * Reset TextAreaConsole
      */
-    public void resetConsole() {
+    public void resetProgram() {
         textAreaConsole.clear();
+        textLabelRecognitionRate.setText(String.valueOf(0) + " %");
     }
 
     @Override
-    public void writeToTextArea(int processType, String input) {
+    public void writeToTextAreaConsole(int processType, String input) {
         Platform.runLater(() -> {
                     if (writeLogValidation(processType)) {
                         Date now = new Date();
@@ -210,6 +197,21 @@ public class MainMenuController extends Application implements MainView {
                     }
                 }
         );
+    }
+
+    @Override
+    public void writeToTextAreaTrainedWordList(List<String> words) {
+
+    }
+
+    @Override
+    public void writeProgress(int progress) {
+
+    }
+
+    @Override
+    public void writeToLabelRecognitionRate(double rate) {
+        Platform.runLater(() -> textLabelRecognitionRate.setText(String.valueOf(rate) + " %"));
     }
 
     private boolean writeLogValidation(int processType) {
@@ -236,8 +238,13 @@ public class MainMenuController extends Application implements MainView {
      */
     private class Executor implements Runnable {
         private volatile Thread thread;
+        private boolean isReduceDimension;
+        private boolean isTraining;
 
-        void start() {
+        void start(boolean isReduceDimension, boolean isTraining) {
+            this.isReduceDimension = isReduceDimension;
+            this.isTraining = isTraining;
+
             thread = new Thread(this);
             thread.start();
         }
@@ -251,10 +258,18 @@ public class MainMenuController extends Application implements MainView {
         }
 
         private void process() {
-            if (checkBoxReduceDimension.isSelected()) {
-                processor.startTrainingWithPCA(Integer.valueOf(textFieldDimensionReductionNumber.getText()), soundFile);
+            if (isReduceDimension) {
+                if (isTraining) {
+                    processor.startTrainingWithPCA(Integer.valueOf(textFieldDimensionReductionNumber.getText()), soundFile);
+                } else {
+                    processor.startTestingWithPCA(Integer.valueOf(textFieldDimensionReductionNumber.getText()), soundFile, databaseFile);
+                }
             } else {
-                processor.startTrainingWithoutPCA(soundFile);
+                if (isTraining) {
+                    processor.startTrainingWithoutPCA(soundFile);
+                } else {
+                    processor.startTestingWithoutPCA(soundFile, databaseFile);
+                }
             }
             processor = null;
             changeButtonAtRunningState(false);

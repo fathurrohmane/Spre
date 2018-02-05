@@ -1,5 +1,13 @@
 package tools;
 
+import java.util.List;
+
 public interface MainView {
-    void writeToTextArea(int processType, String input);
+    void writeToTextAreaConsole(int processType, String input);
+
+    void writeToTextAreaTrainedWordList(List<String> words);
+
+    void writeProgress(int progress);
+
+    void writeToLabelRecognitionRate(double rate);
 }

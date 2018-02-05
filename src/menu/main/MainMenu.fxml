@@ -147,7 +147,7 @@
                                     <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                                  </GridPane.margin>
                               </ProgressBar>
-                              <Button fx:id="buttonReset" mnemonicParsing="false" onAction="#resetConsole" text="Reset" GridPane.rowIndex="1">
+                              <Button fx:id="buttonReset" mnemonicParsing="false" onAction="#resetProgram" text="Reset" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets bottom="8.0" left="8.0" right="8.0" top="4.0" />
                                  </GridPane.margin>
