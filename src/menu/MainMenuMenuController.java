@@ -231,7 +231,7 @@ public class MainMenuMenuController extends Application implements MainView {
     }
 
     @Override
-    public void writeProgress(int progress) {
+    public void writeProgress(double progress) {
 
     }
 

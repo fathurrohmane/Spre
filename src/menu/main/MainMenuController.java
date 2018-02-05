@@ -7,11 +7,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import tools.MainMenuView;
 import tools.MainView;
@@ -44,6 +40,7 @@ public class MainMenuController extends Application implements MainView {
     public Button buttonOpenSoundDirectory;
     public Button buttonOpenDatabaseDirectory;
     public TextArea textAreaConsole;
+    public ProgressBar progressBar;
 
     private Stage stage;
     private File previousFileAddress = null;
@@ -186,6 +183,7 @@ public class MainMenuController extends Application implements MainView {
     public void resetProgram() {
         textAreaConsole.clear();
         textLabelRecognitionRate.setText(String.valueOf(0) + " %");
+        progressBar.setProgress(0);
     }
 
     @Override
@@ -205,8 +203,8 @@ public class MainMenuController extends Application implements MainView {
     }
 
     @Override
-    public void writeProgress(int progress) {
-
+    public void writeProgress(double progress) {
+        progressBar.setProgress(progress);
     }
 
     @Override

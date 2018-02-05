@@ -142,7 +142,7 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <ProgressBar prefHeight="18.0" prefWidth="345.0" progress="0.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                              <ProgressBar fx:id="progressBar" prefHeight="18.0" prefWidth="345.0" progress="0.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                  <GridPane.margin>
                                     <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                                  </GridPane.margin>

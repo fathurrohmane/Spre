@@ -7,7 +7,7 @@ public interface MainView {
 
     void writeToTextAreaTrainedWordList(List<String> words);
 
-    void writeProgress(int progress);
+    void writeProgress(double progress);
 
     void writeToLabelRecognitionRate(double rate);
 }
