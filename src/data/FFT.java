@@ -1,8 +1,5 @@
 package data;
 
-/**
- * Created by Fathurrohman on 22-Sep-15.
- */
 /******************************************************************************
  *  Compilation:  javac FFT.java
  *  Execution:    java FFT N

@@ -18,11 +18,11 @@ public class PreProcessing {
         double min = -1;
 
         //Find max and min audio data
-        for (int i = 0; i <audioDataOriginal.length ; i++) {
-            if(audioDataOriginal[i] <= minData) {
+        for (int i = 0; i < audioDataOriginal.length; i++) {
+            if (audioDataOriginal[i] <= minData) {
                 minData = audioDataOriginal[i];
             }
-            if(audioDataOriginal[i] >= maxData) {
+            if (audioDataOriginal[i] >= maxData) {
                 maxData = audioDataOriginal[i];
             }
         }
@@ -30,7 +30,7 @@ public class PreProcessing {
         //Normalization
         int counter = 0;
 
-        for (int i = 0; i <audioDataOriginal.length ; i+=2) {
+        for (int i = 0; i < audioDataOriginal.length; i += 2) {
             audioData[counter] = ((audioDataOriginal[i] - minData) / (maxData - minData) - 0.5) * 2;
             counter++;
         }

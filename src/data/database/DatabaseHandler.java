@@ -1,8 +1,8 @@
 package data.database;
 
+import classification.hmm.HiddenMarkov;
 import data.model.SoundFileInfo;
 import data.pca.PCA;
-import test.validator.hmm.HiddenMarkov;
 
 import java.io.*;
 import java.util.ArrayList;

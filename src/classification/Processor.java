@@ -2,17 +2,20 @@ package classification;
 
 import audio.AudioProcessing;
 import audio.feature_extraction.MFCC;
+import classification.hmm.HiddenMarkov;
 import data.database.DatabaseHandler;
 import data.model.SoundFileInfo;
 import data.pca.PCA;
 import data.vectorquantization.LBG.LBG;
 import data.vectorquantization.LBG.Point;
-import test.validator.hmm.HiddenMarkov;
 import tools.MainView;
 import tools.ProcessListener;
 
 import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Fathurrohman on 08-Dec-15.
@@ -309,7 +312,7 @@ public class Processor implements ProcessListener {
             }
 
             // Create HMM
-            test.validator.hmm.HiddenMarkov hiddenMarkov = new test.validator.hmm.HiddenMarkov(8, cluster);
+            HiddenMarkov hiddenMarkov = new HiddenMarkov(8, cluster);
             hiddenMarkov.setListener(ProcessListener.HMM, this);
             hiddenMarkov.setTrainSeq(observation);
             hiddenMarkov.train();
