@@ -286,7 +286,7 @@ public class Processor implements ProcessListener {
                 correctAnswer++;
             }
             writeLog(ProcessListener.BASIC, "Word = " + mfccs.get(i).getWord() + " Result : " + result);
-            mainMenuView.writeProgress(0.6 + (0.4 * (i / mfccs.size())));
+            mainMenuView.writeProgress(0.6 + (0.4 * ((double) i / mfccs.size())));
         }
         double result = (double) correctAnswer / mfccs.size();
         writeLog(ProcessListener.BASIC, "Recognition rate = " + (result * 100) + " %");
@@ -316,7 +316,7 @@ public class Processor implements ProcessListener {
             hiddenMarkov.save(soundFileInfo.getWordLists().get(i).getWord());
             hiddenMarkov.removeListener();
             writeLog(ProcessListener.BASIC, "Finish generating " + soundFileInfo.getWordLists().get(i).getWord() + " word model.");
-            mainMenuView.writeProgress(0.5 + (0.5 * (i / soundFileInfo.getWordLists().size())));
+            mainMenuView.writeProgress(0.5 + (0.5 * ((double) i / soundFileInfo.getWordLists().size())));
         }
     }
 
