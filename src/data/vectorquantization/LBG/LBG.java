@@ -1,9 +1,10 @@
 package data.vectorquantization.LBG;
 
 import audio.feature_extraction.MFCC;
+import data.Process;
 import data.database.Codebook;
 import data.database.DatabaseHandler;
-import tools.IProcessListener;
+import tools.ProcessListener;
 
 import java.io.File;
 import java.util.Date;
@@ -22,7 +23,7 @@ import java.util.List;
  * 6. if (current - avg distortion) / avg distortion > threshold go to step 3
  * 7. if current cluster = max cluster end else back to step 2
  */
-public class LBG {
+public class LBG extends Process {
 
     public static final int MAX_CLUSTER = 256;
 
@@ -36,8 +37,6 @@ public class LBG {
     private double mSplitFactor = 0.005;
     private double mThreshold = 0.005;
     private int mNumCurrentCluster;
-
-    private IProcessListener listener;
 
     /**
      * Constructor to set data training to class
@@ -77,7 +76,7 @@ public class LBG {
      * @param maxCluster for number of observation symbol usually 256
      */
     public void calculateCluster(int maxCluster) {
-        writeMessage("Clustering .....");
+        writeLog("Clustering .....");
         // Initialize cluster
         mCluster = new double[1][mDimensionSize];
         mCluster[0] = initializeCluster();
@@ -96,7 +95,7 @@ public class LBG {
 
             do {
                 mNumCurrentCluster = splitClusters();
-                writeMessage("Number of Cluster = " + mNumCurrentCluster);
+                writeLog("Number of Cluster = " + mNumCurrentCluster);
             } while (mNumCurrentCluster < maxCluster);
         }
     }
@@ -297,23 +296,6 @@ public class LBG {
         codebook.setCluster(mCluster.clone());
 
         DatabaseHandler.saveCodebook(codebook);
-        writeMessage("Codebook saved.");
+        writeLog("Codebook saved.");
     }
-
-    public void setListener(IProcessListener listener) {
-        this.listener = listener;
-    }
-
-    public void removeListener() {
-        if (listener != null) {
-            this.listener = null;
-        }
-    }
-
-    private void writeMessage(String context) {
-        if (listener != null) {
-            listener.getMessage(new Date().toString(), context);
-        }
-    }
-
 }

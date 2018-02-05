@@ -2,6 +2,7 @@ package data.pca;
 
 import Jama.EigenvalueDecomposition;
 import Jama.Matrix;
+import data.Process;
 import data.database.DatabaseHandler;
 import data.vectorquantization.LBG.Point;
 
@@ -12,7 +13,7 @@ import java.util.*;
  * Created by Fathurrohman on 25-Nov-15.
  * Based on http://www.cs.otago.ac.nz/cosc453/student_tutorials/principal_components.pdf
  */
-public class PCA implements Serializable {
+public class PCA extends Process implements Serializable {
 
     private double[][] data;
     private double[] means;
@@ -37,7 +38,9 @@ public class PCA implements Serializable {
         means = new double[dataSample[0].length];
         data = dataSample.clone();
 
+        writeLog("Calculating PCA");
         calculate();
+        writeLog("PCA Done!");
     }
 
     private void calculate() {
@@ -51,18 +54,19 @@ public class PCA implements Serializable {
         //calculate covariance
         double[][] covariance = getCovariances(data, means);
         Matrix covarianceInMatrix = new Matrix(covariance);
-        System.out.println("Matrix Covariance :");
+        //System.out.println("Matrix Covariance :");
+        // FIXME: 05/02/2018 write matrix to console
         covarianceInMatrix.print(data[0].length, 5);
         EigenvalueDecomposition eigenData = covarianceInMatrix.eig();
 
         //calculate eigen vector and value
         double[] eigenValues = eigenData.getRealEigenvalues();
         Matrix eigenVectors = eigenData.getV();
-        System.out.println("Eigen Vector :");
+        //System.out.println("Eigen Vector :");
         eigenVectors.print(data[0].length, 5);
-        System.out.println("Eigen Value :");
+        //System.out.println("Eigen Value :");
         for (double eigenValue : eigenValues) {
-            System.out.println(eigenValue);
+            //System.out.println(eigenValue);
         }
 
         double[][] vecs = eigenVectors.getArray();
@@ -72,7 +76,7 @@ public class PCA implements Serializable {
 //Sort by eigen value -> higher eigenvalue higher priority
         for (int i = 0; i < numOfComponents; i++) {
             double[] eigenVector = new double[numOfComponents];
-            System.arraycopy(vecs[i], 0, eigenVector, 0, numOfComponents);
+            //System.arraycopy(vecs[i], 0, eigenVector, 0, numOfComponents);
             principleComponents.add(new PrincipleComponent(eigenValues[i], eigenVector));
         }
 

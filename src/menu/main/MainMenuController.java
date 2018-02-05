@@ -3,6 +3,7 @@ package menu.main;
 import classification.Processor;
 import data.database.DatabaseHandler;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,11 +14,15 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import tools.MainMenuView;
+import tools.MainView;
+import tools.ProcessListener;
 import tools.ui.DialogCreator;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class MainMenuMenuController extends Application implements MainMenuView {
+public class MainMenuController extends Application implements MainView {
 
     public CheckBox checkBoxReduceDimension;
     public TextField textFieldDimensionReductionNumber;
@@ -37,6 +42,7 @@ public class MainMenuMenuController extends Application implements MainMenuView 
     public TextField textFieldDatabaseDirectory;
     public Button buttonOpenSoundDirectory;
     public Button buttonOpenDatabaseDirectory;
+    public TextArea textAreaConsole;
 
     private Stage stage;
     private File previousFileAddress = null;
@@ -44,6 +50,7 @@ public class MainMenuMenuController extends Application implements MainMenuView 
     private File databaseFile = null;
     private Processor processor = null;
     private Executor executor;
+    private SimpleDateFormat simpleDateFormat;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -61,6 +68,8 @@ public class MainMenuMenuController extends Application implements MainMenuView 
      * Initialize widget
      */
     public void initialize() {
+        simpleDateFormat = new SimpleDateFormat("HH:mm:ss.SSS");
+
         textFieldDimensionReductionNumber.focusedProperty().addListener(
                 (observable, oldValue, newValue) -> {
                     if (!newValue) {
@@ -185,9 +194,41 @@ public class MainMenuMenuController extends Application implements MainMenuView 
         executor.stop();
     }
 
-    @Override
-    public void writeLog(String context) {
+    /**
+     * Reset TextAreaConsole
+     */
+    public void resetConsole() {
+        textAreaConsole.clear();
+    }
 
+    @Override
+    public void writeToTextArea(int processType, String input) {
+        Platform.runLater(() -> {
+                    if (writeLogValidation(processType)) {
+                        Date now = new Date();
+                        textAreaConsole.appendText(simpleDateFormat.format(now) + " : " + input + "\n");
+                    }
+                }
+        );
+    }
+
+    private boolean writeLogValidation(int processType) {
+        switch (processType) {
+            case ProcessListener.BASIC:
+                return true;
+            case ProcessListener.MFCC:
+                return checkBoxShowMFCCLog.isSelected();
+            case ProcessListener.PCA:
+                return checkBoxShowPCALog.isSelected();
+            case ProcessListener.VQ:
+                return checkBoxShowVQLog.isSelected();
+            case ProcessListener.HMM:
+                return checkBoxShowHMMLog.isSelected();
+            case ProcessListener.TIMESTAMP:
+                return checkBoxShowCalculationTime.isSelected();
+            default:
+                throw new IllegalArgumentException("Invalid process type");
+        }
     }
 
     /**

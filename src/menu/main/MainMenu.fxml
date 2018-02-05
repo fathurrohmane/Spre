@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menu.main.MainMenuMenuController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="menu.main.MainMenuController">
    <children>
       <VBox prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -123,7 +123,7 @@
                               <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                            </padding>
                         </GridPane>
-                        <TextArea prefHeight="274.0" prefWidth="445.0" promptText="Console" VBox.vgrow="ALWAYS">
+                        <TextArea fx:id="textAreaConsole" prefHeight="274.0" prefWidth="445.0" promptText="Console" wrapText="true" VBox.vgrow="ALWAYS">
                            <VBox.margin>
                               <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                            </VBox.margin>
@@ -147,7 +147,7 @@
                                     <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                                  </GridPane.margin>
                               </ProgressBar>
-                              <Button fx:id="buttonReset" mnemonicParsing="false" text="Reset" GridPane.rowIndex="1">
+                              <Button fx:id="buttonReset" mnemonicParsing="false" onAction="#resetConsole" text="Reset" GridPane.rowIndex="1">
                                  <GridPane.margin>
                                     <Insets bottom="8.0" left="8.0" right="8.0" top="4.0" />
                                  </GridPane.margin>
@@ -202,7 +202,7 @@
                                     <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextArea fx:id="textAreaTrainedWordList" prefHeight="125.0" prefWidth="242.0" promptText="Load database first!">
+                              <TextArea fx:id="textAreaTrainedWordList" prefHeight="125.0" prefWidth="242.0" promptText="Load database first!" wrapText="true">
                                  <VBox.margin>
                                     <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                                  </VBox.margin>

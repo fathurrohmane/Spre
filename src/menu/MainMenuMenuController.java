@@ -14,6 +14,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import tools.MainMenuView;
+import tools.MainView;
 import tools.ui.DialogCreator;
 import tools.Time;
 
@@ -22,7 +23,7 @@ import java.io.File;
 /**
  * Created by Fathurrohman on 5/20/2015.
  */
-public class MainMenuMenuController extends Application implements MainMenuView {
+public class MainMenuMenuController extends Application implements MainView {
     // UI Variable
     Parent root;
     Stage primaryStage;
@@ -219,7 +220,7 @@ public class MainMenuMenuController extends Application implements MainMenuView 
     }
 
     @Override
-    public void writeLog(String context) {
-        Platform.runLater(() -> addTextTesting(context));
+    public void writeToTextArea(int processType, String input) {
+        Platform.runLater(() -> addTextTesting(input));
     }
 }

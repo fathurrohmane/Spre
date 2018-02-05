@@ -9,7 +9,8 @@ import data.vectorquantization.LBG.LBG;
 import data.vectorquantization.LBG.Point;
 import test.validator.hmm.HiddenMarkov;
 import tools.MainMenuView;
-import tools.IProcessListener;
+import tools.MainView;
+import tools.ProcessListener;
 
 import java.io.File;
 import java.util.*;
@@ -22,13 +23,13 @@ import java.util.*;
  * 2. Get MFCC feature -> MFCC.java -> get feature vector of audio data in double format
  * 3.
  */
-public class Processor implements IProcessListener {
+public class Processor implements ProcessListener {
 
-    private MainMenuView mainMenuView;
+    private MainView mainMenuView;
 
     private Map<String, Long> timeStamp;
 
-    public Processor(MainMenuView mainMenuView) {
+    public Processor(MainView mainMenuView) {
         this.mainMenuView = mainMenuView;
         timeStamp = new HashMap<>();
     }
@@ -37,7 +38,7 @@ public class Processor implements IProcessListener {
      * Static method to create new codebook
      *
      * @param targetDimensionSize number of target dimension (39 -> x)
-     * @param soundDirectories file
+     * @param soundDirectories    file
      */
     public void startTrainingWithPCA(int targetDimensionSize, File soundDirectories) {
         // array list ceptra
@@ -48,11 +49,13 @@ public class Processor implements IProcessListener {
 
         // Time stamp program start
         printTimeStamp("start");
+        writeLog(ProcessListener.BASIC, "Start Training With PCA Reduction!");
 
         // Read all files
         assert soundFileInfo != null;
         for (String path :
                 soundFileInfo.getFilePath()) {
+            writeLog(ProcessListener.BASIC, "Reading " + path);
             File file = new File(path);
             // Audio Processing
             AudioProcessing audioProcessing = new AudioProcessing(file);
@@ -62,7 +65,7 @@ public class Processor implements IProcessListener {
                     , audioProcessing.getAudioSampleRate()
                     , path
             );
-            mfcc.setListener(this);
+            mfcc.setListener(ProcessListener.MFCC, this);
             mfcc.doMFCC();
 
             for (int i = 0; i < mfcc.getCeptra().length; i++) {
@@ -74,12 +77,14 @@ public class Processor implements IProcessListener {
 
         // Time stamp feature extraction done
         printTimeStamp("mfcc");
+        writeLog(ProcessListener.BASIC, "Finish generating acoustic vector");
 
         //PCA
         double[][] mfccsAfterPCA = reduceDimensionWithPca(targetDimensionSize, ceptra);
 
         // Time stamp dimension reduction done
         printTimeStamp("pca");
+        writeLog(ProcessListener.BASIC, "Finish reduce acoustic vector dimension");
 
         int counter = 0;
         for (MFCC mfcc : acousticVectors
@@ -94,20 +99,21 @@ public class Processor implements IProcessListener {
 
         // Create codebook
         LBG lbg = new LBG(mfccsAfterPCA);
-        lbg.setListener(this);
+        lbg.setListener(ProcessListener.VQ, this);
         lbg.calculateCluster(LBG.MAX_CLUSTER);
         lbg.saveToDisk();
         lbg.removeListener();
 
         // Time stamp vector quantization done
         printTimeStamp("vq");
+        writeLog(ProcessListener.BASIC, "Finish generating codeword");
 
         createWordModel(soundFileInfo, acousticVectors, lbg, LBG.MAX_CLUSTER);
 
         // Time stamp classification done
         printTimeStamp("hmm");
-        getMessage(new Date().toString(), "Complete");
-        timeStamp.forEach((k, v) -> getMessage(new Date().toString(), k + " : " + v));
+        writeLog(ProcessListener.BASIC, "Training with PCA Reduction complete");
+        timeStamp.forEach((k, v) -> writeLog(ProcessListener.TIMESTAMP, k + " : " + v));
     }
 
     public void startTestingWithPCA(int targetDimensionSize, File soundDirectories, File databaseDirectory) {
@@ -120,11 +126,13 @@ public class Processor implements IProcessListener {
 
         // Time stamp program start
         printTimeStamp("start");
+        writeLog(ProcessListener.BASIC, "Start Testing With PCA Reduction!");
 
         // Read all files
         assert soundFileInfo != null;
         for (String path :
                 soundFileInfo.getFilePath()) {
+            writeLog(ProcessListener.BASIC, "Reading " + path);
             File file = new File(path);
             // Audio Processing
             AudioProcessing audioProcessing = new AudioProcessing(file);
@@ -134,7 +142,7 @@ public class Processor implements IProcessListener {
                     , audioProcessing.getAudioSampleRate()
                     , file.getName()
             );
-            mfcc.setListener(this);
+            mfcc.setListener(ProcessListener.MFCC, this);
 
             // Type of MFCC
             mfcc.doMFCC();
@@ -147,6 +155,7 @@ public class Processor implements IProcessListener {
 
         // Time stamp feature extraction done
         printTimeStamp("mfcc");
+        writeLog(ProcessListener.BASIC, "Finish generating acoustic vector");
 
         // PCA
         PCA pca = DatabaseHandler.loadPCA(databaseDirectory);
@@ -154,6 +163,7 @@ public class Processor implements IProcessListener {
 
         // Time stamp dimension reduction done
         printTimeStamp("pca");
+        writeLog(ProcessListener.BASIC, "Finish reduce acoustic vector dimension");
 
         // Copy reduced mfcc to Acoustic vectors or array list of mfcc
         int counter = 0;
@@ -172,13 +182,14 @@ public class Processor implements IProcessListener {
 
         // Time stamp Vector quantization(VQ)
         printTimeStamp("vq");
+        writeLog(ProcessListener.BASIC, "Finish loading codeword from disk");
 
         wordDetection(lbg, acousticVectors, databaseDirectory);
 
         // Time stamp Classification(HMM)
         printTimeStamp("hmm");
-        getMessage(new Date().toString(), "Complete");
-        timeStamp.forEach((k, v) -> getMessage(new Date().toString(), k + " : " + v));
+        writeLog(ProcessListener.BASIC, "Testing with PCA reduction complete");
+        timeStamp.forEach((k, v) -> writeLog(ProcessListener.TIMESTAMP, k + " : " + v));
     }
 
     /**
@@ -196,11 +207,13 @@ public class Processor implements IProcessListener {
 
         // Time stamp Start
         printTimeStamp("start");
+        writeLog(ProcessListener.BASIC, "Start Training!");
 
         // Read all files
         assert soundFileInfo != null;
         for (String path :
                 soundFileInfo.getFilePath()) {
+            writeLog(ProcessListener.BASIC, "Reading " + path);
             File file = new File(path);
             // Audio Processing
             AudioProcessing audioProcessing = new AudioProcessing(file);
@@ -211,7 +224,7 @@ public class Processor implements IProcessListener {
                     , "" // empty string because label not required here (all words inserted to codebook)
             );
             // Type of MFCC
-            mfcc.setListener(this);
+            mfcc.setListener(ProcessListener.MFCC, this);
             mfcc.doMFCC();
 
             for (int i = 0; i < mfcc.getCeptra().length; i++) {
@@ -223,27 +236,28 @@ public class Processor implements IProcessListener {
 
         // Time stamp Feature Extraction MFCC
         printTimeStamp("mfcc");
+        writeLog(ProcessListener.BASIC, "Finish generating acoustic vector");
 
         // Create codebook
         LBG lbg = new LBG(ceptra);
-        lbg.setListener(this);
+        lbg.setListener(ProcessListener.VQ, this);
         lbg.calculateCluster(LBG.MAX_CLUSTER);
         lbg.saveToDisk();
         lbg.removeListener();
 
         // Time stamp Vector Quantization(VQ)
         printTimeStamp("vq");
+        writeLog(ProcessListener.BASIC, "Finish generating codeword");
 
         createWordModel(soundFileInfo, mfccs, lbg, LBG.MAX_CLUSTER);
 
         // Time stamp Classification
         printTimeStamp("hmm");
-        getMessage(new Date().toString(), "Complete");
-        timeStamp.forEach((k, v) -> getMessage(new Date().toString(), k + " : " + v));
+        writeLog(ProcessListener.BASIC, "Training complete");
+        timeStamp.forEach((k, v) -> writeLog(ProcessListener.TIMESTAMP, k + " : " + v));
     }
 
     public void startTestingWithoutPCA(File soundDirectories, File databaseDirectory) {
-
         // array list ceptra
         List<MFCC> mfccs = new ArrayList<>();
 
@@ -251,11 +265,13 @@ public class Processor implements IProcessListener {
 
         // Time stamp Start
         printTimeStamp("start");
+        writeLog(ProcessListener.BASIC, "Start Testing");
 
         // Read all files
         assert soundFileInfo != null;
         for (String path :
                 soundFileInfo.getFilePath()) {
+            writeLog(ProcessListener.BASIC, "Reading " + path);
             File file = new File(path);
             // Audio Processing
             AudioProcessing audioProcessing = new AudioProcessing(file);
@@ -265,7 +281,8 @@ public class Processor implements IProcessListener {
                     , audioProcessing.getAudioSampleRate()
                     , file.getName()
             );
-            mfcc.setListener(this);
+            mfcc.setListener(ProcessListener.MFCC, this);
+
             // Type of MFCC
             mfcc.doMFCC();
             mfccs.add(mfcc);
@@ -274,18 +291,20 @@ public class Processor implements IProcessListener {
 
         // Time stamp Feature Extraction(MFCC)
         printTimeStamp("mfcc");
+        writeLog(ProcessListener.BASIC, "Finish generating acoustic vector");
 
         LBG lbg = new LBG(databaseDirectory);
 
         // Time stamp Vector Quantization(VQ)
         printTimeStamp("vq");
+        writeLog(ProcessListener.BASIC, "Finish loading codeword from disk");
 
         wordDetection(lbg, mfccs, databaseDirectory);
 
         // Time stamp Classification(HMM)
         printTimeStamp("hmm");
-        getMessage(new Date().toString(), "Complete");
-        timeStamp.forEach((k, v) -> getMessage(new Date().toString(), k + " : " + v));
+        writeLog(ProcessListener.BASIC, "Testing complete");
+        timeStamp.forEach((k, v) -> writeLog(ProcessListener.TIMESTAMP, k + " : " + v));
     }
 
     private void wordDetection(LBG lbg, List<MFCC> mfccs, File databaseDirectory) {
@@ -309,10 +328,10 @@ public class Processor implements IProcessListener {
             if (mfccs.get(i).getWord().startsWith(result) || mfccs.get(i).getWord().contains(result)) {
                 rightAnswer++;
             }
-            getMessage(new Date().toString(), "Word = " + mfccs.get(i).getWord() + " Result : " + result);
+            writeLog(ProcessListener.BASIC, "Word = " + mfccs.get(i).getWord() + " Result : " + result);
         }
         double result = (double) rightAnswer / mfccs.size();
-        getMessage(new Date().toString(), "Recognition rate = " + (result * 100) + " %");
+        writeLog(ProcessListener.BASIC, "Recognition rate = " + (result * 100) + " %");
     }
 
     private void createWordModel(SoundFileInfo soundFileInfo, List<MFCC> acousticVectors, LBG lbg, int cluster) {
@@ -331,13 +350,13 @@ public class Processor implements IProcessListener {
             }
 
             // Create HMM
-            test.validator.hmm.HiddenMarkov hiddenMarkov = new test.validator.hmm.HiddenMarkov(8, cluster); // FIXME: 30-Dec-15
-            hiddenMarkov.setListener(this);
+            test.validator.hmm.HiddenMarkov hiddenMarkov = new test.validator.hmm.HiddenMarkov(8, cluster);
+            hiddenMarkov.setListener(ProcessListener.HMM, this);
             hiddenMarkov.setTrainSeq(observation);
             hiddenMarkov.train();
             hiddenMarkov.save(soundFileInfo.getWordLists().get(i).getWord());
             hiddenMarkov.removeListener();
-            getMessage(new Date().toString(), "Done HMM");
+            writeLog(ProcessListener.BASIC, "Finish generating " + soundFileInfo.getWordLists().get(i).getWord() + " word model.");
         }
     }
 
@@ -349,7 +368,7 @@ public class Processor implements IProcessListener {
      * @return Reduced dimension of acoustic vectors
      */
     private double[][] reduceDimensionWithPca(int dimension, List<Point> acousticVectors) {
-        getMessage(new Date().toString(), "Calculating PCA");
+        writeLog(ProcessListener.BASIC, "Calculating PCA");
         double[][] totalCeptra = new double[acousticVectors.size()][acousticVectors.get(0).getDimension()];
         int counter = 0;
         for (Point point : acousticVectors) {
@@ -362,7 +381,7 @@ public class Processor implements IProcessListener {
         pca.saveToDisk();
 
         double[][] mfccReduced = pca.getPCAResult(dimension).clone();
-        getMessage(new Date().toString(), "Done PCA");
+        writeLog(ProcessListener.BASIC, "Done Creating PCA");
         return mfccReduced;
     }
 
@@ -376,7 +395,7 @@ public class Processor implements IProcessListener {
      */
     private double[][] reduceDimensionWithPca(PCA pca, int dimension, List<Point> acousticVectors) {
         if (pca != null) {
-            getMessage(new Date().toString(), "Calculating PCA");
+            writeLog(ProcessListener.BASIC, "Calculating PCA");
             double[][] totalCeptra = new double[acousticVectors.size()][acousticVectors.get(0).getDimension()];
             int counter = 0;
             for (Point point : acousticVectors) {
@@ -385,7 +404,7 @@ public class Processor implements IProcessListener {
             }
 
             double[][] mfccReduced = pca.getPCAResult(totalCeptra, dimension).clone();
-            getMessage(new Date().toString(), "Done PCA");
+            writeLog(ProcessListener.BASIC, "Done Creating PCA");
             return mfccReduced;
         } else {
             throw new IllegalArgumentException("PCA is null!");
@@ -395,6 +414,7 @@ public class Processor implements IProcessListener {
 
     /**
      * Output timestamp to text area
+     *
      * @param type type of process
      */
     private void printTimeStamp(String type) {
@@ -408,23 +428,23 @@ public class Processor implements IProcessListener {
 
         switch (type) {
             case "start":
-                getMessage(new Date().toString(), start + currentMillisecond);
+                writeLog(ProcessListener.TIMESTAMP, start + currentMillisecond);
                 timeStamp.put("start", currentMillisecond);
                 break;
             case "mfcc":
-                getMessage(new Date().toString(), mfcc + currentMillisecond);
+                writeLog(ProcessListener.TIMESTAMP, mfcc + currentMillisecond);
                 timeStamp.put("mfcc", currentMillisecond);
                 break;
             case "pca":
-                getMessage(new Date().toString(), pca + currentMillisecond);
+                writeLog(ProcessListener.TIMESTAMP, pca + currentMillisecond);
                 timeStamp.put("pca", currentMillisecond);
                 break;
             case "vq":
-                getMessage(new Date().toString(), vq + currentMillisecond);
+                writeLog(ProcessListener.TIMESTAMP, vq + currentMillisecond);
                 timeStamp.put("vq", currentMillisecond);
                 break;
             case "hmm":
-                getMessage(new Date().toString(), hmm + currentMillisecond);
+                writeLog(ProcessListener.TIMESTAMP, hmm + currentMillisecond);
                 timeStamp.put("hmm", currentMillisecond);
                 break;
             default:
@@ -432,9 +452,8 @@ public class Processor implements IProcessListener {
         }
     }
 
-
     @Override
-    public void getMessage(String time, String context) {
-        mainMenuView.writeLog(context);
+    public void writeLog(int processType, String context) {
+        mainMenuView.writeToTextArea(processType, context);
     }
 }

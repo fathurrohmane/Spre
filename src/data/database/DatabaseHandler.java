@@ -36,7 +36,6 @@ public class DatabaseHandler {
 
     public static void saveCodebook(Codebook object) {
         try {
-            //String path = new File("").getAbsolutePath().concat("\\" + DATABASE_FOLDER + "\\" + CODEBOOK_FOLDER);
             String path = databasePath.getAbsolutePath().concat("\\" + CODEBOOK_FOLDER);
             File folder = new File(path);
             if (!folder.exists()) {
@@ -46,7 +45,6 @@ public class DatabaseHandler {
             String pathFile = folder.getAbsolutePath().concat("\\" + "codebook" + EXTENSION_CODEBOOK);
             File codebookFile = new File(pathFile);
 
-            //FileOutputStream fileOutputStream = new FileOutputStream(path + "\\" + name + EXTENSION_CODEBOOK);
             FileOutputStream fileOutputStream = new FileOutputStream(codebookFile);
             ObjectOutputStream out = new ObjectOutputStream(fileOutputStream);
             out.writeObject(object);
@@ -113,7 +111,6 @@ public class DatabaseHandler {
     public static Codebook loadCodeBook(File databaseDirectory) {
         Codebook output = null;
         try {
-//            String path = new File("").getAbsolutePath().concat("\\" + DATABASE_FOLDER + "\\" + CODEBOOK_FOLDER +"\\");
             FileInputStream fileInputStream = new FileInputStream(databaseDirectory + "\\" + CODEBOOK_FOLDER + "\\" + "codebook" + EXTENSION_CODEBOOK);
             ObjectInputStream in = new ObjectInputStream(fileInputStream);
             output = (Codebook) in.readObject();
@@ -170,7 +167,7 @@ public class DatabaseHandler {
      */
     public static WordModel[] loadAllWordModel() {
         System.out.println("Load All Word Model");
-        ArrayList<WordModel> output = new ArrayList<WordModel>();
+        ArrayList<WordModel> output = new ArrayList<>();
         int counter = 0;
         try {
             String path = new File("").getAbsolutePath().concat("\\" + DATABASE_FOLDER + "\\" + WORD_MODEL_FOLDER);
@@ -195,7 +192,7 @@ public class DatabaseHandler {
     public static List<HiddenMarkov> loadAllWordModelToHMMs(File databaseDirectory) {
         //System.out.println("Load All Word Model");
 
-        ArrayList<HiddenMarkov> output = new ArrayList<HiddenMarkov>();
+        List<HiddenMarkov> output = new ArrayList<>();
         int counter = 0;
         try {
             File dirWordModel = new File(databaseDirectory.getAbsolutePath().concat("\\" + WORD_MODEL_FOLDER));
@@ -216,6 +213,7 @@ public class DatabaseHandler {
         }
         return output;
     }
+    // TODO: 05/02/2018  add implmentation to gget all word model list
 
     /**
      * Read this kind structure file

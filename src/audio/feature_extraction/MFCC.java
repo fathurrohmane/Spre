@@ -2,17 +2,12 @@ package audio.feature_extraction;
 
 import data.Complex;
 import data.FFT;
-import tools.IProcessListener;
-
-import java.util.Date;
+import data.Process;
 
 /**
  * Created by Fathurrohman on 5/20/2015.
  */
-public class MFCC {
-
-    private IProcessListener listener;
-
+public class MFCC extends Process {
     // Audio property
     private int sampleLength;
     private int sampleRate;
@@ -84,6 +79,7 @@ public class MFCC {
     }
 
     public void doMFCC() {
+        writeLog("Creating acoustic vector for " + word);
         preEmphasis();
         framing();
         windowing();
@@ -98,7 +94,7 @@ public class MFCC {
         deltaEnergy = delta(energy);
         deltaDeltaEnergy = delta(deltaEnergy);
 
-        writeMessage("MFCC Done");
+        writeLog("MFCC Process Finish");
     }
 
     private void preEmphasis() {
@@ -110,10 +106,10 @@ public class MFCC {
 
     // Divide audio sample into overlapping frame
     private void framing() {
-        writeMessage("Sample Length : " + sampleLength);
-        writeMessage("Time : " + sampleLength / (float) sampleRate);
-        writeMessage("No of Frames : " + noOfFrames);
-        writeMessage("Sample per Frame : " + samplePerFrame);
+        writeLog("Sample Length : " + sampleLength);
+        writeLog("Time : " + sampleLength / (float) sampleRate);
+        writeLog("No of Frames : " + noOfFrames);
+        writeLog("Sample per Frame : " + samplePerFrame);
 
         framedAudioData = new double[noOfFrames][samplePerFrame];
 
@@ -129,7 +125,7 @@ public class MFCC {
                 }
             }
         }
-        writeMessage("Done Framing");
+        writeLog("Done Framing");
     }
 
     private void windowing() {
@@ -146,7 +142,7 @@ public class MFCC {
             }
         }
 
-        writeMessage("Done Windowing");
+        writeLog("Done Windowing");
     }
 
     private void fft() {
@@ -164,7 +160,7 @@ public class MFCC {
             complexAfterFFT[i] = FFT.fft(complexes[i]);
         }
 
-        writeMessage("Done FFT");
+        writeLog("Done FFT");
 
         // calculate mag spectrum
         magSpectrum = new double[noOfFrames][];
@@ -176,7 +172,7 @@ public class MFCC {
             }
         }
 
-        writeMessage("Done Mag");
+        writeLog("Done Mag");
     }
 
     private void makeFilterBank() {
@@ -242,7 +238,7 @@ public class MFCC {
                 }
             }
         }
-        writeMessage("DCT Done");
+        writeLog("DCT Done");
     }
 
     private void energy() {
@@ -282,6 +278,7 @@ public class MFCC {
                 double result = num / 2;
                 if (Double.isNaN(result) || Double.isInfinite(result)) {
                     //throw new IllegalArgumentException();
+                    // FIXME: 05/02/2018
                 }
 
                 delta[i][j] = result;
@@ -316,16 +313,13 @@ public class MFCC {
         return delta;
     }
 
-//    public double[][] getCeptra() {
-//        return ceptra.clone();
-//    }
-
     public void setCeptra(double[][] ceptra) {
         this.mfcc = ceptra;
     }
 
     /**
      * get MFCC
+     *
      * @return double[number of frame in a speech file][number of coeficient(MFCC)]
      */
     public double[][] getCeptra() {
@@ -365,21 +359,5 @@ public class MFCC {
 
     public String getWord() {
         return word;
-    }
-
-    public void setListener(IProcessListener listener) {
-        this.listener = listener;
-    }
-
-    public void removeListener() {
-        if (listener != null) {
-            this.listener = null;
-        }
-    }
-
-    private void writeMessage(String context) {
-        if (listener != null) {
-            listener.getMessage(new Date().toString(), context);
-        }
     }
 }
