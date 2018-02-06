@@ -66,7 +66,7 @@ public class PCA extends Process implements Serializable {
         eigenVectors.print(data[0].length, 5);
         //System.out.println("Eigen Value :");
         for (double eigenValue : eigenValues) {
-            //System.out.println(eigenValue);
+            System.out.println(eigenValue);
         }
 
         double[][] vecs = eigenVectors.getArray();

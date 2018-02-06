@@ -107,6 +107,25 @@ public class MainMenuController extends Application implements MainView {
             textFieldDatabaseDirectory.setText(databaseFile.getPath());
             DatabaseHandler.setDatabasePath(databaseFile);
 
+            // Auto parse folder name to checkbox and textfield pca dimension reduction
+            // check if it has "pca" word in it
+            String path = databaseFile.getName();
+            if (path.contains("pca")) {
+                checkBoxReduceDimension.setSelected(true);
+                String[] folderName = path.split("pca");
+                if (folderName.length != 0) {
+                    if (folderName[folderName.length - 1] != null) {
+                        try {
+                            textFieldDimensionReductionNumber.setText(Integer.valueOf(folderName[folderName.length - 1]).toString());
+                        } catch (NumberFormatException e) {
+                            DialogCreator.showNormalDialog(stage, "Can't detect PCA dimension!");
+                            textFieldDimensionReductionNumber.setText("1");
+                        }
+                    }
+                }
+            } else {
+                checkBoxReduceDimension.setSelected(false);
+            }
         }
     }
 
