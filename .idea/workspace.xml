@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Remove unused classes.">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/data/pca/PCA.java" afterPath="$PROJECT_DIR$/src/data/pca/PCA.java" />
+      <change beforePath="$PROJECT_DIR$/src/menu/main/MainMenu.fxml" afterPath="$PROJECT_DIR$/src/menu/main/MainMenu.fxml" />
       <change beforePath="$PROJECT_DIR$/src/menu/main/MainMenuController.java" afterPath="$PROJECT_DIR$/src/menu/main/MainMenuController.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -70,39 +70,16 @@
       <file leaf-file-name="MainMenuController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/menu/main/MainMenuController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="109" column="87" lean-forward="true" selection-start-line="109" selection-start-column="87" selection-end-line="109" selection-end-column="87" />
+            <state relative-caret-position="391">
+              <caret line="62" column="28" lean-forward="true" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#7143#7144#0" expanded="true" />
-                <element signature="e#7174#7175#0" expanded="true" />
-                <element signature="e#7940#7941#0" expanded="true" />
-                <element signature="e#7989#7990#0" expanded="true" />
+                <element signature="e#7536#7537#0" expanded="true" />
+                <element signature="e#7567#7568#0" expanded="true" />
+                <element signature="e#8333#8334#0" expanded="true" />
+                <element signature="e#8382#8383#0" expanded="true" />
               </folding>
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="File.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/io/File.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="148" column="13" lean-forward="false" selection-start-line="148" selection-start-column="13" selection-end-line="148" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainMenu.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/menu/main/MainMenu.fxml">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="144" column="55" lean-forward="true" selection-start-line="144" selection-start-column="55" selection-end-line="144" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-            <state />
           </provider>
         </entry>
       </file>
@@ -153,8 +130,8 @@
       <file leaf-file-name="MFCC.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/audio/feature_extraction/MFCC.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="246" column="58" lean-forward="true" selection-start-line="246" selection-start-column="58" selection-end-line="246" selection-end-column="58" />
+            <state relative-caret-position="179">
+              <caret line="307" column="0" lean-forward="false" selection-start-line="307" selection-start-column="0" selection-end-line="307" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -173,10 +150,33 @@
       <file leaf-file-name="DialogCreator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tools/ui/DialogCreator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="31" column="25" lean-forward="false" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+            <state relative-caret-position="319">
+              <caret line="73" column="36" lean-forward="false" selection-start-line="73" selection-start-column="36" selection-end-line="73" selection-end-column="36" />
               <folding />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DirectoryChooser.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/stage/DirectoryChooser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="45" column="19" lean-forward="false" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainMenu.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/menu/main/MainMenu.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="534">
+              <caret line="161" column="43" lean-forward="true" selection-start-line="161" selection-start-column="43" selection-end-line="161" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
           </provider>
         </entry>
       </file>
@@ -195,9 +195,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>v</find>
-      <find>pcaRotationTransformation</find>
-      <find>mean</find>
       <find>re-estimation</find>
       <find>tres</find>
       <find>getD</find>
@@ -224,7 +221,10 @@
       <find>WordModel</find>
       <find>System</find>
       <find>reset</find>
+      <find>gridPane</find>
+      <find>GridPane</find>
       <find>openDatabaseDirectory</find>
+      <find>previousFileAddress</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -263,7 +263,6 @@
         <option value="$PROJECT_DIR$/src/menu/main/MaterialMainMenu.fxml" />
         <option value="$PROJECT_DIR$/src/menu/main/MaterialMainMenuController.java" />
         <option value="$PROJECT_DIR$/src/menu/MaterialMainMenu.fxml" />
-        <option value="$PROJECT_DIR$/src/tools/ui/DialogCreator.java" />
         <option value="$PROJECT_DIR$/src/menu/Main.java" />
         <option value="$PROJECT_DIR$/src/test/ManualTestHMM.java" />
         <option value="$PROJECT_DIR$/src/test/ManualTestPoint.java" />
@@ -290,7 +289,6 @@
         <option value="$PROJECT_DIR$/src/audio/feature_extraction/MFCC.java" />
         <option value="$PROJECT_DIR$/src/data/vectorquantization/LBG/LBG.java" />
         <option value="$PROJECT_DIR$/src/test/validator/hmm/HiddenMarkov.java" />
-        <option value="$PROJECT_DIR$/src/menu/main/MainMenu.fxml" />
         <option value="$PROJECT_DIR$/src/tools/MainView.java" />
         <option value="$PROJECT_DIR$/src/menu/MainMenuMenuController.java" />
         <option value="$PROJECT_DIR$/src/audio/PreProcessing.java" />
@@ -298,6 +296,8 @@
         <option value="$PROJECT_DIR$/src/classification/hmm/HiddenMarkov.java" />
         <option value="$PROJECT_DIR$/src/classification/Processor.java" />
         <option value="$PROJECT_DIR$/src/data/pca/PCA.java" />
+        <option value="$PROJECT_DIR$/src/menu/main/MainMenu.fxml" />
+        <option value="$PROJECT_DIR$/src/tools/ui/DialogCreator.java" />
         <option value="$PROJECT_DIR$/src/menu/main/MainMenuController.java" />
       </list>
     </option>
@@ -416,7 +416,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
-    <property name="SearchEverywhereHistoryKey" value="MainMenu&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/menu/main/MainMenu.fxml&#10;PCA&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/pca/PCA.java&#10;MFCC&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/audio/feature_extraction/MFCC.java&#10;MainMe&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/menu/main/MainMenuController.java&#10;MainMenuM&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/menu/MainMenuMenuController.java&#10;Main&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/menu/main/MainMenuController.java&#10;Proc&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/classification/Processor.java&#10;MainMenuMenu&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/menu/MainMenuMenuController.java&#10;Hidd&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/validator/hmm/HiddenMarkov.java&#10;Word&#9;PSI&#9;JAVA://data.database.WordModel&#10;Pro&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/classification/Processor.java&#10;LBG&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/vectorquantization/LBG/LBG.java&#10;MainM&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/menu/MainMenuMenuController.java&#10;Proce&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/tools/ProcessListener.java&#10;MainMenuC&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/menu/main/MainMenuController.java&#10;Process&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/classification/Processor.java&#10;Code&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/database/Codebook.java&#10;Database&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/database/DatabaseHandler.java&#10;Procee&#9;PSI&#9;JAVA://java.lang.ProcessEnvironment&#10;PCAT&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/PCATest.java&#10;Sing&#9;FILE&#9;jar://L:/Cloud/Dropbox/TA/Code/Jama-1.0.3.jar!/Jama/SingularValueDecomposition.class&#10;Point&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/vectorquantization/LBG/Point.java&#10;Hidde&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/validator/hmm/HiddenMarkov.java&#10;Poin&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/vectorquantization/LBG/Point.java&#10;A&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/tools/array/Array.java&#10;Arr&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ArrayTest.java&#10;Ar&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ArrayTest.java&#10;Pr&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/classification/Processor.java&#10;ArrayTe&#9;RUN_CONFIGURATION&#9;ArrayTest&#10;Arra&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ArrayTest.java&#10;PC&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ManualTestPCA.java&#10;ArrayT&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ArrayTest.java&#10;Array&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ArrayTest.java&#10;WordL&#9;PSI&#9;JAVA://data.model.SoundFileInfo.WordList&#10;Data&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/database/DatabaseHandler.java&#10;HiddenM&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/validator/hmm/HiddenMarkov.java&#10;Test&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/PointTest.java&#10;Hid&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/validator/hmm/HiddenMarkov.java&#10;VQ&#9;PSI&#9;JAVA://data.vectorquantization.LBG.VectorQuantization&#10;mfcc&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/audio/feature_extraction/MFCC.java&#10;HMM&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/test/ManualTestHMM.java&#10;Clus&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/data/vectorquantization/LBG/Cluster.java&#10;data&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/data/database/DatabaseHandler.java" />
+    <property name="SearchEverywhereHistoryKey" value="Dialog&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/tools/ui/DialogCreator.java&#10;MainMenu&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/menu/main/MainMenu.fxml&#10;PCA&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/pca/PCA.java&#10;MFCC&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/audio/feature_extraction/MFCC.java&#10;MainMe&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/menu/main/MainMenuController.java&#10;MainMenuM&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/menu/MainMenuMenuController.java&#10;Main&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/menu/main/MainMenuController.java&#10;Proc&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/classification/Processor.java&#10;MainMenuMenu&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/menu/MainMenuMenuController.java&#10;Hidd&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/validator/hmm/HiddenMarkov.java&#10;Word&#9;PSI&#9;JAVA://data.database.WordModel&#10;Pro&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/classification/Processor.java&#10;LBG&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/vectorquantization/LBG/LBG.java&#10;MainM&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/menu/MainMenuMenuController.java&#10;Proce&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/tools/ProcessListener.java&#10;MainMenuC&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/menu/main/MainMenuController.java&#10;Process&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/classification/Processor.java&#10;Code&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/database/Codebook.java&#10;Database&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/database/DatabaseHandler.java&#10;Procee&#9;PSI&#9;JAVA://java.lang.ProcessEnvironment&#10;PCAT&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/PCATest.java&#10;Sing&#9;FILE&#9;jar://L:/Cloud/Dropbox/TA/Code/Jama-1.0.3.jar!/Jama/SingularValueDecomposition.class&#10;Point&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/vectorquantization/LBG/Point.java&#10;Hidde&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/validator/hmm/HiddenMarkov.java&#10;Poin&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/vectorquantization/LBG/Point.java&#10;A&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/tools/array/Array.java&#10;Arr&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ArrayTest.java&#10;Ar&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ArrayTest.java&#10;Pr&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/classification/Processor.java&#10;ArrayTe&#9;RUN_CONFIGURATION&#9;ArrayTest&#10;Arra&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ArrayTest.java&#10;PC&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ManualTestPCA.java&#10;ArrayT&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ArrayTest.java&#10;Array&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/ArrayTest.java&#10;WordL&#9;PSI&#9;JAVA://data.model.SoundFileInfo.WordList&#10;Data&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/data/database/DatabaseHandler.java&#10;HiddenM&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/validator/hmm/HiddenMarkov.java&#10;Test&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/PointTest.java&#10;Hid&#9;FILE&#9;file://L:/Project/Java/SpeechRecognition/src/test/validator/hmm/HiddenMarkov.java&#10;VQ&#9;PSI&#9;JAVA://data.vectorquantization.LBG.VectorQuantization&#10;mfcc&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/audio/feature_extraction/MFCC.java&#10;HMM&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/test/ManualTestHMM.java&#10;Clus&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/data/vectorquantization/LBG/Cluster.java&#10;data&#9;FILE&#9;file://D:/Project/Java/SpeechRecognition/src/data/database/DatabaseHandler.java" />
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.JavaDocs" value="true" />
     <property name="Repository.Attach.Sources" value="false" />
@@ -1046,7 +1046,14 @@
       <option name="project" value="LOCAL" />
       <updated>1517831791545</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Add auto parse PCA(checkbox and dimension) from folder name.">
+      <created>1517899157657</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1517899157657</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1110,6 +1117,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2256447" sideWeight="0.5362563" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32388663" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2256447" sideWeight="0.4637437" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1129,7 +1137,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32388663" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -1195,7 +1202,8 @@
     <MESSAGE value="Add progressbar functionality and refactor MFCC process in Processor class." />
     <MESSAGE value="Fix progressbar bug when training." />
     <MESSAGE value="Remove unused classes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove unused classes." />
+    <MESSAGE value="Add auto parse PCA(checkbox and dimension) from folder name." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add auto parse PCA(checkbox and dimension) from folder name." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1257,7 +1265,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/menu/main/MainMenuController.java</url>
-          <line>112</line>
+          <line>116</line>
           <properties />
           <option name="timeStamp" value="307" />
         </line-breakpoint>
@@ -1281,14 +1289,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/Integer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="764" column="26" lean-forward="false" selection-start-line="764" selection-start-column="26" selection-end-line="764" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tools/Executor.java" />
     <entry file="file://$PROJECT_DIR$/src/tools/MyMath.java" />
     <entry file="file://$PROJECT_DIR$/src/test/DatabaseHandlerTest.java">
@@ -1340,8 +1340,8 @@
         <state relative-caret-position="157">
           <caret line="215" column="7" lean-forward="false" selection-start-line="215" selection-start-column="7" selection-end-line="215" selection-end-column="7" />
           <folding>
-            <element signature="e#894#895#0" expanded="true" />
-            <element signature="e#929#930#0" expanded="true" />
+            <element signature="e#894#895#0" expanded="false" />
+            <element signature="e#929#930#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1500,14 +1500,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tools/ui/DialogCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="31" column="25" lean-forward="false" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tools/ui/ChartCreator.java" />
     <entry file="file://$PROJECT_DIR$/src/unused/WavFile.java" />
     <entry file="file://$PROJECT_DIR$/src/unused/WavFileException.java" />
@@ -1539,18 +1531,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/audio/feature_extraction/MFCC.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="246" column="58" lean-forward="true" selection-start-line="246" selection-start-column="58" selection-end-line="246" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/jre/lib/rt.jar!/sun/reflect/NativeMethodAccessorImpl.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="287">
           <caret line="33" column="33" lean-forward="false" selection-start-line="33" selection-start-column="33" selection-end-line="33" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/audio/feature_extraction/MFCC.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="307" column="0" lean-forward="false" selection-start-line="307" selection-start-column="0" selection-end-line="307" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1564,26 +1556,42 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/menu/main/MainMenu.fxml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="144" column="55" lean-forward="true" selection-start-line="144" selection-start-column="55" selection-end-line="144" selection-end-column="55" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="161" column="43" lean-forward="true" selection-start-line="161" selection-start-column="43" selection-end-line="161" selection-end-column="43" />
           <folding />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+      <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/stage/DirectoryChooser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="45" column="19" lean-forward="false" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tools/ui/DialogCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="73" column="36" lean-forward="false" selection-start-line="73" selection-start-column="36" selection-end-line="73" selection-end-column="36" />
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/menu/main/MainMenuController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="109" column="87" lean-forward="true" selection-start-line="109" selection-start-column="87" selection-end-line="109" selection-end-column="87" />
+        <state relative-caret-position="391">
+          <caret line="62" column="28" lean-forward="true" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7143#7144#0" expanded="true" />
-            <element signature="e#7174#7175#0" expanded="true" />
-            <element signature="e#7940#7941#0" expanded="true" />
-            <element signature="e#7989#7990#0" expanded="true" />
+            <element signature="e#7536#7537#0" expanded="true" />
+            <element signature="e#7567#7568#0" expanded="true" />
+            <element signature="e#8333#8334#0" expanded="true" />
+            <element signature="e#8382#8383#0" expanded="true" />
           </folding>
         </state>
       </provider>

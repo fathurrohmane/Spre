@@ -43,8 +43,8 @@ public class MainMenuController extends Application implements MainView {
 
     private Stage stage;
     private File previousFileAddress = null;
-    private File soundFile = null;
-    private File databaseFile = null;
+    private File soundDirectory = null;
+    private File databaseDirectory = null;
     private Processor processor = null;
     private Executor executor;
     private SimpleDateFormat simpleDateFormat;
@@ -58,6 +58,8 @@ public class MainMenuController extends Application implements MainView {
         // Initialize stage
         primaryStage.setTitle("SPEECH RECOGNITION - Fathurrohman Elkusnandi");
         primaryStage.setScene(new Scene(root, 1000, 600));
+        primaryStage.setMinWidth(1000);
+        primaryStage.setMinHeight(600);
         primaryStage.show();
     }
 
@@ -81,14 +83,15 @@ public class MainMenuController extends Application implements MainView {
      */
     public void openSoundFileDirectory() {
         // Open dialog and get the sound directory
-        soundFile = DialogCreator.showDirectoryChooser("Choose Sounds Directory", stage, previousFileAddress);
+        File selectedDirectory = DialogCreator.showDirectoryChooser("Choose Sounds Directory", stage, previousFileAddress);
 
         // If canceled show error dialog
-        if (soundFile == null) {
+        if (selectedDirectory == null) {
             DialogCreator.showNormalDialog(stage, "No Folder is Selected");
-            textFieldSoundDirectory.clear();
         } else {
-            textFieldSoundDirectory.setText(soundFile.getPath());
+            textFieldSoundDirectory.setText(selectedDirectory.getPath());
+            soundDirectory = new File(selectedDirectory.getAbsolutePath());
+            previousFileAddress = new File(selectedDirectory.getAbsolutePath());
         }
     }
 
@@ -97,19 +100,20 @@ public class MainMenuController extends Application implements MainView {
      */
     public void openDatabaseDirectory() {
         // Open dialog and get the sound directory
-        databaseFile = DialogCreator.showDirectoryChooser("Choose Sounds Directory", stage, previousFileAddress);
+        File selectedDirectory = DialogCreator.showDirectoryChooser("Choose Sounds Directory", stage, previousFileAddress);
 
         // If canceled show error dialog
-        if (databaseFile == null) {
+        if (selectedDirectory == null) {
             DialogCreator.showNormalDialog(stage, "No Folder is Selected");
-            textFieldDatabaseDirectory.clear();
         } else {
-            textFieldDatabaseDirectory.setText(databaseFile.getPath());
-            DatabaseHandler.setDatabasePath(databaseFile);
+            textFieldDatabaseDirectory.setText(selectedDirectory.getPath());
+            DatabaseHandler.setDatabasePath(databaseDirectory);
+            databaseDirectory = new File(selectedDirectory.getAbsolutePath());
+            previousFileAddress = new File(selectedDirectory.getAbsolutePath());
 
             // Auto parse folder name to checkbox and textfield pca dimension reduction
             // check if it has "pca" word in it
-            String path = databaseFile.getName();
+            String path = databaseDirectory.getName();
             if (path.contains("pca")) {
                 checkBoxReduceDimension.setSelected(true);
                 String[] folderName = path.split("pca");
@@ -130,7 +134,7 @@ public class MainMenuController extends Application implements MainView {
     }
 
     public void beginTesting() {
-        if (soundFile == null || databaseFile == null) {
+        if (soundDirectory == null || databaseDirectory == null) {
             DialogCreator.showNormalDialog(stage, "Missing database data or sound data!");
         } else {
             changeButtonAtRunningState(true);
@@ -141,7 +145,7 @@ public class MainMenuController extends Application implements MainView {
     }
 
     public void beginTraining() {
-        if (soundFile == null || databaseFile == null) {
+        if (soundDirectory == null || databaseDirectory == null) {
             DialogCreator.showNormalDialog(stage, "Missing database data or sound data!");
         } else {
             changeButtonAtRunningState(true);
@@ -276,15 +280,15 @@ public class MainMenuController extends Application implements MainView {
         private void process() {
             if (isReduceDimension) {
                 if (isTraining) {
-                    processor.startTrainingWithPCA(Integer.valueOf(textFieldDimensionReductionNumber.getText()), soundFile);
+                    processor.startTrainingWithPCA(Integer.valueOf(textFieldDimensionReductionNumber.getText()), soundDirectory);
                 } else {
-                    processor.startTestingWithPCA(Integer.valueOf(textFieldDimensionReductionNumber.getText()), soundFile, databaseFile);
+                    processor.startTestingWithPCA(Integer.valueOf(textFieldDimensionReductionNumber.getText()), soundDirectory, databaseDirectory);
                 }
             } else {
                 if (isTraining) {
-                    processor.startTrainingWithoutPCA(soundFile);
+                    processor.startTrainingWithoutPCA(soundDirectory);
                 } else {
-                    processor.startTestingWithoutPCA(soundFile, databaseFile);
+                    processor.startTestingWithoutPCA(soundDirectory, databaseDirectory);
                 }
             }
             processor = null;
