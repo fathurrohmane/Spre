@@ -107,11 +107,11 @@ public class MainMenuController extends Application implements MainView {
             DialogCreator.showNormalDialog(stage, "No Folder is Selected");
         } else {
             textFieldDatabaseDirectory.setText(selectedDirectory.getPath());
-            DatabaseHandler.setDatabasePath(databaseDirectory);
             databaseDirectory = new File(selectedDirectory.getAbsolutePath());
             previousFileAddress = new File(selectedDirectory.getAbsolutePath());
+            DatabaseHandler.setDatabasePath(databaseDirectory);
 
-            // Auto parse folder name to checkbox and textfield pca dimension reduction
+            // Auto parse folder name to checkbox and text field pca dimension reduction
             // check if it has "pca" word in it
             String path = databaseDirectory.getName();
             if (path.contains("pca")) {
