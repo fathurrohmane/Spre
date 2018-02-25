@@ -56,14 +56,14 @@ public class PCA extends Process implements Serializable {
         Matrix covarianceInMatrix = new Matrix(covariance);
         //System.out.println("Matrix Covariance :");
         // FIXME: 05/02/2018 write matrix to console
-        covarianceInMatrix.print(data[0].length, 5);
+        //covarianceInMatrix.print(data[0].length, 5);
         EigenvalueDecomposition eigenData = covarianceInMatrix.eig();
 
         //calculate eigen vector and value
         double[] eigenValues = eigenData.getRealEigenvalues();
         Matrix eigenVectors = eigenData.getV();
         //System.out.println("Eigen Vector :");
-        eigenVectors.print(data[0].length, 5);
+        //eigenVectors.print(data[0].length, 5);
         //System.out.println("Eigen Value :");
         for (double eigenValue : eigenValues) {
             System.out.println(eigenValue);

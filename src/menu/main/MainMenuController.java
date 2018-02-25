@@ -107,6 +107,7 @@ public class MainMenuController extends Application implements MainView {
             DialogCreator.showNormalDialog(stage, "No Folder is Selected");
         } else {
             textFieldDatabaseDirectory.setText(selectedDirectory.getPath());
+            textLabelDatabaseLocation.setText(selectedDirectory.getName());
             databaseDirectory = new File(selectedDirectory.getAbsolutePath());
             previousFileAddress = new File(selectedDirectory.getAbsolutePath());
             DatabaseHandler.setDatabasePath(databaseDirectory);
@@ -204,6 +205,7 @@ public class MainMenuController extends Application implements MainView {
      */
     public void resetProgram() {
         textAreaConsole.clear();
+        textLabelDatabaseLocation.setText("\"No Database is selected\"");
         textLabelRecognitionRate.setText(String.valueOf(0) + " %");
         progressBar.setProgress(0);
     }
