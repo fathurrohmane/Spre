@@ -42,7 +42,7 @@ public class Processor implements ProcessListener {
      * @param targetDimensionSize number of target dimension (39 -> x)
      * @param soundDirectories    file
      */
-    public void startTrainingWithPCA(int targetDimensionSize, File soundDirectories) {
+    public void startTrainingWithPCA(int targetDimensionSize, File soundDirectories, int centroidNumber, int stateNumber) {
         // array list ceptra
         List<MFCC> acousticVectors = new ArrayList<>();
         List<Point> ceptra = new ArrayList<>();
@@ -84,7 +84,7 @@ public class Processor implements ProcessListener {
         // Create codebook
         LBG lbg = new LBG(mfccsAfterPCA);
         lbg.setListener(ProcessListener.VQ, this);
-        lbg.calculateCluster(LBG.MAX_CLUSTER);
+        lbg.calculateCluster(centroidNumber);
         lbg.saveToDisk();
         lbg.removeListener();
 
@@ -93,7 +93,7 @@ public class Processor implements ProcessListener {
         writeLog(ProcessListener.BASIC, "Finish generating codeword");
         mainMenuView.writeProgress(0.5);
 
-        createWordModel(soundFileInfo, acousticVectors, lbg, LBG.MAX_CLUSTER);
+        createWordModel(soundFileInfo, acousticVectors, lbg, centroidNumber, stateNumber);
 
         // Time stamp classification done
         printTimeStamp("hmm");
@@ -163,7 +163,7 @@ public class Processor implements ProcessListener {
     /**
      * @param soundDirectories file
      */
-    public void startTrainingWithoutPCA(File soundDirectories) {
+    public void startTrainingWithoutPCA(File soundDirectories, int centroidNumber, int stateNumber) {
         // array list ceptra
         List<MFCC> acousticVectors = new ArrayList<>();
         List<Point> ceptra = new ArrayList<>();
@@ -186,7 +186,7 @@ public class Processor implements ProcessListener {
         // Create codebook
         LBG lbg = new LBG(ceptra);
         lbg.setListener(ProcessListener.VQ, this);
-        lbg.calculateCluster(LBG.MAX_CLUSTER);
+        lbg.calculateCluster(centroidNumber);
         lbg.saveToDisk();
         lbg.removeListener();
 
@@ -195,7 +195,7 @@ public class Processor implements ProcessListener {
         writeLog(ProcessListener.BASIC, "Finish generating codeword");
         mainMenuView.writeProgress(0.5);
 
-        createWordModel(soundFileInfo, acousticVectors, lbg, LBG.MAX_CLUSTER);
+        createWordModel(soundFileInfo, acousticVectors, lbg, centroidNumber, stateNumber);
 
         // Time stamp Classification
         printTimeStamp("hmm");
@@ -296,7 +296,7 @@ public class Processor implements ProcessListener {
         mainMenuView.writeToLabelRecognitionRate(result * 100);
     }
 
-    private void createWordModel(SoundFileInfo soundFileInfo, List<MFCC> acousticVectors, LBG lbg, int cluster) {
+    private void createWordModel(SoundFileInfo soundFileInfo, List<MFCC> acousticVectors, LBG lbg, int cluster, int state) {
         // Create word model
         int counter = 0;
         for (int i = 0; i < soundFileInfo.getWordLists().size(); i++) {
@@ -312,7 +312,7 @@ public class Processor implements ProcessListener {
             }
 
             // Create HMM
-            HiddenMarkov hiddenMarkov = new HiddenMarkov(8, cluster);
+            HiddenMarkov hiddenMarkov = new HiddenMarkov(state, cluster);
             hiddenMarkov.setListener(ProcessListener.HMM, this);
             hiddenMarkov.setTrainSeq(observation);
             hiddenMarkov.train();
