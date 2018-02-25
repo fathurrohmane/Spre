@@ -10,4 +10,6 @@ public interface MainView {
     void writeProgress(double progress);
 
     void writeToLabelRecognitionRate(double rate);
+
+    void writeToLabelProcessTime(int processType, long time);
 }

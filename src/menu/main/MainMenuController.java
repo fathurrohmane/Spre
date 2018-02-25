@@ -40,6 +40,10 @@ public class MainMenuController extends Application implements MainView {
     public Button buttonOpenDatabaseDirectory;
     public TextArea textAreaConsole;
     public ProgressBar progressBar;
+    public Label textLabelMfccProcessTime;
+    public Label textLabelPcaProcessTime;
+    public Label textLabelVqProcessTime;
+    public Label textLabelHmmProcessTime;
 
     private Stage stage;
     private File previousFileAddress = null;
@@ -57,9 +61,9 @@ public class MainMenuController extends Application implements MainView {
 
         // Initialize stage
         primaryStage.setTitle("SPEECH RECOGNITION - Fathurrohman Elkusnandi");
-        primaryStage.setScene(new Scene(root, 1000, 600));
-        primaryStage.setMinWidth(1000);
-        primaryStage.setMinHeight(600);
+        primaryStage.setScene(new Scene(root, 1028, 750));
+        primaryStage.setMinWidth(1028);
+        primaryStage.setMinHeight(750);
         primaryStage.show();
     }
 
@@ -138,6 +142,7 @@ public class MainMenuController extends Application implements MainView {
         if (soundDirectory == null || databaseDirectory == null) {
             DialogCreator.showNormalDialog(stage, "Missing database data or sound data!");
         } else {
+            resetBeforeRunning();
             changeButtonAtRunningState(true);
             processor = new Processor(this);
             executor = new Executor();
@@ -149,6 +154,7 @@ public class MainMenuController extends Application implements MainView {
         if (soundDirectory == null || databaseDirectory == null) {
             DialogCreator.showNormalDialog(stage, "Missing database data or sound data!");
         } else {
+            resetBeforeRunning();
             changeButtonAtRunningState(true);
             processor = new Processor(this);
             executor = new Executor();
@@ -208,6 +214,22 @@ public class MainMenuController extends Application implements MainView {
         textLabelDatabaseLocation.setText("\"No Database is selected\"");
         textLabelRecognitionRate.setText(String.valueOf(0) + " %");
         progressBar.setProgress(0);
+        textLabelMfccProcessTime.setText("- ms");
+        textLabelPcaProcessTime.setText("- ms");
+        textLabelVqProcessTime.setText("- ms");
+        textLabelHmmProcessTime.setText("- ms");
+    }
+
+    /**
+     * Reset things before start Training or Testing
+     */
+    public void resetBeforeRunning() {
+        textLabelRecognitionRate.setText(String.valueOf(0) + " %");
+        progressBar.setProgress(0);
+        textLabelMfccProcessTime.setText("- ms");
+        textLabelPcaProcessTime.setText("- ms");
+        textLabelVqProcessTime.setText("- ms");
+        textLabelHmmProcessTime.setText("- ms");
     }
 
     @Override
@@ -234,6 +256,26 @@ public class MainMenuController extends Application implements MainView {
     @Override
     public void writeToLabelRecognitionRate(double rate) {
         Platform.runLater(() -> textLabelRecognitionRate.setText(String.valueOf(rate) + " %"));
+    }
+
+    @Override
+    public void writeToLabelProcessTime(int processType, long time) {
+        switch (processType) {
+            case ProcessListener.MFCC:
+                Platform.runLater(() ->  textLabelMfccProcessTime.setText(time + " ms"));
+                break;
+            case ProcessListener.PCA:
+                Platform.runLater(() ->  textLabelPcaProcessTime.setText(time + " ms"));
+                break;
+            case ProcessListener.VQ:
+                Platform.runLater(() ->  textLabelVqProcessTime.setText(time + " ms"));
+                break;
+            case ProcessListener.HMM:
+                Platform.runLater(() ->  textLabelHmmProcessTime.setText(time + " ms"));
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid process type");
+        }
     }
 
     private boolean writeLogValidation(int processType) {

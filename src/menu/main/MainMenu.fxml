@@ -203,7 +203,7 @@
                                     <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextArea fx:id="textAreaTrainedWordList" prefHeight="125.0" prefWidth="242.0" promptText="Load database first!" wrapText="true">
+                              <TextArea fx:id="textAreaTrainedWordList" minHeight="-Infinity" prefHeight="150.0" prefWidth="242.0" promptText="Load database first!" wrapText="true">
                                  <VBox.margin>
                                     <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                                  </VBox.margin>
@@ -240,12 +240,53 @@
                                  <VBox.margin>
                                     <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                                  </VBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
                               </Label>
-                              <Label fx:id="textLabelRecognitionRate" alignment="CENTER" layoutX="18.0" layoutY="347.0" prefHeight="73.0" prefWidth="260.0" text="0%">
+                              <Label fx:id="textLabelRecognitionRate" alignment="CENTER" layoutX="18.0" layoutY="347.0" prefHeight="73.0" prefWidth="260.0" text="0 %">
                                  <font>
                                     <Font size="50.0" />
                                  </font>
                               </Label>
+                              <Label layoutX="18.0" layoutY="298.0" text="Process Time :">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <GridPane>
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="50.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="10.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="MFCC" />
+                                    <Label text="PCA" GridPane.rowIndex="1" />
+                                    <Label text="VQ" GridPane.rowIndex="2" />
+                                    <Label text="HMM" GridPane.rowIndex="3" />
+                                    <Label text=":" GridPane.columnIndex="1" />
+                                    <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <Label text=":" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                    <Label fx:id="textLabelMfccProcessTime" text="- ms" GridPane.columnIndex="2" />
+                                    <Label fx:id="textLabelPcaProcessTime" text="- ms" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                    <Label fx:id="textLabelVqProcessTime" text="- ms" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                    <Label fx:id="textLabelHmmProcessTime" text="- ms" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
+                                 </padding>
+                              </GridPane>
                            </children>
                         </VBox>
                         <Pane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
@@ -257,7 +298,7 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
-                        <Label minHeight="53.0" text="Implementasi Sistem Pengenalan Ucapan Bahasa Indonesia Menggunakan Kombinasi MFCC dan PCA Berbasis HMM" textOverrun="CLIP" wrapText="true">
+                        <Label minHeight="70.0" text="Implementasi Sistem Pengenalan Ucapan Bahasa Indonesia Menggunakan Kombinasi MFCC dan PCA Berbasis HMM" textOverrun="CLIP" wrapText="true">
                            <VBox.margin>
                               <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                            </VBox.margin>

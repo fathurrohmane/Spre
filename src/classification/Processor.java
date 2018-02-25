@@ -397,18 +397,27 @@ public class Processor implements ProcessListener {
             case "mfcc":
                 writeLog(ProcessListener.TIMESTAMP, mfcc + currentMillisecond);
                 timeStamp.put("mfcc", currentMillisecond);
+                mainMenuView.writeToLabelProcessTime(ProcessListener.MFCC, currentMillisecond - timeStamp.get("start"));
                 break;
             case "pca":
                 writeLog(ProcessListener.TIMESTAMP, pca + currentMillisecond);
                 timeStamp.put("pca", currentMillisecond);
+                mainMenuView.writeToLabelProcessTime(ProcessListener.PCA, currentMillisecond - timeStamp.get("mfcc"));
                 break;
             case "vq":
                 writeLog(ProcessListener.TIMESTAMP, vq + currentMillisecond);
                 timeStamp.put("vq", currentMillisecond);
+                if (timeStamp.containsKey("pca")) {
+                    mainMenuView.writeToLabelProcessTime(ProcessListener.VQ, currentMillisecond - timeStamp.get("pca"));
+                } else {
+                    mainMenuView.writeToLabelProcessTime(ProcessListener.PCA, 0);
+                    mainMenuView.writeToLabelProcessTime(ProcessListener.VQ, currentMillisecond - timeStamp.get("mfcc"));
+                }
                 break;
             case "hmm":
                 writeLog(ProcessListener.TIMESTAMP, hmm + currentMillisecond);
                 timeStamp.put("hmm", currentMillisecond);
+                mainMenuView.writeToLabelProcessTime(ProcessListener.HMM, currentMillisecond - timeStamp.get("vq"));
                 break;
             default:
                 throw new IllegalArgumentException("Illegal input");
