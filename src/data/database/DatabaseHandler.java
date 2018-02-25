@@ -213,6 +213,7 @@ public class DatabaseHandler {
         }
         return output;
     }
+
     // TODO: 05/02/2018  add implmentation to gget all word model list
 
     /**

@@ -1,6 +1,7 @@
 package menu.main;
 
 import classification.Processor;
+import classification.hmm.HiddenMarkov;
 import data.database.DatabaseHandler;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -115,6 +116,11 @@ public class MainMenuController extends Application implements MainView {
             databaseDirectory = new File(selectedDirectory.getAbsolutePath());
             previousFileAddress = new File(selectedDirectory.getAbsolutePath());
             DatabaseHandler.setDatabasePath(databaseDirectory);
+            List<HiddenMarkov> wordModels = DatabaseHandler.loadAllWordModelToHMMs(databaseDirectory);
+            textAreaTrainedWordList.clear();
+            for (int i = 0; i < wordModels.size(); i++) {
+                textAreaTrainedWordList.appendText((i + 1) + ". " + wordModels.get(i).getWord() + "\n");
+            }
 
             // Auto parse folder name to checkbox and text field pca dimension reduction
             // check if it has "pca" word in it
@@ -218,6 +224,7 @@ public class MainMenuController extends Application implements MainView {
         textLabelPcaProcessTime.setText("- ms");
         textLabelVqProcessTime.setText("- ms");
         textLabelHmmProcessTime.setText("- ms");
+        textAreaTrainedWordList.clear();
     }
 
     /**
@@ -262,16 +269,16 @@ public class MainMenuController extends Application implements MainView {
     public void writeToLabelProcessTime(int processType, long time) {
         switch (processType) {
             case ProcessListener.MFCC:
-                Platform.runLater(() ->  textLabelMfccProcessTime.setText(time + " ms"));
+                Platform.runLater(() -> textLabelMfccProcessTime.setText(time + " ms"));
                 break;
             case ProcessListener.PCA:
-                Platform.runLater(() ->  textLabelPcaProcessTime.setText(time + " ms"));
+                Platform.runLater(() -> textLabelPcaProcessTime.setText(time + " ms"));
                 break;
             case ProcessListener.VQ:
-                Platform.runLater(() ->  textLabelVqProcessTime.setText(time + " ms"));
+                Platform.runLater(() -> textLabelVqProcessTime.setText(time + " ms"));
                 break;
             case ProcessListener.HMM:
-                Platform.runLater(() ->  textLabelHmmProcessTime.setText(time + " ms"));
+                Platform.runLater(() -> textLabelHmmProcessTime.setText(time + " ms"));
                 break;
             default:
                 throw new IllegalArgumentException("Invalid process type");
