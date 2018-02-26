@@ -123,14 +123,62 @@
                               <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                            </padding>
                         </GridPane>
-                        <TextArea fx:id="textAreaConsole" prefHeight="274.0" prefWidth="445.0" promptText="Console" wrapText="true" VBox.vgrow="ALWAYS">
-                           <VBox.margin>
-                              <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
-                           </VBox.margin>
-                           <padding>
-                              <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-                           </padding>
-                        </TextArea>
+                        <HBox prefHeight="274.0" prefWidth="445.0" VBox.vgrow="ALWAYS">
+                           <children>
+                              <VBox maxWidth="-Infinity" prefHeight="200.0" prefWidth="150.0">
+                                 <children>
+                                    <Label text="Parameter">
+                                       <VBox.margin>
+                                          <Insets bottom="4.0" left="16.0" right="16.0" top="4.0" />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="VQ :">
+                                       <VBox.margin>
+                                          <Insets left="16.0" right="16.0" top="4.0" />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Number of Centroid">
+                                       <VBox.margin>
+                                          <Insets left="16.0" right="16.0" top="4.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <TextField fx:id="textFieldNumberOfCentroid" promptText="Default 256" text="256">
+                                       <VBox.margin>
+                                          <Insets left="16.0" right="16.0" top="4.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <Label text="HMM :">
+                                       <VBox.margin>
+                                          <Insets left="16.0" right="16.0" top="4.0" />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font name="System Bold Italic" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Number of State">
+                                       <VBox.margin>
+                                          <Insets left="16.0" right="16.0" top="4.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <TextField fx:id="textFieldNumberOfState" promptText="Default 8" text="8">
+                                       <VBox.margin>
+                                          <Insets left="16.0" right="16.0" top="4.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                 </children></VBox>
+                              <TextArea fx:id="textAreaConsole" prefHeight="274.0" prefWidth="350.0" promptText="Console" wrapText="true" HBox.hgrow="ALWAYS">
+                                 <padding>
+                                    <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                 </padding>
+                              </TextArea>
+                           </children>
+                        </HBox>
                         <GridPane>
                           <columnConstraints>
                             <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="350.0" prefWidth="350.0" />

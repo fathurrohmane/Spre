@@ -45,6 +45,8 @@ public class MainMenuController extends Application implements MainView {
     public Label textLabelPcaProcessTime;
     public Label textLabelVqProcessTime;
     public Label textLabelHmmProcessTime;
+    public TextField textFieldNumberOfState;
+    public TextField textFieldNumberOfCentroid;
 
     private Stage stage;
     private File previousFileAddress = null;
@@ -78,6 +80,20 @@ public class MainMenuController extends Application implements MainView {
                 (observable, oldValue, newValue) -> {
                     if (!newValue) {
                         textFieldDimensionReductionValidator();
+                    }
+                }
+        );
+        textFieldNumberOfCentroid.focusedProperty().addListener(
+                (observable, oldValue, newValue) -> {
+                    if (!newValue) {
+                        textFieldNumberOfCentroidValidator();
+                    }
+                }
+        );
+        textFieldNumberOfState.focusedProperty().addListener(
+                (observable, oldValue, newValue) -> {
+                    if (!newValue) {
+                        textFieldNumberOfStateValidator();
                     }
                 }
         );
@@ -182,7 +198,45 @@ public class MainMenuController extends Application implements MainView {
         } else {
             textFieldDimensionReductionNumber.setText("1");
         }
+    }
 
+    /**
+     * Validator for textFieldNumberOfCentroid
+     */
+    private void textFieldNumberOfCentroidValidator() {
+        if (!textFieldNumberOfCentroid.getText().isEmpty()) {
+            try {
+                int number = Integer.valueOf(textFieldNumberOfCentroid.getText());
+                if (!((number & (number - 1)) == 0)) {
+                    DialogCreator.showNormalDialog(stage, "Invalid input! Centroid must be the positive power of two!");
+                    textFieldNumberOfCentroid.setText("256");
+                }
+            } catch (NumberFormatException e) {
+                DialogCreator.showNormalDialog(stage, "Invalid input! Centroid must be number and its the positive power of two!");
+                textFieldNumberOfCentroid.setText("256");
+            }
+        } else {
+            textFieldNumberOfCentroid.setText("256");
+        }
+    }
+
+    /**
+     * Validator for textFieldNumberOfState
+     */
+    private void textFieldNumberOfStateValidator() {
+        if (!textFieldNumberOfState.getText().isEmpty()) {
+            try {
+                int number = Integer.valueOf(textFieldNumberOfState.getText());
+                if (number <= 0) {
+                    DialogCreator.showNormalDialog(stage, "Invalid input! The number of state must be greater than 1!");
+                }
+            } catch (NumberFormatException e) {
+                DialogCreator.showNormalDialog(stage, "Invalid input! The number of state must be greater than 1!");
+                textFieldNumberOfState.setText("8");
+            }
+        } else {
+            textFieldNumberOfState.setText("8");
+        }
     }
 
     /**
@@ -331,13 +385,22 @@ public class MainMenuController extends Application implements MainView {
         private void process() {
             if (isReduceDimension) {
                 if (isTraining) {
-                    processor.startTrainingWithPCA(Integer.valueOf(textFieldDimensionReductionNumber.getText()), soundDirectory);
+                    processor.startTrainingWithPCA(
+                            Integer.valueOf(textFieldDimensionReductionNumber.getText()),
+                            soundDirectory,
+                            Integer.valueOf(textFieldNumberOfCentroid.getText()),
+                            Integer.valueOf(textFieldNumberOfState.getText())
+                    );
                 } else {
                     processor.startTestingWithPCA(Integer.valueOf(textFieldDimensionReductionNumber.getText()), soundDirectory, databaseDirectory);
                 }
             } else {
                 if (isTraining) {
-                    processor.startTrainingWithoutPCA(soundDirectory);
+                    processor.startTrainingWithoutPCA(
+                            soundDirectory,
+                            Integer.valueOf(textFieldNumberOfCentroid.getText()),
+                            Integer.valueOf(textFieldNumberOfState.getText())
+                    );
                 } else {
                     processor.startTestingWithoutPCA(soundDirectory, databaseDirectory);
                 }
