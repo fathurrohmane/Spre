@@ -197,15 +197,19 @@ public class DatabaseHandler {
         try {
             File dirWordModel = new File(databaseDirectory.getAbsolutePath().concat("\\" + WORD_MODEL_FOLDER));
             File[] listOfFiles = dirWordModel.listFiles();
-            for (File file : listOfFiles
-                    ) {
-                if (file.isFile()) {
-                    System.out.println(counter++ + "." + file.getName());
-                    FileInputStream fileInputStream = new FileInputStream(file);
-                    ObjectInputStream in = new ObjectInputStream(fileInputStream);
-                    WordModel wordModel = (WordModel) in.readObject();
-                    output.add(new HiddenMarkov(wordModel));
+            if (listOfFiles != null) {
+                for (File file : listOfFiles
+                        ) {
+                    if (file.isFile()) {
+                        System.out.println(counter++ + "." + file.getName());
+                        FileInputStream fileInputStream = new FileInputStream(file);
+                        ObjectInputStream in = new ObjectInputStream(fileInputStream);
+                        WordModel wordModel = (WordModel) in.readObject();
+                        output.add(new HiddenMarkov(wordModel));
+                    }
                 }
+            } else {
+                return null;
             }
             //System.out.println("Load Completed with " + counter + "data");
         } catch (IOException | ClassNotFoundException e) {

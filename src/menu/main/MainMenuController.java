@@ -134,8 +134,10 @@ public class MainMenuController extends Application implements MainView {
             DatabaseHandler.setDatabasePath(databaseDirectory);
             List<HiddenMarkov> wordModels = DatabaseHandler.loadAllWordModelToHMMs(databaseDirectory);
             textAreaTrainedWordList.clear();
-            for (int i = 0; i < wordModels.size(); i++) {
-                textAreaTrainedWordList.appendText((i + 1) + ". " + wordModels.get(i).getWord() + "\n");
+            if (wordModels != null) {
+                for (int i = 0; i < wordModels.size(); i++) {
+                    textAreaTrainedWordList.appendText((i + 1) + ". " + wordModels.get(i).getWord() + "\n");
+                }
             }
 
             // Auto parse folder name to checkbox and text field pca dimension reduction
