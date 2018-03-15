@@ -201,7 +201,7 @@
                                     <Insets bottom="8.0" left="8.0" right="8.0" top="4.0" />
                                  </GridPane.margin>
                               </Button>
-                              <Button fx:id="buttonStopProcess" mnemonicParsing="false" onAction="#stopProgram" style="-fx-background-color: #cd0000;" text="Stop" textFill="WHITE" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                              <Button fx:id="buttonStopProcess" mnemonicParsing="false" onAction="#stopProgram" style="-fx-background-color: #cd0000;" text="Stop" textFill="WHITE" visible="false" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                                  <GridPane.margin>
                                     <Insets bottom="8.0" left="4.0" right="4.0" top="4.0" />
                                  </GridPane.margin>
@@ -279,7 +279,7 @@
                                     <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                                  </VBox.margin>
                               </CheckBox>
-                              <CheckBox fx:id="checkBoxShowCalculationTime" layoutX="18.0" layoutY="322.0" mnemonicParsing="false" selected="true" text="Show Calculation Time">
+                              <CheckBox fx:id="checkBoxShowCalculationTime" layoutX="18.0" layoutY="322.0" mnemonicParsing="false" text="Show Calculation Time">
                                  <VBox.margin>
                                     <Insets bottom="4.0" left="8.0" right="8.0" top="4.0" />
                                  </VBox.margin>

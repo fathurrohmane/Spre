@@ -414,6 +414,7 @@ public class MainMenuController extends Application implements MainView {
         void stop() {
             thread = null;
             notify();
+            thread.stop();
         }
     }
 }
